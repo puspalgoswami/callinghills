@@ -9,38 +9,27 @@ service cloud.firestore {
         && request.auth.uid == "ayrwmWLYxxPa7BReRFZYA3lKHQY2";
     }
 
+    function isContentCollection(collection) {
+      return collection in [
+        "regions",
+        "places",
+        "packages",
+        "packageOverrides",
+        "hotels",
+        "carRentals",
+        "blog"
+      ];
+    }
+
     match /{collection}/{document=**} {
-      allow read: if (
-        collection in [
-          'regions',
-          'places',
-          'packages',
-          'hotels',
-          'carRentals',
-          'blog'
-        ]
-        && resource.data.published == true
-      ) || (
-        collection in [
-          'regions',
-          'places',
-          'packages',
-          'hotels',
-          'carRentals',
-          'blog'
-        ]
-        && isAdmin()
-      );
+      allow read: if isContentCollection(collection)
+        && (
+          resource.data.published == true
+          || isAdmin()
+        );
 
       allow create, update, delete: if
-        collection in [
-          'regions',
-          'places',
-          'packages',
-          'hotels',
-          'carRentals',
-          'blog'
-        ] && isAdmin();
+        isContentCollection(collection) && isAdmin();
     }
   }
 }
