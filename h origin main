@@ -1,0 +1,11 @@
+warning: in the working copy of 'admin-dashboard.html', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'firestore.rules', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'js/admin-dashboard.js', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'storage.rules', LF will be replaced by CRLF the next time Git touches it
+ admin-dashboard.html  |   74 [32m+++[m[31m-[m
+ css/admin.css         | 1073 [32m++++++++++++++++++++++++++++++++++++++++++++++[m[31m---[m
+ firestore.rules       |   44 [32m+[m[31m-[m
+ js/admin-dashboard.js |  205 [32m+++++[m[31m-----[m
+ js/firebase.js        |    8 [32m+[m[31m-[m
+ storage.rules         |    2 [32m+[m[31m-[m
+ 6 files changed, 1230 insertions(+), 176 deletions(-)

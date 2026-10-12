@@ -341,106 +341,108 @@ function renderFields(data = {}) {
   originalImagePath = data.imagePath || "";
   $("image-preview-row").hidden = true;
   $("image-preview").removeAttribute("src");
-  config.fields.forEach((field) => {
-    const wrapper = document.createElement("div");
-    wrapper.className = `field${field.full ? " field-full" : ""}`;
-    const label = document.createElement("label");
-    label.htmlFor = `field-${field.key}`;
-    label.textContent = field.label;
-    wrapper.append(label);
-    let input;
-    if (field.image) {
-      input = document.createElement("input");
-      input.type = "url";
-      input.placeholder =
-        field.placeholder || "https://… or ./images/photo.jpg";
-    } else if (field.type === "textarea") {
-      input = document.createElement("textarea");
-      input.rows = field.key.toLowerCase().includes("json")
-        ? 3
-        : field.key === "story" || field.key === "description"
-          ? 6
-          : 3;
-      if (field.placeholder) input.placeholder = field.placeholder;
-    } else {
-      input = document.createElement("input");
-      input.type = field.type || "text";
-      if (field.min !== undefined) input.min = field.min;
-      if (field.max !== undefined) input.max = field.max;
-      if (field.step) input.step = field.step;
-      if (field.placeholder) input.placeholder = field.placeholder;
-    }
-    input.id = `field-${field.key}`;
-    input.name = field.key;
-    input.required = !!field.required;
-    const value = data[field.key];
-    if (value !== undefined && value !== null)
-      input.value =
-        Array.isArray(value) ||
-        (typeof value === "object" && field.key.endsWith("Json"))
-          ? JSON.stringify(value, null, 2)
-          : String(value);
-    if (field.key === "slug" && data.id && !input.value)
-      input.value = data.slug || "";
-    if (field.key === "attractionsText")
-      input.value = arrayToLines(data.attractions);
-    if (field.key === "highlightsText")
-      input.value = arrayToLines(data.highlights);
-    if (field.key === "inclusionsText")
-      input.value = arrayToLines(data.inclusions);
-    if (field.key === "amenitiesText")
-      input.value = arrayToLines(data.amenities);
-    if (field.key === "thingsToDoJson")
-      input.value = JSON.stringify(data.thingsToDo || [], null, 2);
-    if (field.key === "howToReachJson")
-      input.value = JSON.stringify(data.howToReach || {}, null, 2);
-    if (field.key === "packagesJson")
-      input.value = JSON.stringify(data.packages || [], null, 2);
-    if (field.key === "staysJson")
-      input.value = JSON.stringify(data.stays || [], null, 2);
-    if (field.key === "itineraryJson")
-      input.value = JSON.stringify(data.itinerary || [], null, 2);
-    if (field.key === "publicationDate" && !input.value)
-      input.value = new Date().toISOString().slice(0, 10);
-    if (field.key === "image") input.value = data.image || "";
-    if (field.image) {
-      const fileLabel = document.createElement("label");
-      fileLabel.className = "upload-label";
-      fileLabel.textContent = "Upload image (optional)";
-      const fileInput = document.createElement("input");
-      fileInput.type = "file";
-      fileInput.accept = "image/jpeg,image/png,image/webp,image/avif";
-      fileInput.id = "image-file";
-      fileInput.addEventListener("change", () => {
-        const file = fileInput.files?.[0];
-        pendingFile = file || null;
-        if (file) {
-          $("image-preview").src = URL.createObjectURL(file);
-          $("image-name").textContent =
-            `${file.name} · ${(file.size / 1024 / 1024).toFixed(2)} MB`;
+  [...config.fields]
+    .sort((a, b) => Number(!!b.image) - Number(!!a.image))
+    .forEach((field) => {
+      const wrapper = document.createElement("div");
+      wrapper.className = `field${field.full ? " field-full" : ""}`;
+      const label = document.createElement("label");
+      label.htmlFor = `field-${field.key}`;
+      label.textContent = field.label;
+      wrapper.append(label);
+      let input;
+      if (field.image) {
+        input = document.createElement("input");
+        input.type = "url";
+        input.placeholder =
+          field.placeholder || "https://… or ./images/photo.jpg";
+      } else if (field.type === "textarea") {
+        input = document.createElement("textarea");
+        input.rows = field.key.toLowerCase().includes("json")
+          ? 3
+          : field.key === "story" || field.key === "description"
+            ? 6
+            : 3;
+        if (field.placeholder) input.placeholder = field.placeholder;
+      } else {
+        input = document.createElement("input");
+        input.type = field.type || "text";
+        if (field.min !== undefined) input.min = field.min;
+        if (field.max !== undefined) input.max = field.max;
+        if (field.step) input.step = field.step;
+        if (field.placeholder) input.placeholder = field.placeholder;
+      }
+      input.id = `field-${field.key}`;
+      input.name = field.key;
+      input.required = !!field.required;
+      const value = data[field.key];
+      if (value !== undefined && value !== null)
+        input.value =
+          Array.isArray(value) ||
+          (typeof value === "object" && field.key.endsWith("Json"))
+            ? JSON.stringify(value, null, 2)
+            : String(value);
+      if (field.key === "slug" && data.id && !input.value)
+        input.value = data.slug || "";
+      if (field.key === "attractionsText")
+        input.value = arrayToLines(data.attractions);
+      if (field.key === "highlightsText")
+        input.value = arrayToLines(data.highlights);
+      if (field.key === "inclusionsText")
+        input.value = arrayToLines(data.inclusions);
+      if (field.key === "amenitiesText")
+        input.value = arrayToLines(data.amenities);
+      if (field.key === "thingsToDoJson")
+        input.value = JSON.stringify(data.thingsToDo || [], null, 2);
+      if (field.key === "howToReachJson")
+        input.value = JSON.stringify(data.howToReach || {}, null, 2);
+      if (field.key === "packagesJson")
+        input.value = JSON.stringify(data.packages || [], null, 2);
+      if (field.key === "staysJson")
+        input.value = JSON.stringify(data.stays || [], null, 2);
+      if (field.key === "itineraryJson")
+        input.value = JSON.stringify(data.itinerary || [], null, 2);
+      if (field.key === "publicationDate" && !input.value)
+        input.value = new Date().toISOString().slice(0, 10);
+      if (field.key === "image") input.value = data.image || "";
+      if (field.image) {
+        const fileLabel = document.createElement("label");
+        fileLabel.className = "upload-label";
+        fileLabel.textContent = "Upload image (optional)";
+        const fileInput = document.createElement("input");
+        fileInput.type = "file";
+        fileInput.accept = "image/jpeg,image/png,image/webp,image/avif";
+        fileInput.id = "image-file";
+        fileInput.addEventListener("change", () => {
+          const file = fileInput.files?.[0];
+          pendingFile = file || null;
+          if (file) {
+            $("image-preview").src = URL.createObjectURL(file);
+            $("image-name").textContent =
+              `${file.name} · ${(file.size / 1024 / 1024).toFixed(2)} MB`;
+            $("image-preview-row").hidden = false;
+          }
+        });
+        wrapper.append(fileLabel, fileInput, input);
+        if (input.value) {
+          $("image-preview").src = input.value;
+          $("image-name").textContent = "Current image";
           $("image-preview-row").hidden = false;
         }
-      });
-      wrapper.append(input, fileLabel, fileInput);
-      if (input.value) {
-        $("image-preview").src = input.value;
-        $("image-name").textContent = "Current image";
-        $("image-preview-row").hidden = false;
-      }
-    } else wrapper.append(input);
-    $("form-fields").append(wrapper);
-    if (field.key === "name" || field.key === "title")
-      input.addEventListener("input", () => {
-        const slug = $("form-fields").querySelector('[name="slug"]');
-        if (slug && (!slug.dataset.edited || !slug.value))
-          slug.value = normaliseSlug(input.value);
-      });
-    if (field.key === "slug")
-      input.addEventListener("input", () => {
-        input.dataset.edited = "true";
-        input.value = normaliseSlug(input.value);
-      });
-  });
+      } else wrapper.append(input);
+      $("form-fields").append(wrapper);
+      if (field.key === "name" || field.key === "title")
+        input.addEventListener("input", () => {
+          const slug = $("form-fields").querySelector('[name="slug"]');
+          if (slug && (!slug.dataset.edited || !slug.value))
+            slug.value = normaliseSlug(input.value);
+        });
+      if (field.key === "slug")
+        input.addEventListener("input", () => {
+          input.dataset.edited = "true";
+          input.value = normaliseSlug(input.value);
+        });
+    });
   $("published").checked = data.published !== false;
   $("record-id").value = data.id || "";
   $("form-message").textContent = "";
@@ -739,11 +741,16 @@ onAuthStateChanged(auth, async (user) => {
   currentUser = user;
   $("auth-loading").hidden = true;
   $("dashboard").hidden = false;
-  $("admin-email").textContent = user.email || "Administrator";
+
   if (!isFirebaseConfigured)
     setNotice(
       "Firebase setup is incomplete. Fill in js/firebase-config.js first.",
       "error",
     );
+
+  // Initialize the form when the dashboard first loads.
+  renderFields();
+
+  // Load the existing content from Firestore.
   await loadRecords();
 });

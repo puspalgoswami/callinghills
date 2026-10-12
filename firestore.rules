@@ -1,16 +1,46 @@
+
 rules_version = '2';
+
 service cloud.firestore {
   match /databases/{database}/documents {
-    function signedIn() { return request.auth != null; }
-    // Replace the sample address below with the exact administrator email.
-    // Do not allow every authenticated user to write CMS content.
+
     function isAdmin() {
-      return signedIn() && request.auth.token.email == 'REPLACE_WITH_ADMIN_EMAIL';
+      return request.auth != null
+        && request.auth.uid == "ayrwmWLYxxPa7BReRFZYA3lKHQY2";
     }
+
     match /{collection}/{document=**} {
-      allow read: if collection in ['regions', 'places', 'packages', 'hotels', 'carRentals', 'blog']
-                  && (resource.data.published == true || isAdmin());
-      allow create, update, delete: if collection in ['regions', 'places', 'packages', 'hotels', 'carRentals', 'blog'] && isAdmin();
+      allow read: if (
+        collection in [
+          'regions',
+          'places',
+          'packages',
+          'hotels',
+          'carRentals',
+          'blog'
+        ]
+        && resource.data.published == true
+      ) || (
+        collection in [
+          'regions',
+          'places',
+          'packages',
+          'hotels',
+          'carRentals',
+          'blog'
+        ]
+        && isAdmin()
+      );
+
+      allow create, update, delete: if
+        collection in [
+          'regions',
+          'places',
+          'packages',
+          'hotels',
+          'carRentals',
+          'blog'
+        ] && isAdmin();
     }
   }
 }
