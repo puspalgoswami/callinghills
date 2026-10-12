@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Destinations — CallingHills</title>
+    <meta name="description" content="Explore the hidden gems of North Bengal & Sikkim. Discover offbeat destinations, handpicked packages, and verified stays with CallingHills.">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,300;1,9..40,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="./css/main.css?v=2">
+    <link rel="stylesheet" href="./css/destinations.css?v=1">
+    <link rel="icon" type="image/png" href="./logo up.jpeg">
+</head>
+<body>
+    <div class="ambient-gradient-bg"></div>
+    <!-- LOADER -->
+    <div class="loader" id="loader">
+        <img src="./logo up.jpeg" alt="CallingHills" class="loader-logo-img" style="width: 120px; height: 120px; margin-bottom: 24px;">
+        <div class="loader-brand">Calling<span>Hills</span></div>
+        <div class="loader-bar-track">
+            <div class="loader-bar" id="loader-bar"></div>
+        </div>
+    </div>
+
+    <!-- NAVBAR -->
+    <nav class="navbar" id="navbar">
+        <a href="./index.html" class="nav-logo" id="nav-logo">
+            <img src="./logo up.jpeg" alt="CallingHills Logo" class="nav-logo-img" style="height: 42px; width: auto; ">
+            <div class="nav-logo-text">Calling<span>Hills</span></div>
+        </a>
+
+        <ul class="nav-links" id="nav-links">
+            <li><a href="./destinations.html">Destinations</a></li>
+            <li><a href="./packages.html">Packages</a></li>
+            <li><a href="./hotels.html">Hotels</a></li>
+            <li><a href="./car-rental.html">Car Rentals</a></li>
+            <li><a href="./about.html">About</a></li>
+            <li><a href="./gallery.html">Gallery</a></li>
+            <li><a href="./blog.html">Blog</a></li>
+            <li><a href="./reviews.html">Reviews</a></li>
+            <li><a href="./contact.html">Contact</a></li>
+        </ul>
+
+        <div class="nav-right">
+            <a href="./packages.html" class="nav-cta" id="nav-cta">Plan My Trip</a>
+            <button class="nav-hamburger" id="nav-hamburger" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobile-menu">
+        <a href="./destinations.html">Destinations</a>
+        <a href="./packages.html">Packages</a>
+        <a href="./hotels.html">Hotels</a>
+        <a href="./car-rental.html">Car Rentals</a>
+        <a href="./about.html">About</a>
+        <a href="./gallery.html">Gallery</a>
+        <a href="./blog.html">Blog</a>
+        <a href="./reviews.html">Reviews</a>
+        <a href="./contact.html">Contact</a>
+        <a href="./packages.html" style="color: var(--ch-gold); margin-top: 16px;">Plan My Trip &rarr;</a>
+    </div>
+
+    <div style="height: 72px;"></div>
+
+    <!-- MAIN CONTENT — Dynamically rendered by JS -->
+    <div class="dest-page-wrapper" id="dest-main-content">
+        <!-- Loading State -->
+        <div style="display: flex; align-items: center; justify-content: center; min-height: 60vh;">
+            <div style="text-align: center;">
+                <div style="width: 40px; height: 40px; border: 3px solid #e8e3da; border-top-color: var(--ch-green-deep); border-radius: 50%; animation: spin 0.8s linear infinite; margin: 0 auto 16px;"></div>
+                <p style="font-family: var(--font-body); color: #6b7c69; font-size: 14px;">Loading destination...</p>
+            </div>
+        </div>
+        <style>@keyframes spin { to { transform: rotate(360deg); } }</style>
+    </div>
+
+    <!-- ═══════════ FOOTER ═══════════ -->
+    <footer class="footer">
+        <div class="footer-watermark">CallingHills</div>
+        <div class="footer-container">
+            <div class="footer-top">
+                <div class="footer-brand">
+                    <a href="./index.html" class="nav-logo">
+                        <img src="./logo up.jpeg" alt="CallingHills Logo" class="nav-logo-img" style="height: 42px; width: auto;">
+                        <div class="nav-logo-text">Calling<span>Hills</span></div>
+                    </a>
+                    <p>Discover Hidden Trails, Hill Villages & Nature's Soul</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Explore</h4>
+                    <ul>
+                        <li><a href="./destinations.html">Destinations</a></li>
+                        <li><a href="./packages.html">Signature Packages</a></li>
+                        <li><a href="./hotels.html">Partner Hotels</a></li>
+                        <li><a href="./car-rental.html">Car Rentals</a></li>
+                        <li><a href="./blog.html">Travel Blog</a></li>
+                        <li><a href="./about.html#services">Our Services</a></li>
+                        <li><a href="./about.html#faq">FAQ</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="./about.html">About Us</a></li>
+                        <li><a href="./gallery.html">Gallery</a></li>
+                        <li><a href="./contact.html">Contact Us</a></li>
+                        <li><a href="./contact.html#b2b-enquiry">B2B Partnership</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Contact Us</h4>
+                    <ul class="footer-contact-list">
+                        <li style="display: flex; align-items: center; gap: 8px; font-size: 13px;">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0;"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                            <span>6289590603 / 9123843327</span>
+                        </li>
+                        <li style="display: flex; align-items: center; gap: 8px; font-size: 13px;">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0;"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
+                            <span>9051966561</span>
+                        </li>
+                        <li style="display: flex; align-items: center; gap: 8px; font-size: 13px;">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0;"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                            <a href="mailto:hello@callinghills.com" style="text-transform: none;">hello@callinghills.com</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="footer-social">
+                    <h4>Connect With Us</h4>
+                    <div class="social-icons" style="display: flex; gap: 12px; flex-wrap: wrap;">
+                        <a href="https://www.facebook.com/share/1PEQPSyFLr/" target="_blank" class="social-icon" aria-label="Facebook"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg></a>
+                        <a href="https://www.instagram.com/callinghills_official" target="_blank" class="social-icon" aria-label="Instagram"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path></svg></a>
+                        <a href="https://youtube.com/@callinghills" target="_blank" class="social-icon" aria-label="YouTube"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33 2.78 2.78 0 0 0 1.94 2c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.33 29 29 0 0 0-.46-5.33z"></path><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon></svg></a>
+                        <a href="https://wa.me/message/IJWEKZTQMGAFH1" target="_blank" class="social-icon" aria-label="WhatsApp"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div>&copy; 2026 CallingHills. All rights reserved.</div>
+                <div>Crafted with &hearts; in the Himalayas</div>
+                <div><a href="#">Privacy Policy</a> &nbsp;&middot;&nbsp; <a href="#">Terms of Service</a></div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to top -->
+    <button class="back-to-top" id="back-to-top" aria-label="Back to top">&uarr;</button>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="./js/main.js?v=2.1"></script>
+    <script src="./js/destinationsData.js?v=2.1"></script>
+    <script src="./js/destinationPage.js?v=2.1"></script>
+</body>
+</html>
+

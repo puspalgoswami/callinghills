@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Admin Login | CallingHills</title>
+    <meta name="description" content="Authorised CallingHills administration sign in.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,300;1,9..40,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./css/main.css?v=6">
+    <link rel="icon" type="image/png" href="./logo up.jpeg">
+    <style>
+        .admin-hero {
+            min-height: calc(100vh - 72px);
+            padding: 120px 5% 70px;
+            background-image: url('./topo-bg.png');
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .admin-hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to bottom, rgba(251, 245, 221, .82), rgba(251, 245, 221, .96));
+        }
+        .admin-login-card {
+            position: relative;
+            z-index: 1;
+            width: min(100%, 460px);
+            box-sizing: border-box;
+            padding: clamp(28px, 5vw, 48px);
+            background: rgba(251, 245, 221, .94);
+            border: 1px solid rgba(48, 109, 41, .18);
+            border-radius: 12px;
+            box-shadow: 0 12px 40px rgba(13, 83, 14, .09);
+            backdrop-filter: blur(8px);
+        }
+        .admin-login-card .section-tag { display: inline-block; margin-bottom: 14px; }
+        .admin-login-card h1 {
+            font-family: var(--font-heading);
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            line-height: 1.08;
+            color: var(--ch-green-deep);
+            font-weight: 600;
+            margin: 0 0 14px;
+        }
+        .admin-intro {
+            color: var(--ch-text-mid);
+            font-family: var(--font-body);
+            font-size: 15px;
+            line-height: 1.7;
+            margin: 0 0 28px;
+        }
+        .admin-field { margin: 18px 0; }
+        .admin-field label {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--ch-green-deep);
+            font-family: var(--font-body);
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+        .admin-field input {
+            display: block;
+            width: 100%;
+            box-sizing: border-box;
+            padding: 14px 15px;
+            border: 1px solid rgba(48, 109, 41, .25);
+            border-radius: 6px;
+            background: rgba(255, 255, 255, .78);
+            color: var(--ch-text-dark);
+            font: 400 14px var(--font-body);
+            outline: none;
+            transition: border-color .2s, box-shadow .2s;
+        }
+        .admin-field input:focus {
+            border-color: var(--ch-green);
+            box-shadow: 0 0 0 3px rgba(48, 109, 41, .1);
+        }
+        .admin-password-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 12px;
+        }
+        .admin-password-row label { margin-bottom: 8px; }
+        .admin-password-row button {
+            border: 0;
+            background: transparent;
+            color: var(--ch-green);
+            font: 600 12px var(--font-body);
+            cursor: pointer;
+            padding: 0 0 8px;
+        }
+        .admin-submit {
+            width: 100%;
+            border: 1px solid var(--ch-green-deep);
+            border-radius: 6px;
+            background: var(--ch-green-deep);
+            color: var(--ch-cream-light);
+            padding: 15px 18px;
+            margin-top: 10px;
+            font: 700 12px var(--font-body);
+            letter-spacing: 1.2px;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: background .2s, transform .2s;
+        }
+        .admin-submit:hover { background: var(--ch-green); transform: translateY(-1px); }
+        .admin-submit:disabled { opacity: .65; cursor: wait; transform: none; }
+        .admin-status {
+            min-height: 20px;
+            margin-top: 14px;
+            font-size: 13px;
+            line-height: 1.5;
+            color: #9b3a2b;
+            overflow-wrap: anywhere;
+        }
+        .admin-note {
+            border-top: 1px solid rgba(48, 109, 41, .16);
+            margin-top: 24px;
+            padding-top: 18px;
+            color: var(--ch-text-mid);
+            font-size: 12px;
+            line-height: 1.65;
+        }
+        .admin-back {
+            display: inline-block;
+            margin-top: 22px;
+            color: var(--ch-green);
+            font-size: 13px;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        .admin-back:hover { color: var(--ch-green-deep); }
+        @media (max-width: 600px) {
+            .admin-hero { min-height: calc(100vh - 72px); padding: 105px 5% 45px; }
+            .admin-login-card { padding: 28px 23px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="ambient-gradient-bg"></div>
+    <nav class="navbar" id="navbar">
+        <a href="./index.html" class="nav-logo" id="nav-logo">
+            <img src="./logo up.jpeg" alt="CallingHills Logo" class="nav-logo-img" style="height: 42px; width: auto;">
+            <div class="nav-logo-text">Calling<span>Hills</span></div>
+        </a>
+        <ul class="nav-links" id="nav-links">
+            <li><a href="./destinations.html">Destinations</a></li>
+            <li><a href="./packages.html">Packages</a></li>
+            <li><a href="./hotels.html">Hotels</a></li>
+            <li><a href="./car-rental.html">Car Rentals</a></li>
+            <li><a href="./about.html">About</a></li>
+            <li><a href="./gallery.html">Gallery</a></li>
+            <li><a href="./blog.html">Blog</a></li>
+            <li><a href="./reviews.html">Reviews</a></li>
+            <li><a href="./contact.html">Contact</a></li>
+        </ul>
+        <div class="nav-right">
+            <a href="./index.html" class="nav-cta" id="nav-cta">View Website</a>
+            <button class="nav-hamburger" id="nav-hamburger" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+        </div>
+    </nav>
+    <div class="mobile-menu" id="mobile-menu">
+        <a href="./destinations.html">Destinations</a>
+        <a href="./packages.html">Packages</a>
+        <a href="./hotels.html">Hotels</a>
+        <a href="./car-rental.html">Car Rentals</a>
+        <a href="./about.html">About</a>
+        <a href="./gallery.html">Gallery</a>
+        <a href="./blog.html">Blog</a>
+        <a href="./reviews.html">Reviews</a>
+        <a href="./contact.html">Contact</a>
+        <a href="./index.html" style="color: var(--ch-gold); margin-top: 16px;">View Website &rarr;</a>
+    </div>
+    <main>
+        <section class="admin-hero">
+            <div class="admin-login-card">
+                <div class="section-tag">✦ THE CALLINGHILLS CONTENT STUDIO</div>
+                <h1>Admin sign in</h1>
+                <p class="admin-intro">Sign in with your authorised administrator account to manage CallingHills content.</p>
+                <form id="admin-login-form">
+                    <div class="admin-field">
+                        <label for="email">EMAIL ADDRESS</label>
+                        <input id="admin-email" name="email" type="email" autocomplete="username" placeholder="admin@callinghills.com" required>
+                    </div>
+                    <div class="admin-field">
+                        <div class="admin-password-row">
+                            <label for="password">PASSWORD</label>
+                            <button type="button" id="toggle-password" aria-pressed="false">Show password</button>
+                        </div>
+                        <input id="admin-password" name="password" type="password" autocomplete="current-password" placeholder="Enter your password" required>
+                    </div>
+                    <button class="admin-submit" type="submit" id="login-submit">Sign in securely &rarr;</button>
+                    <p class="admin-status" id="admin-status" role="status" aria-live="polite"></p>
+                </form>
+                <p class="admin-note"><strong>Authorised administrators only.</strong> Access is protected by Firebase Authentication and administrator checks.</p>
+                <a class="admin-back" href="./index.html">&larr; Back to CallingHills</a>
+            </div>
+        </section>
+    </main>
+    <button class="back-to-top" id="back-to-top" aria-label="Back to top">&uarr;</button>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="./js/main.js"></script>
+    <script type="module" src="./js/admin-login.js"></script>
+</body>
+</html>

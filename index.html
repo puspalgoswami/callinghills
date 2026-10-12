@@ -1,0 +1,1411 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CallingHills — Offbeat Himalayan Journeys | Darjeeling · Kalimpong · Dooars · Sikkim</title>
+    <meta name="description"
+        content="Discover soulful, offbeat Himalayan travel experiences across Darjeeling, Kalimpong, Dooars & Sikkim. Handcrafted journeys that answer with adventure.">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,300;1,9..40,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&display=swap"
+        rel="stylesheet">
+
+
+
+    <link rel="stylesheet" href="./css/main.css?v=5">
+    <link rel="icon" type="image/png" href="./logo up.jpeg">
+
+    <style>
+        /* ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ CUSTOM TOUR PACKAGES PROMO BANNER ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ */
+        .custom-tour-banner-section {
+            padding: 50px 20px 60px;
+            position: relative;
+            z-index: 10;
+            background: var(--ch-cream-light);
+        }
+
+        .ctb-container {
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+
+        .ctb-card {
+            position: relative;
+            overflow: hidden;
+            border-radius: 28px;
+            background: linear-gradient(135deg, #091a13 0%, #0d281c 50%, #133927 100%);
+            border: 1.5px solid rgba(200, 169, 110, 0.35);
+            box-shadow: 0 16px 48px rgba(9, 26, 19, 0.28), 0 0 30px rgba(48, 109, 41, 0.15);
+            padding: clamp(32px, 5vw, 56px);
+            color: #ffffff;
+        }
+
+        .ctb-glow-accent {
+            position: absolute;
+            top: -120px;
+            right: -80px;
+            width: 450px;
+            height: 450px;
+            background: radial-gradient(circle, rgba(200, 169, 110, 0.22) 0%, rgba(48, 109, 41, 0.15) 50%, transparent 75%);
+            border-radius: 50%;
+            pointer-events: none;
+            filter: blur(50px);
+        }
+
+        .ctb-mesh-pattern {
+            position: absolute;
+            inset: 0;
+            background-image: radial-gradient(rgba(200, 169, 110, 0.08) 1px, transparent 1px);
+            background-size: 28px 28px;
+            opacity: 0.6;
+            pointer-events: none;
+        }
+
+        .ctb-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .ctb-top-row {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            flex-wrap: wrap;
+            margin-bottom: 22px;
+        }
+
+        .ctb-live-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 7px 18px;
+            background: rgba(34, 197, 94, 0.15);
+            border: 1px solid rgba(74, 222, 128, 0.4);
+            border-radius: 999px;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: #86efac;
+        }
+
+        .ctb-pulse-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #4ade80;
+            box-shadow: 0 0 10px #4ade80;
+            animation: ctbPulse 1.8s infinite cubic-bezier(0.4, 0, 0.6, 1);
+        }
+
+        @keyframes ctbPulse {
+
+            0%,
+            100% {
+                transform: scale(1);
+                box-shadow: 0 0 0 0 rgba(74, 222, 128, 0.7);
+            }
+
+            50% {
+                transform: scale(1.15);
+                box-shadow: 0 0 0 8px rgba(74, 222, 128, 0);
+            }
+        }
+
+        .ctb-season-badge {
+            font-size: 13px;
+            color: var(--ch-gold-light);
+            font-weight: 500;
+            background: rgba(200, 169, 110, 0.1);
+            border: 1px solid rgba(200, 169, 110, 0.25);
+            padding: 6px 14px;
+            border-radius: 999px;
+        }
+
+        .ctb-cursive {
+            font-family: var(--font-script);
+            font-size: clamp(24px, 3.2vw, 34px);
+            color: var(--ch-gold);
+            font-style: italic;
+            margin-bottom: 6px;
+        }
+
+        .ctb-title {
+            font-family: var(--font-heading);
+            font-size: clamp(28px, 4vw, 44px);
+            font-weight: 700;
+            line-height: 1.18;
+            color: #ffffff;
+            margin-bottom: 14px;
+            letter-spacing: -0.02em;
+        }
+
+        .ctb-desc {
+            font-family: var(--font-body);
+            font-size: clamp(15px, 1.8vw, 17px);
+            line-height: 1.6;
+            color: rgba(244, 242, 238, 0.85);
+            max-width: 880px;
+            margin-bottom: 32px;
+        }
+
+        .ctb-desc strong {
+            color: #ffffff;
+            font-weight: 600;
+        }
+
+        .ctb-perks-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 16px;
+            margin-bottom: 32px;
+        }
+
+        .ctb-perk-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 14px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.09);
+            padding: 16px 18px;
+            border-radius: 16px;
+            transition: all 0.3s ease;
+        }
+
+        .ctb-perk-item:hover {
+            background: rgba(255, 255, 255, 0.08);
+            border-color: rgba(200, 169, 110, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .ctb-perk-icon {
+            font-size: 24px;
+            line-height: 1;
+            padding: 10px;
+            background: rgba(48, 109, 41, 0.35);
+            border-radius: 12px;
+            border: 1px solid rgba(48, 109, 41, 0.5);
+            flex-shrink: 0;
+        }
+
+        .ctb-perk-text {
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+        }
+
+        .ctb-perk-text strong {
+            font-size: 15px;
+            color: #ffffff;
+            font-weight: 600;
+        }
+
+        .ctb-perk-text span {
+            font-size: 13px;
+            color: rgba(244, 242, 238, 0.7);
+            line-height: 1.4;
+        }
+
+        .ctb-chips-container {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-bottom: 32px;
+            padding-top: 18px;
+            border-top: 1px dashed rgba(255, 255, 255, 0.12);
+        }
+
+        .ctb-chips-label {
+            font-size: 13px;
+            color: var(--ch-gold);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .ctb-chips-list {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .ctb-chip {
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            color: rgba(255, 255, 255, 0.88);
+            font-family: var(--font-body);
+            font-size: 13px;
+            padding: 6px 14px;
+            border-radius: 999px;
+            cursor: pointer;
+            transition: all 0.25s ease;
+        }
+
+        .ctb-chip:hover {
+            background: var(--ch-green);
+            border-color: var(--ch-green);
+            color: #ffffff;
+            transform: translateY(-1px);
+        }
+
+        .ctb-actions-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+            flex-wrap: wrap;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .ctb-buttons {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            flex-wrap: wrap;
+        }
+
+        .ctb-primary-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 14px 28px;
+            background: linear-gradient(135deg, var(--ch-gold) 0%, #b89354 100%);
+            color: #0d1f17;
+            font-family: var(--font-body);
+            font-size: 15px;
+            font-weight: 700;
+            border-radius: 12px;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 6px 20px rgba(200, 169, 110, 0.35);
+            transition: all 0.25s ease;
+        }
+
+        .ctb-primary-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 28px rgba(200, 169, 110, 0.5);
+            background: linear-gradient(135deg, #dfc288 0%, var(--ch-gold) 100%);
+        }
+
+        .ctb-whatsapp-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 14px 22px;
+            background: rgba(37, 211, 102, 0.15);
+            border: 1px solid rgba(37, 211, 102, 0.4);
+            color: #4ade80;
+            font-family: var(--font-body);
+            font-size: 15px;
+            font-weight: 600;
+            border-radius: 12px;
+            text-decoration: none;
+            transition: all 0.25s ease;
+        }
+
+        .ctb-whatsapp-btn:hover {
+            background: #25d366;
+            border-color: #25d366;
+            color: #0d1f17;
+            transform: translateY(-2px);
+        }
+
+        .ctb-browse-link {
+            color: rgba(244, 242, 238, 0.7);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            margin-left: 6px;
+            transition: color 0.2s ease;
+        }
+
+        .ctb-browse-link:hover {
+            color: var(--ch-gold);
+            text-decoration: underline;
+        }
+
+        .ctb-trust-note {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 13px;
+            color: rgba(244, 242, 238, 0.65);
+            flex-wrap: wrap;
+        }
+
+        .ctb-trust-note strong {
+            color: var(--ch-gold);
+        }
+
+        .ctb-dot-sep {
+            color: rgba(200, 169, 110, 0.4);
+        }
+
+        @media (max-width: 768px) {
+            .custom-tour-banner-section {
+                padding: 30px 14px 40px;
+            }
+
+            .ctb-card {
+                padding: 24px 18px;
+                border-radius: 20px;
+            }
+
+            .ctb-buttons {
+                width: 100%;
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .ctb-primary-btn,
+            .ctb-whatsapp-btn {
+                justify-content: center;
+                width: 100%;
+            }
+
+            .ctb-browse-link {
+                text-align: center;
+                margin: 4px 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Global Shader Background -->
+    <div class="ambient-gradient-bg"></div>
+
+    <!-- ═══════════ LOADER ═══════════ -->
+    <div class="loader" id="loader">
+        <img src="./logo up.jpeg" alt="CallingHills" class="loader-logo-img"
+            style="width: 120px; height: 120px; margin-bottom: 24px;">
+        <div class="loader-brand">Calling<span>Hills</span></div>
+        <div class="loader-bar-track">
+            <div class="loader-bar" id="loader-bar"></div>
+        </div>
+    </div>
+
+    <!-- ═══════════ NAVBAR ═══════════ -->
+    <nav class="navbar" id="navbar">
+        <a href="./index.html" class="nav-logo" id="nav-logo">
+            <img src="./logo up.jpeg" alt="CallingHills Logo" class="nav-logo-img" style="height: 42px; width: auto; ">
+            <div class="nav-logo-text">Calling<span>Hills</span></div>
+        </a>
+
+        <ul class="nav-links" id="nav-links">
+            <li><a href="./destinations.html">Destinations</a></li>
+            <li><a href="./packages.html">Packages</a></li>
+            <li><a href="./hotels.html">Hotels</a></li>
+            <li><a href="./car-rental.html">Car Rentals</a></li>
+            <li><a href="./about.html">About</a></li>
+            <li><a href="./gallery.html">Gallery</a></li>
+            <li><a href="./blog.html">Blog</a></li>
+            <li><a href="./reviews.html">Reviews</a></li>
+            <li><a href="./contact.html">Contact</a></li>
+        </ul>
+
+
+        <div class="nav-right">
+            <a href="./admin-login.html" class="admin-login-link">ADMIN LOGIN</a>
+            <a href="./packages.html" class="nav-cta" id="nav-cta">Plan My Trip</a>
+            <button class="nav-hamburger" id="nav-hamburger" aria-label="Toggle menu">
+
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobile-menu">
+        <a href="./destinations.html">Destinations</a>
+        <a href="./packages.html">Packages</a>
+        <a href="./hotels.html">Hotels</a>
+        <a href="./car-rental.html">Car Rentals</a>
+        <a href="./about.html">About</a>
+        <a href="./gallery.html">Gallery</a>
+        <a href="./blog.html">Blog</a>
+        <a href="./reviews.html">Reviews</a>
+        <a href="./contact.html">Contact</a>
+        <a href="./packages.html" style="color: var(--ch-gold); margin-top: 16px;">Plan My Trip →</a>
+    </div>
+
+    <!-- ═══════════ HERO ═══════════ -->
+    <header class="hero" id="hero">
+        <!-- Layer 1: Background Photo -->
+        <div class="hero-bg" id="hero-bg">
+            <img src="hero-bg.png" alt="Darjeeling Himalayan landscape at golden hour with tea gardens and Kanchenjunga"
+                loading="eager">
+        </div>
+
+        <!-- Layer 2: Gradient Overlay -->
+        <div class="hero-overlay"></div>
+        <div class="hero-vignette"></div>
+
+        <!-- Layer 3: Particle Canvas -->
+        <canvas id="hero-canvas"></canvas>
+
+        <!-- Layer 4: Content -->
+        <div class="hero-content" id="hero-content">
+            <!-- Tag Row -->
+            <div class="hero-tag" id="hero-tag">
+                <span>✦</span> OFFBEAT <span class="dot"></span> SOULFUL <span class="dot"></span> HIMALAYAN
+            </div>
+
+            <!-- Script Line -->
+            <div class="hero-script" id="hero-script">Answer With a Journey</div>
+
+            <!-- Main Title -->
+            <h1 class="hero-title" id="hero-title">
+                <span class="line"><span class="line-inner">CALLING</span></span>
+                <span class="line"><span class="line-inner">HILLS</span></span>
+            </h1>
+
+            <!-- Subtitle -->
+            <p class="hero-subtitle" id="hero-subtitle">
+                Explore Offbeat Darjeeling <span class="sep">·</span> Kalimpong <span class="sep">·</span> Dooars <span
+                    class="sep">·</span> Sikkim
+            </p>
+
+            <!-- CTAs -->
+            <div class="hero-ctas" id="hero-ctas">
+                <a href="./packages.html" class="btn-primary magnetic" id="cta-explore">
+                    <span>Explore Packages</span>
+                    <span class="btn-arrow">→</span>
+                </a>
+                <a href="./contact.html" class="btn-secondary magnetic" id="cta-plan">
+                    <span>Plan My Trip</span>
+                </a>
+            </div>
+        </div>
+
+        <!-- Scroll Indicator -->
+        <div class="scroll-indicator" id="scroll-indicator">
+            <span class="scroll-indicator-text">Scroll to Explore</span>
+            <div class="scroll-indicator-chevron">
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                    <path d="M3 5L7 9L11 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                </svg>
+            </div>
+        </div>
+    </header>
+
+    <!-- ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═  CUSTOM TOUR PACKAGES PROMO BANNER ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═  -->
+    <section class="custom-tour-banner-section" id="custom-tour-banner">
+        <div class="ctb-container">
+            <div class="ctb-card">
+                <!-- Ambient Glow Effect & Mesh Texture -->
+                <div class="ctb-glow-accent"></div>
+                <div class="ctb-mesh-pattern"></div>
+
+                <div class="ctb-content">
+                    <!-- Top Live Indicator & Badges -->
+                    <div class="ctb-top-row">
+                        <div class="ctb-live-badge">
+                            <span class="ctb-pulse-dot"></span>
+                            <span class="ctb-live-text">CURRENTLY RUNNING &bull; CUSTOM HIMALAYAN EXPEDITIONS</span>
+                        </div>
+                        <div class="ctb-season-badge">
+                            <span>✦ Autumn, Winter &amp; Spring 2026-27 Booking Open</span>
+                        </div>
+                    </div>
+
+                    <!-- Main Title & Tagline -->
+                    <div class="ctb-header-group">
+                        <div class="ctb-cursive">Craft Your Bespoke Journey</div>
+                        <h2 class="ctb-title">Custom &amp; Private Tour Packages Are Live Right Now</h2>
+                        <p class="ctb-desc">
+                            Don't want fixed commercial itineraries? Tell us your dream spots, travel dates, and group
+                            size — our local Himalayan specialists will craft a <strong>100% personalized
+                                itinerary</strong> with private 4x4 vehicles, hill-facing homestays, and flexible
+                            sightseeing in under 2 hours.
+                        </p>
+                    </div>
+
+                    <!-- 4 Core Perks Grid -->
+                    <div class="ctb-perks-grid">
+                        <div class="ctb-perk-item">
+                            <div class="ctb-perk-icon">🚗</div>
+                            <div class="ctb-perk-text">
+                                <strong>Dedicated Private Cab</strong>
+                                <span>Innova / Bolero / Scorpio with seasoned mountain driver throughout</span>
+                            </div>
+                        </div>
+                        <div class="ctb-perk-item">
+                            <div class="ctb-perk-icon">🏡</div>
+                            <div class="ctb-perk-text">
+                                <strong>Handpicked Scenic Stays</strong>
+                                <span>View-facing offbeat homestays &amp; heritage boutique retreats</span>
+                            </div>
+                        </div>
+                        <div class="ctb-perk-item">
+                            <div class="ctb-perk-icon">🗺️</div>
+                            <div class="ctb-perk-text">
+                                <strong>100% Flexible Route</strong>
+                                <span>Your own pace, sunrise viewpoints, secret trails &amp; zero rush</span>
+                            </div>
+                        </div>
+                        <div class="ctb-perk-item">
+                            <div class="ctb-perk-icon">⚡</div>
+                            <div class="ctb-perk-text">
+                                <strong>Instant Route &amp; Costing</strong>
+                                <span>Get customized day-by-day plan &amp; transparent quotation on WhatsApp</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Interactive Quick Route Inspiration Chips -->
+                    <div class="ctb-chips-container">
+                        <span class="ctb-chips-label">Popular Custom Circuits:</span>
+                        <div class="ctb-chips-list">
+                            <button class="ctb-chip"
+                                onclick="openCustomTrip('Darjeeling + Offbeat Kalimpong (5D/4N)')">🏔️ Darjeeling &amp;
+                                Kalimpong Offbeat (5D/4N)</button>
+                            <button class="ctb-chip"
+                                onclick="openCustomTrip('Historic Old Silk Route & Zuluk (5D/4N)')">🧣 Old Silk Route
+                                &amp; Zuluk (5D/4N)</button>
+                            <button class="ctb-chip"
+                                onclick="openCustomTrip('Pelling, Ravangla & West Sikkim (6D/5N)')">🌸 West &amp; South
+                                Sikkim Explorer (6D/5N)</button>
+                            <button class="ctb-chip"
+                                onclick="openCustomTrip('Dooars Tea Estates & Jungle Safaris (4D/3N)')">🐘 Dooars
+                                Wildlife Safari Retreat (4D/3N)</button>
+                            <button class="ctb-chip"
+                                onclick="openCustomTrip('North Sikkim Gurudongmar & Yumthang (6D/5N)')">❄️ North Sikkim
+                                Grand Expedition (6D/5N)</button>
+                        </div>
+                    </div>
+
+                    <!-- Action Buttons & Guarantee Bar -->
+                    <div class="ctb-actions-row">
+                        <div class="ctb-buttons">
+                            <button class="ctb-primary-btn"
+                                onclick="openCustomTrip('Custom Tailored Himalayan Package')">
+                                <span>Plan My Custom Tour</span>
+                                <span class="ctb-btn-arrow">&rarr;</span>
+                            </button>
+                            <a href="https://wa.me/919051966561?text=Hello%20CallingHills%2C%20I%20want%20to%20plan%20a%20Custom%20Tour%20Package.%20Please%20help%20me%20design%20it."
+                                target="_blank" class="ctb-whatsapp-btn" rel="noopener noreferrer">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path
+                                        d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z">
+                                    </path>
+                                </svg>
+                                <span>Chat on WhatsApp</span>
+                            </a>
+                            <a href="./packages.html" class="ctb-browse-link">Or Browse 73 Fixed Packages &rarr;</a>
+                        </div>
+                        <div class="ctb-trust-note">
+                            <span>⭐ <strong>4.9/5</strong> Verified Reviews</span>
+                            <span class="ctb-dot-sep">&bull;</span>
+                            <span>0% Middleman Commission</span>
+                            <span class="ctb-dot-sep">&bull;</span>
+                            <span>Direct Local Mountain Team</span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+
+    <!-- ═══════════ STUNNING DESTINATIONS SECTION (TRIPKART STYLE) ═══════════ -->
+    <section class="stunning-destinations" style="position: relative; overflow: hidden;">
+
+
+        <canvas id="snow-canvas"
+            style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 1;"></canvas>
+        <div class="sd-header">
+            <div class="sd-cursive">Discover</div>
+            <h2 class="sd-massive-text">HIMALAYAS</h2>
+        </div>
+
+        <div class="sd-cards">
+
+            <!-- Glowing SVG Trail -->
+            <svg class="sd-trail-svg" viewBox="0 0 1000 800" preserveAspectRatio="none"
+                style="position: absolute; top: 5%; left: 0; width: 100%; height: 90%; z-index: 1; pointer-events: none; overflow: visible;">
+                <defs>
+                    <linearGradient id="sd-glow-grad" x1="0%" y1="0%" x2="0%" y2="100%">
+                        <stop offset="0%" stop-color="rgba(255,255,255,0.1)" />
+                        <stop offset="50%" stop-color="rgba(255,255,255,0.9)" />
+                        <stop offset="100%" stop-color="rgba(255,255,255,0.1)" />
+                    </linearGradient>
+                </defs>
+                <path class="sd-trail-path"
+                    d="M 250 90 C 800 90, 800 300, 500 300 C 200 300, 200 520, 500 520 C 800 520, 800 710, 250 710"
+                    fill="none" stroke="url(#sd-glow-grad)" stroke-width="6" stroke-dasharray="16 16"
+                    style="filter: drop-shadow(0 0 8px rgba(255,255,255,0.8)); opacity: 0.8;" />
+            </svg>
+
+            <!-- Card 1: Darjeeling Hills -->
+            <a href="./destinations.html" class="sd-card sd-card-1" style="text-decoration: none;">
+                <div class="sd-card-content">
+                    <h3>Darjeeling Hills</h3>
+                    <p>Explore misty tea gardens and hidden trails.</p>
+                </div>
+                <div class="sd-card-image">
+                    <img src="./dest-darjeeling.png" alt="Darjeeling Hills">
+                </div>
+            </a>
+
+            <!-- Card 2: Kalimpong Hills -->
+            <a href="./destinations.html" class="sd-card sd-card-2" style="text-decoration: none;">
+                <div class="sd-card-content">
+                    <h3>Kalimpong Hills</h3>
+                    <p>Serene monasteries and panoramic valley views.</p>
+                </div>
+                <div class="sd-card-image">
+                    <img src="./dest-kalimpong.png" alt="Kalimpong Hills">
+                </div>
+            </a>
+
+            <!-- Card 3: Dooars -->
+            <a href="./destinations.html" class="sd-card sd-card-3" style="text-decoration: none;">
+                <div class="sd-card-content">
+                    <h3>Dooars</h3>
+                    <p>Into the wild — dense forests and river camps.</p>
+                </div>
+                <div class="sd-card-image">
+                    <img src="./dest-dooars.png" alt="Dooars">
+                </div>
+            </a>
+
+            <!-- Card 4: Sikkim -->
+            <a href="./destinations.html" class="sd-card sd-card-4" style="text-decoration: none;">
+                <div class="sd-card-content">
+                    <h3>Sikkim</h3>
+                    <p>Snow-capped peaks and vibrant Buddhist culture.</p>
+                </div>
+                <div class="sd-card-image">
+                    <img src="./dest-sikkim.png" alt="Sikkim">
+                </div>
+            </a>
+        </div>
+
+        <div class="sd-footer">
+            <div class="sd-contact">+91 6289590603 / 9123843327</div>
+            <a href="./destinations.html" class="sd-book-btn">Book Now</a>
+            <div class="sd-email">hello@callinghills.com</div>
+        </div>
+    </section>
+
+    <!-- ═══════════ CINEMATIC PACKAGES SECTION ═══════════ -->
+    <section class="cinematic-packages">
+        <div class="cp-header">
+            <h2 class="cp-title">Signature Packages</h2>
+            <p class="cp-subtitle">Curated offbeat experiences for the soulful traveler.</p>
+        </div>
+
+        <div class="cp-slider-container">
+            <div class="cp-slider-track">
+                <!-- Original Set -->
+                <div class="cp-card">
+                    <div class="cp-card-bg" style="background-image: url('./pkg-darjeeling.png');"></div>
+                    <div class="cp-card-glow" style="background-image: url('./pkg-darjeeling.png');"></div>
+                    <div class="cp-card-content">
+                        <div class="cp-info">
+                            <h3 class="cp-name">Darjeeling Retreat</h3>
+                            <p class="cp-meta">5 Days · 4 Nights</p>
+                        </div>
+                        <a href="./packages.html" class="cp-btn">Explore Now <span class="cp-arrow">&rsaquo;</span></a>
+                    </div>
+                </div>
+
+                <div class="cp-card">
+                    <div class="cp-card-bg" style="background-image: url('./pkg-dooars.png');"></div>
+                    <div class="cp-card-glow" style="background-image: url('./pkg-dooars.png');"></div>
+                    <div class="cp-card-content">
+                        <div class="cp-info">
+                            <h3 class="cp-name">Dooars Wildlife</h3>
+                            <p class="cp-meta">4 Days · 3 Nights</p>
+                        </div>
+                        <a href="./packages.html" class="cp-btn">Explore Now <span class="cp-arrow">&rsaquo;</span></a>
+                    </div>
+                </div>
+
+                <div class="cp-card">
+                    <div class="cp-card-bg" style="background-image: url('./pkg-silkroute.png');"></div>
+                    <div class="cp-card-glow" style="background-image: url('./pkg-silkroute.png');"></div>
+                    <div class="cp-card-content">
+                        <div class="cp-info">
+                            <h3 class="cp-name">Sikkim Silk Route</h3>
+                            <p class="cp-meta">6 Days · 5 Nights</p>
+                        </div>
+                        <a href="./packages.html" class="cp-btn">Explore Now <span class="cp-arrow">&rsaquo;</span></a>
+                    </div>
+                </div>
+
+                <div class="cp-card">
+                    <div class="cp-card-bg" style="background-image: url('./pkg-sikkim.png');"></div>
+                    <div class="cp-card-glow" style="background-image: url('./pkg-sikkim.png');"></div>
+                    <div class="cp-card-content">
+                        <div class="cp-info">
+                            <h3 class="cp-name">North Sikkim</h3>
+                            <p class="cp-meta">5 Days · 4 Nights</p>
+                        </div>
+                        <a href="./packages.html" class="cp-btn">Explore Now <span class="cp-arrow">&rsaquo;</span></a>
+                    </div>
+                </div>
+
+                <!-- Duplicate Set for Infinite Scroll -->
+                <div class="cp-card">
+                    <div class="cp-card-bg" style="background-image: url('./pkg-darjeeling.png');"></div>
+                    <div class="cp-card-glow" style="background-image: url('./pkg-darjeeling.png');"></div>
+                    <div class="cp-card-content">
+                        <div class="cp-info">
+                            <h3 class="cp-name">Darjeeling Retreat</h3>
+                            <p class="cp-meta">5 Days · 4 Nights</p>
+                        </div>
+                        <a href="./packages.html" class="cp-btn">Explore Now <span class="cp-arrow">&rsaquo;</span></a>
+                    </div>
+                </div>
+
+                <div class="cp-card">
+                    <div class="cp-card-bg" style="background-image: url('./pkg-dooars.png');"></div>
+                    <div class="cp-card-glow" style="background-image: url('./pkg-dooars.png');"></div>
+                    <div class="cp-card-content">
+                        <div class="cp-info">
+                            <h3 class="cp-name">Dooars Wildlife</h3>
+                            <p class="cp-meta">4 Days · 3 Nights</p>
+                        </div>
+                        <a href="./packages.html" class="cp-btn">Explore Now <span class="cp-arrow">&rsaquo;</span></a>
+                    </div>
+                </div>
+
+                <div class="cp-card">
+                    <div class="cp-card-bg" style="background-image: url('./pkg-silkroute.png');"></div>
+                    <div class="cp-card-glow" style="background-image: url('./pkg-silkroute.png');"></div>
+                    <div class="cp-card-content">
+                        <div class="cp-info">
+                            <h3 class="cp-name">Sikkim Silk Route</h3>
+                            <p class="cp-meta">6 Days · 5 Nights</p>
+                        </div>
+                        <a href="./packages.html" class="cp-btn">Explore Now <span class="cp-arrow">&rsaquo;</span></a>
+                    </div>
+                </div>
+
+                <div class="cp-card">
+                    <div class="cp-card-bg" style="background-image: url('./pkg-sikkim.png');"></div>
+                    <div class="cp-card-glow" style="background-image: url('./pkg-sikkim.png');"></div>
+                    <div class="cp-card-content">
+                        <div class="cp-info">
+                            <h3 class="cp-name">North Sikkim</h3>
+                            <p class="cp-meta">5 Days · 4 Nights</p>
+                        </div>
+                        <a href="./packages.html" class="cp-btn">Explore Now <span class="cp-arrow">&rsaquo;</span></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════ HANGING TREKS (PRAYER FLAGS) ═══════════ -->
+    <section class="hanging-treks-section">
+
+
+
+        <div class="ht-header">
+            <div class="section-tag" style="color: var(--ch-gold);">✦ FOR THE BOLD ONES</div>
+            <h2 class="section-title" style="color: #1a1a1a; margin-bottom: 12px;">Himalayan Treks</h2>
+            <p style="font-family: var(--font-body); font-size: 18px; color: #666; max-width: 600px; margin: 0 auto;">
+                We provide accessibility support for all our guests — easy, moderate, or difficult.
+            </p>
+        </div>
+
+        <div class="ht-slider-container">
+            <!-- The physical rope spanning across -->
+            <div class="ht-rope-line"></div>
+
+            <!-- Navigation Buttons -->
+            <button class="ht-nav-btn ht-nav-left" aria-label="Scroll Left">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="19" y1="12" x2="5" y2="12" />
+                    <polyline points="12 19 5 12 12 5" />
+                </svg>
+            </button>
+            <button class="ht-nav-btn ht-nav-right" aria-label="Scroll Right">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="5" y1="12" x2="19" y2="12" />
+                    <polyline points="12 5 19 12 12 19" />
+                </svg>
+            </button>
+
+            <div class="ht-slider-track">
+                <div class="hanging-card flag-blue" style="--card-rotation: 1.3909995313426664deg;">
+                    <div class="trek-header">
+                        <h3 class="trek-title">Sandakphu–Phalut Trek</h3>
+                        <span class="trek-difficulty diff-mod">Moderate</span>
+                    </div>
+                    <div class="trek-region">📍 Darjeeling</div>
+                    <p class="hanging-desc">A classic high-altitude trek offering panoramic views of four of the world's
+                        highest peaks.</p>
+                    <div class="trek-ctas hanging-ctas">
+                        <button class="btn-primary">Enquire Now &rarr;</button>
+                        <button class="btn-secondary" onclick="addToCart('Sandakphu–Phalut Trek')"><svg
+                                class="cart-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18"
+                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="9" cy="21" r="1"></circle>
+                                <circle cx="20" cy="21" r="1"></circle>
+                                <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                            </svg> Add</button>
+                    </div>
+                </div>
+                <div class="hanging-card flag-white" style="--card-rotation: -2.3301502164912384deg;">
+                    <div class="trek-header">
+                        <h3 class="trek-title">Dzongri–Goechala Trek</h3>
+                        <span class="trek-difficulty diff-hard">Difficult</span>
+                    </div>
+                    <div class="trek-region">📍 West Sikkim</div>
+                    <p class="hanging-desc">Get up close with Mount Kanchenjunga on this challenging but rewarding
+                        high-altitude trail.</p>
+                    <div class="trek-ctas hanging-ctas">
+                        <button class="btn-primary">Enquire Now &rarr;</button>
+                        <button class="btn-secondary" onclick="addToCart('Dzongri–Goechala Trek')"><svg
+                                class="cart-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18"
+                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="9" cy="21" r="1"></circle>
+                                <circle cx="20" cy="21" r="1"></circle>
+                                <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                            </svg> Add</button>
+                    </div>
+                </div>
+                <div class="hanging-card flag-red" style="--card-rotation: 1.0421353786328191deg;">
+                    <div class="trek-header">
+                        <h3 class="trek-title">Kanchenjunga Base Camp</h3>
+                        <span class="trek-difficulty diff-hard">Difficult</span>
+                    </div>
+                    <div class="trek-region">📍 North Sikkim</div>
+                    <p class="hanging-desc">An epic expedition into the remote heart of the Himalayas, surrounded by
+                        towering snow peaks.</p>
+                    <div class="trek-ctas hanging-ctas">
+                        <button class="btn-primary">Enquire Now &rarr;</button>
+                        <button class="btn-secondary" onclick="addToCart('Kanchenjunga Base Camp')"><svg
+                                class="cart-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18"
+                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="9" cy="21" r="1"></circle>
+                                <circle cx="20" cy="21" r="1"></circle>
+                                <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                            </svg> Add</button>
+                    </div>
+                </div>
+                <div class="hanging-card flag-green" style="--card-rotation: -2.705750585548665deg;">
+                    <div class="trek-header">
+                        <h3 class="trek-title">Singalila Ridge Trek</h3>
+                        <span class="trek-difficulty diff-mod">Moderate</span>
+                    </div>
+                    <div class="trek-region">📍 Darjeeling</div>
+                    <p class="hanging-desc">Walk along the border of India and Nepal with stunning rhododendron forests
+                        and mountain vistas.</p>
+                    <div class="trek-ctas hanging-ctas">
+                        <button class="btn-primary">Enquire Now &rarr;</button>
+                        <button class="btn-secondary" onclick="addToCart('Singalila Ridge Trek')"><svg class="cart-icon"
+                                xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <circle cx="9" cy="21" r="1"></circle>
+                                <circle cx="20" cy="21" r="1"></circle>
+                                <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                            </svg> Add</button>
+                    </div>
+                </div>
+                <div class="hanging-card flag-yellow" style="--card-rotation: 2.7224054257290438deg;">
+                    <div class="trek-header">
+                        <h3 class="trek-title">Barsey Rhododendron Trek</h3>
+                        <span class="trek-difficulty diff-easy">Easy–Moderate</span>
+                    </div>
+                    <div class="trek-region">📍 West Sikkim</div>
+                    <p class="hanging-desc">A gentle walk through vibrant, blooming rhododendron sanctuaries and misty
+                        woodlands.</p>
+                    <div class="trek-ctas hanging-ctas">
+                        <button class="btn-primary">Enquire Now &rarr;</button>
+                        <button class="btn-secondary" onclick="addToCart('Barsey Rhododendron Trek')"><svg
+                                class="cart-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18"
+                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="9" cy="21" r="1"></circle>
+                                <circle cx="20" cy="21" r="1"></circle>
+                                <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                            </svg> Add</button>
+                    </div>
+                </div>
+                <div class="hanging-card flag-blue" style="--card-rotation: -1.8356548182600123deg;">
+                    <div class="trek-header">
+                        <h3 class="trek-title">Yuksom–Dzongri Trek</h3>
+                        <span class="trek-difficulty diff-mod">Moderate</span>
+                    </div>
+                    <div class="trek-region">📍 West Sikkim</div>
+                    <p class="hanging-desc">A majestic journey through sacred forests, alpine meadows, and pristine
+                        mountain rivers.</p>
+                    <div class="trek-ctas hanging-ctas">
+                        <button class="btn-primary">Enquire Now &rarr;</button>
+                        <button class="btn-secondary" onclick="addToCart('Yuksom–Dzongri Trek')"><svg class="cart-icon"
+                                xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <circle cx="9" cy="21" r="1"></circle>
+                                <circle cx="20" cy="21" r="1"></circle>
+                                <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                            </svg> Add</button>
+                    </div>
+                </div>
+                <div class="hanging-card flag-white" style="--card-rotation: 1.7339913401655744deg;">
+                    <div class="trek-header">
+                        <h3 class="trek-title">Neora Valley Forest Trek</h3>
+                        <span class="trek-difficulty diff-easy">Easy–Moderate</span>
+                    </div>
+                    <div class="trek-region">📍 Kalimpong</div>
+                    <p class="hanging-desc">Explore virgin, dense canopies in one of the richest biological zones in the
+                        Eastern Himalayas.</p>
+                    <div class="trek-ctas hanging-ctas">
+                        <button class="btn-primary">Enquire Now &rarr;</button>
+                        <button class="btn-secondary" onclick="addToCart('Neora Valley Forest Trek')"><svg
+                                class="cart-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18"
+                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="9" cy="21" r="1"></circle>
+                                <circle cx="20" cy="21" r="1"></circle>
+                                <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                            </svg> Add</button>
+                    </div>
+                </div>
+                <div class="hanging-card flag-red" style="--card-rotation: -1.9285572802430049deg;">
+                    <div class="trek-header">
+                        <h3 class="trek-title">Zuluk–Gnathang Ridge Walk</h3>
+                        <span class="trek-difficulty diff-easy">Easy</span>
+                    </div>
+                    <div class="trek-region">📍 East Sikkim</div>
+                    <p class="hanging-desc">Follow the footsteps of ancient traders along the historic, mist-covered
+                        Silk Route.</p>
+                    <div class="trek-ctas hanging-ctas">
+                        <button class="btn-primary">Enquire Now &rarr;</button>
+                        <button class="btn-secondary" onclick="addToCart('Zuluk–Gnathang Ridge Walk')"><svg
+                                class="cart-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18"
+                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="9" cy="21" r="1"></circle>
+                                <circle cx="20" cy="21" r="1"></circle>
+                                <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                            </svg> Add</button>
+                    </div>
+                </div>
+                <div class="hanging-card flag-green" style="--card-rotation: 2.5269008814720317deg;">
+                    <div class="trek-header">
+                        <h3 class="trek-title">Sandakphu–Phalut Trek</h3>
+                        <span class="trek-difficulty diff-mod">Moderate</span>
+                    </div>
+                    <div class="trek-region">📍 Darjeeling</div>
+                    <p class="hanging-desc">A classic high-altitude trek offering panoramic views of four of the world's
+                        highest peaks.</p>
+                    <div class="trek-ctas hanging-ctas">
+                        <button class="btn-primary">Enquire Now &rarr;</button>
+                        <button class="btn-secondary" onclick="addToCart('Sandakphu–Phalut Trek')"><svg
+                                class="cart-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18"
+                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="9" cy="21" r="1"></circle>
+                                <circle cx="20" cy="21" r="1"></circle>
+                                <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                            </svg> Add</button>
+                    </div>
+                </div>
+                <div class="hanging-card flag-yellow" style="--card-rotation: -2.44178714270634deg;">
+                    <div class="trek-header">
+                        <h3 class="trek-title">Dzongri–Goechala Trek</h3>
+                        <span class="trek-difficulty diff-hard">Difficult</span>
+                    </div>
+                    <div class="trek-region">📍 West Sikkim</div>
+                    <p class="hanging-desc">Get up close with Mount Kanchenjunga on this challenging but rewarding
+                        high-altitude trail.</p>
+                    <div class="trek-ctas hanging-ctas">
+                        <button class="btn-primary">Enquire Now &rarr;</button>
+                        <button class="btn-secondary" onclick="addToCart('Dzongri–Goechala Trek')"><svg
+                                class="cart-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18"
+                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="9" cy="21" r="1"></circle>
+                                <circle cx="20" cy="21" r="1"></circle>
+                                <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                            </svg> Add</button>
+                    </div>
+                </div>
+                <div class="hanging-card flag-blue" style="--card-rotation: 2.9010691818958456deg;">
+                    <div class="trek-header">
+                        <h3 class="trek-title">Kanchenjunga Base Camp</h3>
+                        <span class="trek-difficulty diff-hard">Difficult</span>
+                    </div>
+                    <div class="trek-region">📍 North Sikkim</div>
+                    <p class="hanging-desc">An epic expedition into the remote heart of the Himalayas, surrounded by
+                        towering snow peaks.</p>
+                    <div class="trek-ctas hanging-ctas">
+                        <button class="btn-primary">Enquire Now &rarr;</button>
+                        <button class="btn-secondary" onclick="addToCart('Kanchenjunga Base Camp')"><svg
+                                class="cart-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18"
+                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="9" cy="21" r="1"></circle>
+                                <circle cx="20" cy="21" r="1"></circle>
+                                <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                            </svg> Add</button>
+                    </div>
+                </div>
+                <div class="hanging-card flag-white" style="--card-rotation: -1.8392395832717567deg;">
+                    <div class="trek-header">
+                        <h3 class="trek-title">Singalila Ridge Trek</h3>
+                        <span class="trek-difficulty diff-mod">Moderate</span>
+                    </div>
+                    <div class="trek-region">📍 Darjeeling</div>
+                    <p class="hanging-desc">Walk along the border of India and Nepal with stunning rhododendron forests
+                        and mountain vistas.</p>
+                    <div class="trek-ctas hanging-ctas">
+                        <button class="btn-primary">Enquire Now &rarr;</button>
+                        <button class="btn-secondary" onclick="addToCart('Singalila Ridge Trek')"><svg class="cart-icon"
+                                xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <circle cx="9" cy="21" r="1"></circle>
+                                <circle cx="20" cy="21" r="1"></circle>
+                                <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                            </svg> Add</button>
+                    </div>
+                </div>
+                <div class="hanging-card flag-red" style="--card-rotation: 2.904460068499377deg;">
+                    <div class="trek-header">
+                        <h3 class="trek-title">Barsey Rhododendron Trek</h3>
+                        <span class="trek-difficulty diff-easy">Easy–Moderate</span>
+                    </div>
+                    <div class="trek-region">📍 West Sikkim</div>
+                    <p class="hanging-desc">A gentle walk through vibrant, blooming rhododendron sanctuaries and misty
+                        woodlands.</p>
+                    <div class="trek-ctas hanging-ctas">
+                        <button class="btn-primary">Enquire Now &rarr;</button>
+                        <button class="btn-secondary" onclick="addToCart('Barsey Rhododendron Trek')"><svg
+                                class="cart-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18"
+                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="9" cy="21" r="1"></circle>
+                                <circle cx="20" cy="21" r="1"></circle>
+                                <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                            </svg> Add</button>
+                    </div>
+                </div>
+                <div class="hanging-card flag-green" style="--card-rotation: -1.9413680884957398deg;">
+                    <div class="trek-header">
+                        <h3 class="trek-title">Yuksom–Dzongri Trek</h3>
+                        <span class="trek-difficulty diff-mod">Moderate</span>
+                    </div>
+                    <div class="trek-region">📍 West Sikkim</div>
+                    <p class="hanging-desc">A majestic journey through sacred forests, alpine meadows, and pristine
+                        mountain rivers.</p>
+                    <div class="trek-ctas hanging-ctas">
+                        <button class="btn-primary">Enquire Now &rarr;</button>
+                        <button class="btn-secondary" onclick="addToCart('Yuksom–Dzongri Trek')"><svg class="cart-icon"
+                                xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <circle cx="9" cy="21" r="1"></circle>
+                                <circle cx="20" cy="21" r="1"></circle>
+                                <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                            </svg> Add</button>
+                    </div>
+                </div>
+                <div class="hanging-card flag-yellow" style="--card-rotation: 2.810427573491115deg;">
+                    <div class="trek-header">
+                        <h3 class="trek-title">Neora Valley Forest Trek</h3>
+                        <span class="trek-difficulty diff-easy">Easy–Moderate</span>
+                    </div>
+                    <div class="trek-region">📍 Kalimpong</div>
+                    <p class="hanging-desc">Explore virgin, dense canopies in one of the richest biological zones in the
+                        Eastern Himalayas.</p>
+                    <div class="trek-ctas hanging-ctas">
+                        <button class="btn-primary">Enquire Now &rarr;</button>
+                        <button class="btn-secondary" onclick="addToCart('Neora Valley Forest Trek')"><svg
+                                class="cart-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18"
+                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="9" cy="21" r="1"></circle>
+                                <circle cx="20" cy="21" r="1"></circle>
+                                <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                            </svg> Add</button>
+                    </div>
+                </div>
+                <div class="hanging-card flag-blue" style="--card-rotation: -1.9321434571941862deg;">
+                    <div class="trek-header">
+                        <h3 class="trek-title">Zuluk–Gnathang Ridge Walk</h3>
+                        <span class="trek-difficulty diff-easy">Easy</span>
+                    </div>
+                    <div class="trek-region">📍 East Sikkim</div>
+                    <p class="hanging-desc">Follow the footsteps of ancient traders along the historic, mist-covered
+                        Silk Route.</p>
+                    <div class="trek-ctas hanging-ctas">
+                        <button class="btn-primary">Enquire Now &rarr;</button>
+                        <button class="btn-secondary" onclick="addToCart('Zuluk–Gnathang Ridge Walk')"><svg
+                                class="cart-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18"
+                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="9" cy="21" r="1"></circle>
+                                <circle cx="20" cy="21" r="1"></circle>
+                                <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                            </svg> Add</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+
+
+
+
+    <!-- ═══════════ SECTION 10 — FOOTER ═══════════ -->
+
+
+    <!-- Back to top -->
+    <button class="back-to-top" id="back-to-top" aria-label="Back to top">
+        &uarr;
+    </button>
+
+    <!-- ═══════════ FOOTER ═══════════ -->
+    <footer class="footer">
+        <div class="footer-watermark">CallingHills</div>
+        <div class="footer-container">
+            <div class="footer-top">
+                <div class="footer-brand">
+                    <a href="./index.html" class="nav-logo">
+                        <img src="./logo up.jpeg" alt="CallingHills Logo" class="nav-logo-img"
+                            style="height: 42px; width: auto;">
+                        <div class="nav-logo-text">Calling<span>Hills</span></div>
+                    </a>
+                    <p>Discover Hidden Trails, Hill Villages & Nature's Soul</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Explore</h4>
+                    <ul>
+                        <li><a href="./destinations.html">Destinations</a></li>
+                        <li><a href="./packages.html">Signature Packages</a></li>
+                        <li><a href="./treks.html">Trekking Routes</a></li>
+                        <li><a href="./hotels.html">Partner Hotels</a></li>
+                        <li><a href="./car-rental.html">Car Rentals</a></li>
+                        <li><a href="./blog.html">Travel Blog</a></li>
+                        <li><a href="./about.html#services">Our Services</a></li>
+                        <li><a href="./about.html#faq">FAQ</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-links">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="./about.html">About Us</a></li>
+                        <li><a href="./gallery.html">Gallery</a></li>
+                        <li><a href="./contact.html">Contact Us</a></li>
+                        <li><a href="./contact.html#b2b-enquiry">B2B Partnership</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Contact Us</h4>
+                    <ul class="footer-contact-list">
+                        <li style="display: flex; align-items: center; gap: 8px; font-size: 13px;">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0;">
+                                <path
+                                    d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z">
+                                </path>
+                            </svg>
+                            <span>6289590603 / 9123843327</span>
+                        </li>
+                        <li style="display: flex; align-items: center; gap: 8px; font-size: 13px;">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0;">
+                                <path
+                                    d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z">
+                                </path>
+                            </svg>
+                            <span>9051966561</span>
+                        </li>
+                        <li style="display: flex; align-items: center; gap: 8px; font-size: 13px;">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0;">
+                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z">
+                                </path>
+                                <polyline points="22,6 12,13 2,6"></polyline>
+                            </svg>
+                            <a href="mailto:hello@callinghills.com"
+                                style="text-transform: none;">hello@callinghills.com</a>
+                        </li>
+                        <li style="display: flex; align-items: center; gap: 8px; font-size: 13px;">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0;">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <line x1="2" y1="12" x2="22" y2="12"></line>
+                                <path
+                                    d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z">
+                                </path>
+                            </svg>
+                            <a href="https://www.callinghills.com"
+                                style="text-transform: none;">www.callinghills.com</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="footer-social">
+                    <h4>Connect With Us</h4>
+                    <div class="social-icons" style="display: flex; gap: 12px; flex-wrap: wrap;">
+                        <a href="https://www.facebook.com/share/1PEQPSyFLr/" target="_blank" class="social-icon"
+                            aria-label="Facebook"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+                            </svg></a>
+                        <a href="https://www.instagram.com/callinghills_official?igsh=bDJoMjI4YzQ2Ymlp" target="_blank"
+                            class="social-icon" aria-label="Instagram"><svg width="20" height="20" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                            </svg></a>
+                        <a href="https://youtube.com/@callinghills?si=6iCWARLhuYF7u9qm" target="_blank"
+                            class="social-icon" aria-label="YouTube"><svg width="20" height="20" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <path
+                                    d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33 2.78 2.78 0 0 0 1.94 2c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.33 29 29 0 0 0-.46-5.33z">
+                                </path>
+                                <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon>
+                            </svg></a>
+                        <a href="https://wa.me/message/IJWEKZTQMGAFH1" target="_blank" class="social-icon"
+                            aria-label="WhatsApp"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path
+                                    d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z">
+                                </path>
+                            </svg></a>
+                        <a href="https://www.linkedin.com/company/callinghills/" target="_blank" class="social-icon"
+                            aria-label="LinkedIn"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path
+                                    d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z">
+                                </path>
+                                <rect x="2" y="9" width="4" height="12"></rect>
+                                <circle cx="4" cy="4" r="2"></circle>
+                            </svg></a>
+                        <a href="https://x.com/CallingHills?t=duZx4WDjIBnmWspT1prYQw&s=09" target="_blank"
+                            class="social-icon" aria-label="Twitter"><svg width="20" height="20" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <path d="M4 4l11.73 16h5L9 4z"></path>
+                                <path d="M4 20l6.76-6.76"></path>
+                                <path d="M20 4l-5.76 5.76"></path>
+                            </svg></a>
+                        <a href="https://pin.it/23Q54ZsbI" target="_blank" class="social-icon"
+                            aria-label="Pinterest"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="12" y1="22" x2="12" y2="10"></line>
+                                <path d="M12 2a10 10 0 1 0 10 10 10 10 0 0 0-10-10z"></path>
+                                <path d="M12 14v4"></path>
+                                <path d="M12 10V6"></path>
+                                <path d="M9 10h6"></path>
+                                <path d="M9 14h6"></path>
+                            </svg></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div>&copy; 2026 CallingHills. All rights reserved.</div>
+                <div>Crafted with &hearts; in the Himalayas</div>
+                <div><a href="#">Privacy Policy</a> &nbsp;&middot;&nbsp; <a href="#">Terms of Service</a></div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to top -->
+    <button class="back-to-top" id="back-to-top" aria-label="Back to top">&uarr;</button>
+
+    <!-- ═══════════ MODAL & CART SYSTEM ═══════════ -->
+    <div class="enquiry-modal" id="enquiry-modal">
+        <div class="enquiry-modal-content">
+            <button class="modal-close" onclick="closeEnquiryModal()">&times;</button>
+            <div style="padding: 40px;">
+                <h3
+                    style="font-family: var(--font-heading); font-size: 24px; color: var(--ch-mist); margin-bottom: 24px;">
+                    Enquire Now</h3>
+                <!-- Clone of contact form -->
+                <div id="modal-form-container"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Floating Cart Icon -->
+    <button class="floating-cart-btn" onclick="toggleCart()">
+        <svg class="cart-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="9" cy="21" r="1"></circle>
+            <circle cx="20" cy="21" r="1"></circle>
+            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+        </svg>
+        <span class="cart-badge" id="cart-badge">0</span>
+    </button>
+
+    <!-- Cart Drawer -->
+    <div class="cart-overlay" id="cart-overlay" onclick="toggleCart()"></div>
+    <div class="cart-drawer" id="cart-drawer">
+        <div class="cart-header">
+            <div class="cart-title">Your Trip List</div>
+            <button class="cart-close" onclick="toggleCart()">&times;</button>
+        </div>
+        <div class="cart-body" id="cart-items">
+            <!-- Items injected by JS -->
+            <p style="color: var(--ch-text-mid); text-align: center; margin-top: 40px; font-family: var(--font-body);">
+                Your list is empty.</p>
+        </div>
+        <div class="cart-footer">
+            <button class="cart-checkout-btn" onclick="proceedToEnquiry()">Proceed to Enquiry &rarr;</button>
+        </div>
+    </div>
+
+    <!-- Libraries (loaded from CDN — no Node.js needed) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="./js/main.js"></script>
+
+
+
+
+    <script>
+        function openCustomTrip(circuitName) {
+            const text = circuitName
+                ? `Hello CallingHills, I am interested in planning a Custom Tour Package (${circuitName}). Please share the details and customized options with me!`
+                : `Hello CallingHills, I am interested in planning a Custom Tour Package for my upcoming holiday. Please share details and help me plan!`;
+            if (typeof window.openEnquiryModal === 'function') {
+                window.openEnquiryModal(text);
+            } else {
+                window.open(`https://wa.me/919051966561?text=${encodeURIComponent(text)}`, '_blank');
+            }
+        }
+    </script>
+</body>
+
+</html>

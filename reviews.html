@@ -1,0 +1,842 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CallingHills — Traveller Reviews | Real Stories from the Himalayas</title>
+    <meta name="description" content="Read genuine reviews from travellers who explored Darjeeling, Kalimpong, Dooars & Sikkim with CallingHills. Real stories, real journeys.">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,300;1,9..40,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="./css/main.css?v=2">
+    <link rel="icon" type="image/png" href="./logo up.jpeg">
+
+    <style>
+        /* ═══════════════════════════════════════════
+           REVIEWS PAGE — SCROLLING TESTIMONIAL COLUMNS
+        ═══════════════════════════════════════════ */
+        .reviews-hero {
+            background: var(--ch-cream-light);
+            padding: 120px 20px 60px 20px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .reviews-hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image: url('./topo-bg.png');
+            background-size: 500px;
+            background-repeat: repeat;
+            opacity: 0.2;
+            mix-blend-mode: multiply;
+            pointer-events: none;
+        }
+
+        .reviews-hero .section-tag {
+            position: relative;
+            z-index: 2;
+        }
+
+        .reviews-hero h1 {
+            font-family: var(--font-heading);
+            font-size: clamp(36px, 6vw, 64px);
+            font-weight: 800;
+            color: var(--ch-text-dark);
+            margin: 16px 0 12px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .reviews-hero p {
+            font-family: var(--font-body);
+            font-size: 18px;
+            color: var(--ch-text-mid);
+            max-width: 560px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Stats Row */
+        .reviews-stats {
+            display: flex;
+            justify-content: center;
+            gap: 48px;
+            margin-top: 40px;
+            flex-wrap: wrap;
+            position: relative;
+            z-index: 2;
+        }
+
+        .reviews-stat {
+            text-align: center;
+        }
+
+        .reviews-stat-number {
+            font-family: var(--font-heading);
+            font-size: 36px;
+            font-weight: 800;
+            color: var(--ch-green-deep);
+        }
+
+        .reviews-stat-label {
+            font-family: var(--font-body);
+            font-size: 14px;
+            color: var(--ch-text-mid);
+            margin-top: 4px;
+        }
+
+        /* Testimonials Section */
+        .testimonials-section {
+            background: var(--ch-cream-light);
+            padding: 60px 20px 100px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .testimonials-section::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image: url('./topo-bg.png');
+            background-size: 500px;
+            background-repeat: repeat;
+            opacity: 0.15;
+            mix-blend-mode: multiply;
+            pointer-events: none;
+        }
+
+        .testimonials-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Scrolling Columns Layout */
+        .testimonials-columns {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            max-height: 750px;
+            overflow: hidden;
+            -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 12%, black 88%, transparent 100%);
+            mask-image: linear-gradient(to bottom, transparent 0%, black 12%, black 88%, transparent 100%);
+        }
+
+        .testimonial-column {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .testimonial-column-inner {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+            animation: scrollUp var(--scroll-duration, 25s) linear infinite;
+        }
+
+        @keyframes scrollUp {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(-50%); }
+        }
+
+        .testimonial-column:hover .testimonial-column-inner {
+            animation-play-state: paused;
+        }
+
+        /* Individual Review Card */
+        .review-card {
+            background: #ffffff;
+            border: 1px solid rgba(0, 0, 0, 0.08);
+            border-radius: 20px;
+            padding: 28px;
+            max-width: 360px;
+            width: 100%;
+            box-shadow: 0 4px 20px rgba(48, 109, 41, 0.06);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .review-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 30px rgba(48, 109, 41, 0.12);
+        }
+
+        /* Star Rating */
+        .review-stars {
+            display: flex;
+            gap: 3px;
+            margin-bottom: 14px;
+        }
+
+        .review-star {
+            color: #F5A623;
+        }
+
+        /* Review Text */
+        .review-text {
+            font-family: var(--font-body);
+            font-size: 15px;
+            line-height: 1.65;
+            color: var(--ch-text-dark);
+            margin-bottom: 20px;
+        }
+
+        /* Trip Tag */
+        .review-trip-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-family: var(--font-body);
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--ch-green-deep);
+            background: rgba(48, 109, 41, 0.08);
+            padding: 4px 12px;
+            border-radius: 20px;
+            margin-bottom: 16px;
+        }
+
+        /* Reviewer Info */
+        .review-author {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .review-avatar {
+            width: 44px;
+            height: 44px;
+            border: 2px solid rgba(48, 109, 41, 0.15);
+        }
+
+        .review-author-info {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .review-author-name {
+            font-family: var(--font-heading);
+            font-size: 15px;
+            font-weight: 700;
+            color: var(--ch-text-dark);
+            line-height: 1.3;
+        }
+
+        .review-author-from {
+            font-family: var(--font-body);
+            font-size: 13px;
+            color: var(--ch-text-mid);
+            opacity: 0.75;
+        }
+
+        /* Google Review Badge */
+        .review-source {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            margin-left: auto;
+            opacity: 0.5;
+        }
+
+        .review-source svg {
+            width: 16px;
+            height: 16px;
+        }
+
+        /* CTA Section */
+        .reviews-cta {
+            background: var(--ch-forest-deep);
+            padding: 80px 20px;
+            text-align: center;
+            position: relative;
+        }
+
+        .reviews-cta h2 {
+            font-family: var(--font-heading);
+            font-size: clamp(28px, 4vw, 44px);
+            font-weight: 800;
+            color: var(--ch-mist);
+            margin-bottom: 16px;
+        }
+
+        .reviews-cta p {
+            font-family: var(--font-body);
+            font-size: 18px;
+            color: var(--ch-mist-dim);
+            margin-bottom: 32px;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .reviews-cta-btn {
+            display: inline-block;
+            padding: 16px 40px;
+            background: var(--ch-gold);
+            color: var(--ch-forest-deep);
+            font-family: var(--font-heading);
+            font-size: 16px;
+            font-weight: 700;
+            border-radius: 12px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .reviews-cta-btn:hover {
+            background: var(--ch-gold-light);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(200, 169, 110, 0.3);
+        }
+
+        /* Responsive */
+        @media (max-width: 900px) {
+            .testimonials-columns {
+                max-height: 600px;
+            }
+            .testimonial-column:nth-child(3) {
+                display: none;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .testimonials-columns {
+                max-height: 500px;
+            }
+            .testimonial-column:nth-child(2) {
+                display: none;
+            }
+            .review-card {
+                max-width: 100%;
+            }
+            .reviews-stats {
+                gap: 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="ambient-gradient-bg"></div>
+
+    <!-- ═══════════ LOADER ═══════════ -->
+    <div class="loader" id="loader">
+        <img src="./logo up.jpeg" alt="CallingHills" class="loader-logo-img" style="width: 120px; height: 120px; margin-bottom: 24px;">
+        <div class="loader-brand">Calling<span>Hills</span></div>
+        <div class="loader-bar-track">
+            <div class="loader-bar" id="loader-bar"></div>
+        </div>
+    </div>
+
+    <!-- ═══════════ NAVBAR ═══════════ -->
+    <nav class="navbar" id="navbar">
+        <a href="./index.html" class="nav-logo" id="nav-logo">
+            <img src="./logo up.jpeg" alt="CallingHills Logo" class="nav-logo-img" style="height: 42px; width: auto; ">
+            <div class="nav-logo-text">Calling<span>Hills</span></div>
+        </a>
+
+        <ul class="nav-links" id="nav-links">
+            <li><a href="./destinations.html">Destinations</a></li>
+            <li><a href="./packages.html">Packages</a></li>
+            <li><a href="./hotels.html">Hotels</a></li>
+            <li><a href="./car-rental.html">Car Rentals</a></li>
+            <li><a href="./about.html">About</a></li>
+            <li><a href="./gallery.html">Gallery</a></li>
+            <li><a href="./blog.html">Blog</a></li>
+            <li><a href="./reviews.html">Reviews</a></li>
+            <li><a href="./contact.html">Contact</a></li>
+        </ul>
+
+        <div class="nav-right">
+            <a href="./packages.html" class="nav-cta" id="nav-cta">Plan My Trip</a>
+            <button class="nav-hamburger" id="nav-hamburger" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobile-menu">
+        <a href="./destinations.html">Destinations</a>
+        <a href="./packages.html">Packages</a>
+        <a href="./hotels.html">Hotels</a>
+        <a href="./car-rental.html">Car Rentals</a>
+        <a href="./about.html">About</a>
+        <a href="./gallery.html">Gallery</a>
+        <a href="./blog.html">Blog</a>
+        <a href="./reviews.html">Reviews</a>
+        <a href="./contact.html">Contact</a>
+        <a href="./packages.html" style="color: var(--ch-gold); margin-top: 16px;">Plan My Trip &rarr;</a>
+    </div>
+
+
+    <!-- ═══════════ HERO ═══════════ -->
+    <div style="height: 72px;"></div>
+    <section class="reviews-hero">
+        <div class="section-tag" style="color: var(--ch-gold); display: inline-block;">✦ TRAVELLER STORIES</div>
+        <h1>What Our Travellers Say</h1>
+        <p>Genuine experiences from real adventurers who answered the call of the hills with us.</p>
+
+        <div class="reviews-stats">
+            <div class="reviews-stat">
+                <div class="reviews-stat-number">500+</div>
+                <div class="reviews-stat-label">Happy Travellers</div>
+            </div>
+            <div class="reviews-stat">
+                <div class="reviews-stat-number">4.9</div>
+                <div class="reviews-stat-label">Google Rating</div>
+            </div>
+            <div class="reviews-stat">
+                <div class="reviews-stat-number">98%</div>
+                <div class="reviews-stat-label">Would Recommend</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════ TESTIMONIALS COLUMNS ═══════════ -->
+    <section class="testimonials-section">
+        <div class="testimonials-container">
+            <div class="testimonials-columns" id="testimonials-columns">
+                <!-- Column 1 -->
+                <div class="testimonial-column">
+                    <div class="testimonial-column-inner" style="--scroll-duration: 30s;" id="col-1"></div>
+                </div>
+                <!-- Column 2 -->
+                <div class="testimonial-column">
+                    <div class="testimonial-column-inner" style="--scroll-duration: 38s;" id="col-2"></div>
+                </div>
+                <!-- Column 3 -->
+                <div class="testimonial-column">
+                    <div class="testimonial-column-inner" style="--scroll-duration: 34s;" id="col-3"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════ CTA ═══════════ -->
+    <section class="reviews-cta">
+        <h2>Ready to Create Your Own Story?</h2>
+        <p>Join 500+ happy travellers and let us craft your perfect Himalayan journey.</p>
+        <a href="./contact.html" class="reviews-cta-btn">Plan My Trip &rarr;</a>
+    </section>
+
+    <!-- ═══════════ FOOTER ═══════════ -->
+    <footer class="footer">
+        <div class="footer-watermark">CallingHills</div>
+        <div class="footer-container">
+            <div class="footer-top">
+                <div class="footer-brand">
+                    <a href="./index.html" class="nav-logo">
+                        <img src="./logo up.jpeg" alt="CallingHills Logo" class="nav-logo-img" style="height: 48px; width: auto; ">
+                        <div class="nav-logo-text" style="font-size: 24px;">Calling<span>Hills</span></div>
+                    </a>
+                    <p>Discover Hidden Trails, Hill Villages & Nature's Soul</p>
+                </div>
+                
+                <div class="footer-links">
+                    <h4>Explore</h4>
+                    <ul>
+                        <li><a href="./destinations.html">Destinations</a></li>
+                        <li><a href="./packages.html">Signature Packages</a></li>
+                        <li><a href="./treks.html">Trekking Routes</a></li>
+                        <li><a href="./about.html#services">Our Services</a></li>
+                        <li><a href="./about.html#faq">FAQ</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-links">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="./about.html">About Us</a></li>
+                        <li><a href="./gallery.html">Gallery</a></li>
+                        <li><a href="./contact.html">Contact Us</a></li>
+                        <li><a href="./contact.html#b2b-enquiry">B2B Partnership</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-links">
+                    <h4>Contact Us</h4>
+                    <ul class="footer-contact-list">
+                        <li style="display: flex; align-items: center; gap: 8px; font-size: 13px;">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0;"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                            <span>6289590603 / 9123843327</span>
+                        </li>
+                        <li style="display: flex; align-items: center; gap: 8px; font-size: 13px;">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0;"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
+                            <span>9051966561</span>
+                        </li>
+                        <li style="display: flex; align-items: center; gap: 8px; font-size: 13px;">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0;"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                            <a href="mailto:hello@callinghills.com" style="text-transform: none;">hello@callinghills.com</a>
+                        </li>
+                        <li style="display: flex; align-items: center; gap: 8px; font-size: 13px;">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0;"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+                            <a href="https://www.callinghills.com" style="text-transform: none;">www.callinghills.com</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="footer-social">
+                    <h4>Connect With Us</h4>
+                    <div class="social-icons" style="display: flex; gap: 12px; flex-wrap: wrap;">
+                        <a href="https://www.facebook.com/share/1PEQPSyFLr/" target="_blank" class="social-icon" aria-label="Facebook">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+                        </a>
+                        <a href="https://www.instagram.com/callinghills_official?igsh=bDJoMjI4YzQ2Ymlp" target="_blank" class="social-icon" aria-label="Instagram">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                        </a>
+                        <a href="https://youtube.com/@callinghills?si=6iCWARLhuYF7u9qm" target="_blank" class="social-icon" aria-label="YouTube">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33 2.78 2.78 0 0 0 1.94 2c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.33 29 29 0 0 0-.46-5.33z"></path><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon></svg>
+                        </a>
+                        <a href="https://wa.me/message/IJWEKZTQMGAFH1" target="_blank" class="social-icon" aria-label="WhatsApp">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
+                        </a>
+                        <a href="https://www.linkedin.com/company/callinghills/" target="_blank" class="social-icon" aria-label="LinkedIn">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+                        </a>
+                        <a href="https://x.com/CallingHills?t=duZx4WDjIBnmWspT1prYQw&s=09" target="_blank" class="social-icon" aria-label="Twitter">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4l11.73 16h5L9 4z"></path><path d="M4 20l6.76-6.76"></path><path d="M20 4l-5.76 5.76"></path></svg>
+                        </a>
+                        <a href="https://pin.it/23Q54ZsbI" target="_blank" class="social-icon" aria-label="Pinterest">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="22" x2="12" y2="10"></line><path d="M12 2a10 10 0 1 0 10 10 10 10 0 0 0-10-10z"></path><path d="M12 14v4"></path><path d="M12 10V6"></path><path d="M9 10h6"></path><path d="M9 14h6"></path></svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <div>&copy; 2026 CallingHills. All rights reserved.</div>
+                <div>Crafted with &hearts; in the Himalayas</div>
+                <div>
+                    <a href="#">Privacy Policy</a> &nbsp;&middot;&nbsp; <a href="#">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to top -->
+    <button class="back-to-top" id="back-to-top" aria-label="Back to top">
+        &uarr;
+    </button>
+
+    <!-- ═══════════ MODAL & CART SYSTEM ═══════════ -->
+    <div class="enquiry-modal" id="enquiry-modal">
+        <div class="enquiry-modal-content">
+            <button class="modal-close" onclick="closeEnquiryModal()">&times;</button>
+            <div style="padding: 40px;">
+                <h3 style="font-family: var(--font-heading); font-size: 24px; color: var(--ch-mist); margin-bottom: 24px;">Enquire Now</h3>
+                <div id="modal-form-container"></div>
+            </div>
+        </div>
+    </div>
+
+    <button class="floating-cart-btn" onclick="toggleCart()">
+        <svg class="cart-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+        <span class="cart-badge" id="cart-badge">0</span>
+    </button>
+
+    <div class="cart-overlay" id="cart-overlay" onclick="toggleCart()"></div>
+    <div class="cart-drawer" id="cart-drawer">
+        <div class="cart-header">
+            <div class="cart-title">Your Trip List</div>
+            <button class="cart-close" onclick="toggleCart()">&times;</button>
+        </div>
+        <div class="cart-body" id="cart-items">
+            <p style="color: var(--ch-text-mid); text-align: center; margin-top: 40px; font-family: var(--font-body);">Your list is empty.</p>
+        </div>
+        <div class="cart-footer">
+            <button class="cart-checkout-btn" onclick="proceedToEnquiry()">Proceed to Enquiry &rarr;</button>
+        </div>
+    </div>
+
+    <!-- Libraries (loaded from CDN — no Node.js needed) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="./js/main.js"></script>
+
+    <script>
+    // ═══════════ REVIEWS DATA & RENDERING ═══════════
+    const reviews = [
+        {
+            text: `We visited Tinchuley,Darjeeling and Sittong,last month,(May 2026) with "Calling Hills". From top to bottom,all of their services grabbed my attention and gratitude for sure.<br><br>3 star category properties with kanchenjunga view rooms.<br><br>Delicious Bengali meals, 2times a day including breakfast and evening snacks, served hot and fresh.<br><br>Very experienced driver and a neat and clean vehicle,for sightseeing and traveling across the mountain trails.<br><br>24×7 Direct communication setup with the owner (Mr. Arijit),via WhatsApp and call. He is extremely professional,trained,well behaved, generous and truly a gentleman.<br>They kept all their promises, including breathtaking mountain views,tea estates,lakes,pine forests and more of a heaven! No time limit while sightseeing,very cooperative, adjustable and flexible too! Moreover,he kept on listening to our issues, cleared our doubts and gave us the most memorable trip our life, with wide greenery and unreal landscapes of the magical hillstation darjeeling.<br>I will highly recommend everyone out there to not fall into any traps with scammer travel agents who are running their fake agencies in Siliguri,and instead travel with calling hills and be tension free!<br>Thank you so much Arijit Da and Oindrila Di☺️`,
+            name: "Debdip Chakraborty.",
+            from: "Google Review",
+            trip: "Darjeeling & Sittong",
+            stars: 5
+        },
+        {
+            text: `One of the best travell agency in darjeeling situated at Darjeeling to provide us to full comfort and safety with delicious food and and stay`,
+            name: "Smriti Dewan",
+            from: "Google Review",
+            trip: "Darjeeling Trip",
+            stars: 5
+        },
+        {
+            text: `Best services, wonderful experience, Thank you CallingHills for hotel management, driver support, good food and good experience.`,
+            name: "Tapas Das",
+            from: "Google Review",
+            trip: "Hotel & Cab Services",
+            stars: 5
+        },
+        {
+            text: `Nice experience with callinghills, management, vehicle,driver,hotel, homestay, hospitality,hosting was excellent. But weather was not clear.`,
+            name: "Aneek Modak",
+            from: "Google Review",
+            trip: "Homestay Tour",
+            stars: 4
+        },
+        {
+            text: `The food was wonderful, their behavior and service were all very good. The driver was also very nice, and the rooms were excellent. Everyone in my family liked it very much. Thank you so much dii â¤ï¸`,
+            name: "Labani Das",
+            from: "Google Review",
+            trip: "Family Trip",
+            stars: 5
+        },
+        {
+            text: `We were a group of college friends who went on a 4 nights 5 days trip with CallingHills, covering Mairong Gaon (2 nights) and Rishop (1 night)—and it turned out to be one of our most memorable journeys!<br><br>The places were peaceful, raw, and beautiful—far from the tourist crowd. Everything was well managed: stay, food, transport, and the local guidance. The CallingHills team was helpful, warm, and always available when we needed something.<br><br>One of our favorite moments was sitting together under the stars in Mairong Gaon, singing songs around a small campfire with the locals joining in. That memory will stay with us forever.<br><br>We highly recommend CallingHills not just for college groups, but also for families, solo travelers, nature lovers, and travel bloggers who want to explore real, offbeat North Bengal in a responsible and heartfelt way.<br><br>Thank you, CallingHills, for making this trip so special!`,
+            name: "Amal Sarkar",
+            from: "Google Review",
+            trip: "Group Trip",
+            stars: 5
+        },
+        {
+            text: `Outstanding experience, Thank you CallingHillsâ¤ï¸ for the memorable moments`,
+            name: "Pradip Das",
+            from: "Google Review",
+            trip: "Memorable Journey",
+            stars: 5
+        },
+        {
+            text: `Amazing experience, with calling hills<br>1. 24*7 available<br>2. They provide bonus sightseeing point when crowd is very less.<br>3. Commitment on point<br><br>Thankyou â¤ï¸<br>Will reach you again ✌️`,
+            name: "Sheikh Aman",
+            from: "Google Review",
+            trip: "Custom Sightseeing",
+            stars: 5
+        },
+        {
+            text: `As a solo traveler, CallingHills was the perfect retreat. I came here to disconnect from city life and reconnect with nature — and it delivered beyond expectations. The peaceful surroundings, fresh mountain air, and scenic views helped me truly relax.<br><br>The staff were kind, attentive, and made me feel completely at home. I also appreciated the thoughtful details — from the delicious local food to the nature trails nearby. Highly recommend for anyone looking for a solo escape into the calm of North Bengal.`,
+            name: "Surajit Mukherjee",
+            from: "Google Review",
+            trip: "Solo Retreat",
+            stars: 5
+        },
+        {
+            text: `Outstanding experience, Thanks CallingHillsâ¤ï¸ for the memorable moments.<br>Homestay was excellent, Driver behaviour and responsibility unbelievable. CallingHills's team always supported us. Well planning , Budget friendly. Allover 10/10â¤ï¸`,
+            name: "Rita Paul",
+            from: "Google Review",
+            trip: "Homestay Experience",
+            stars: 5
+        },
+        {
+            text: `Our experience was wonderful with wonderful views. Stay was amazing. All together it's a heavenly experience`,
+            name: "Sangita sarker",
+            from: "Google Review",
+            trip: "Heavenly Stay",
+            stars: 5
+        },
+        {
+            text: `Rooms, Driver, vehicle, homestay everything are good. Recommended all to choose Callinghills.`,
+            name: "SADANANDA PAL",
+            from: "Google Review",
+            trip: "Complete Package",
+            stars: 5
+        },
+        {
+            text: `We were a group of 4 friends looking for a peaceful and offbeat Himalayan experience — and CallingHills gave us exactly that.<br><br>Our journey began from Dhotrey, a beautiful village surrounded by pine forests. The walk to Tumling was refreshing, and the first glimpse of the Sleeping Buddha range made us all speechless. At Tonglu, we stayed in a simple and warm homestay — the views and the local food were perfect.<br><br>The team from CallingHills ensured everything went smoothly. The trek to Manebhanjan was well-planned, with time for rest and local interaction. We especially loved our stop at Majua, a quiet village with forest vibes — very peaceful and soulful.<br><br>Finally, we reached NJP with tired legs but happy hearts. It was a short trip, but full of nature, friendship, and emotion.<br><br>Thanks to CallingHills for the perfect planning, safety, and genuine hospitality. Highly recommended for small groups who love nature and want something different from regular tourist spots.`,
+            name: "Joy biswas Roy",
+            from: "Google Review",
+            trip: "Offbeat Himalayas",
+            stars: 5
+        },
+        {
+            text: `"We travelled to Sittong, Dawaipani, and Darjeeling through CallingHills, and it turned out to be one of the most beautiful journeys of our lives. From the very beginning, the CallingHills team guided us with perfect planning, personalized suggestions, and clear communication.<br><br>The hotels selected by CallingHills were exactly as promised — clean rooms, peaceful surroundings, and tasty homely food served fresh. We especially appreciated the warm and polite behaviour of the hotel staff, who treated us with care and made our stay very comfortable.<br><br>The car and driver arranged by CallingHills added to the experience. The driver was punctual, reliable, and extremely safe on the mountain roads. He also shared local insights and helped us enjoy hidden offbeat places in Sittong and Dawaipani that we would have otherwise missed.<br><br>What makes CallingHills truly special is their complete support system — right from hotel booking, food arrangements, and car service to constant guidance during the journey. They don”™t just arrange a trip, they create an emotional travel experience where you feel cared for at every step.<br><br>For anyone looking to explore Darjeeling, Sittong, Dawaipani, or any offbeat North Bengal destination, I can confidently say CallingHills is the most reliable, professional, and friendly travel partner you can trust."`,
+            name: "Sk Shoaib Akhtar",
+            from: "Google Review",
+            trip: "Sittong & Dawaipani",
+            stars: 5
+        },
+        {
+            text: `Very polite and very good management . We are very pleased . Thank you for lovely arrangement.`,
+            name: "Tours And Bites",
+            from: "Google Review",
+            trip: "Great Arrangement",
+            stars: 5
+        },
+        {
+            text: `If you love quiet forests, misty hills, and local culture, CallingHills is the way to go. Every detail was taken care of. Felt like home away from home."<br>— Laxmi Paul`,
+            name: "Laxmi Paul",
+            from: "Google Review",
+            trip: "Forest & Culture Tour",
+            stars: 5
+        },
+        {
+            text: `Beautiful stay with warm hospitality and stunning views. Felt like home in the hills.<br>I'm very satisfied<br>10/10`,
+            name: "Ritwik Tah",
+            from: "Google Review",
+            trip: "Warm Hospitality",
+            stars: 5
+        },
+        {
+            text: `Very good service`,
+            name: "Sushanta Pramanik",
+            from: "Google Review",
+            trip: "Himalayan Tour",
+            stars: 5
+        },
+        {
+            text: `Very good service`,
+            name: "gaming tanmay",
+            from: "Google Review",
+            trip: "Himalayan Tour",
+            stars: 5
+        },
+        {
+            text: `Had an excellent journey with callinghills, form now on hills will be calling you more..`,
+            name: "SUCHETAN mandal",
+            from: "Google Review",
+            trip: "Excellent Journey",
+            stars: 5
+        },
+        {
+            text: `Excellent customer service`,
+            name: "Suhina Dhar",
+            from: "Google Review",
+            trip: "Great Service",
+            stars: 5
+        },
+        {
+            text: `Very good survice...<br>I'm very satisfied`,
+            name: "robin adhikary",
+            from: "Google Review",
+            trip: "Satisfying Tour",
+            stars: 5
+        },
+        {
+            text: `5 star services`,
+            name: "Anil Modak",
+            from: "Google Review",
+            trip: "5 Star Service",
+            stars: 5
+        },
+        {
+            text: `Very good service`,
+            name: "Manika Pramanik",
+            from: "Google Review",
+            trip: "Good Service",
+            stars: 5
+        },
+        {
+            text: `Best Services`,
+            name: "Sunil Modak",
+            from: "Google Review",
+            trip: "Best Services",
+            stars: 5
+        },
+        {
+            text: `Very good service`,
+            name: "Priyanka Chatterjee",
+            from: "Google Review",
+            trip: "Himalayan Tour",
+            stars: 5
+        },
+        {
+            text: `We had a 3 Night 4 Days Darjeeling and Dawaipani trip with Calling Hills and it was one of the best experiences I have ever had with any travel agency. They are very polite, supportive and always take care of us. Great food, cozy homestays and hotels with amazing views. Special mention to the driver - he was really nice and sweet. We had a great experience, would recommend everyone to go with Calling Hills. Thank you! â¤ï¸`,
+            name: "Lina Bisai",
+            from: "Google Review",
+            trip: "Darjeeling & Dawaipani",
+            stars: 5
+        },
+        {
+            text: `â­â­â­â­â­ A Wonderful and Memorable Experience with Calling Hills<br>Traveling with Calling Hills was truly a delightful experience from start to finish.<br>After my son's school exams were over, we were unsure about where to go for a vacation. That's when we contacted Calling Hills, and despite the short notice, they planned a wonderful  off beat derjeeling tour for us.<br>The service provided by the team was excellent. Our driver was  professional, the homestays were comfortable, and the food served at every homestay was delicious and homely.<br>A special mention goes to the Peshok Homestay, which was undoubtedly the highlight of our trip. The owner personally stayed in touch with us throughout our stay.  To make it even more special, the homestay offered a breathtaking view of a beautiful waterfall, which made our stay even more memorable.<br>A heartfelt thank you to Calling Hills for planning such a beautiful and well-organized tour.`,
+            name: "Aishik Pal",
+            from: "Google Review",
+            trip: "Delightful Experience",
+            stars: 5
+        },
+        {
+            text: `I took car service and it was very satisfying experience!`,
+            name: "joydeep mukherjee",
+            from: "Google Review",
+            trip: "Car Service",
+            stars: 5
+        },
+        {
+            text: ``,
+            name: "Sangrilla Paul",
+            from: "Google Review",
+            trip: "Great Experience",
+            stars: 5
+        },
+        {
+            text: ``,
+            name: "Suvojit Paul",
+            from: "Google Review",
+            trip: "Great Experience",
+            stars: 5
+        },
+        {
+            text: ``,
+            name: "Sandipan Tah",
+            from: "Google Review",
+            trip: "Great Experience",
+            stars: 5
+        }
+    ];
+
+    function createStars(count) {
+        return Array(count).fill('<svg class="review-star" width="16" height="16" viewBox="0 0 24 24" fill="#F5A623" stroke="#F5A623" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>').join('');
+    }
+
+    function createCard(review) {
+        let textHtml = '';
+        if (review.text && review.text.trim() !== '' && review.text !== '[No review text provided]') {
+            textHtml = `<p class="review-text">"${review.text}"</p>`;
+        }
+        
+        return `
+            <div class="review-card">
+                <div class="review-stars">${createStars(review.stars)}</div>
+                ${textHtml}
+                <div class="review-trip-tag">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                    ${review.trip}
+                </div>
+                <div class="review-author">
+                    <div class="review-author-info">
+                        <div class="review-author-name">${review.name}</div>
+                        <div class="review-author-from">${review.from}</div>
+                    </div>
+                </div>
+            </div>
+        `;
+    }
+
+    const col1Data = reviews.slice(0, 11);
+    const col2Data = reviews.slice(11, 22);
+    const col3Data = reviews.slice(22, 32);
+
+    function renderColumn(el, data) {
+        // Duplicate the data twice for seamless looping
+        const html = [...data, ...data].map(r => createCard(r)).join('');
+        el.innerHTML = html;
+    }
+
+    renderColumn(document.getElementById('col-1'), col1Data);
+    renderColumn(document.getElementById('col-2'), col2Data);
+    renderColumn(document.getElementById('col-3'), col3Data);
+    </script>
+</body>
+</html>
+
+
+
+

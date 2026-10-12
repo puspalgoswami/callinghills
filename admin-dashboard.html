@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <title>Content Dashboard | CallingHills</title><link rel="icon" href="./logo up.jpeg">
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./css/admin.css">
+</head>
+<body class="dashboard-page">
+  <div class="topo-bg"></div>
+  <header class="admin-header"><a class="brand" href="./index.html"><img src="./logo up.jpeg" alt="CallingHills"><span>Calling<span class="gold">Hills</span></span></a><div class="header-actions"><span id="admin-email" class="admin-email"></span><a class="gold-pill" href="./blog.html" target="_blank" rel="noreferrer">VIEW JOURNAL ↗</a></div></header>
+  <main class="dashboard-wrap" id="dashboard" hidden>
+    <div class="dashboard-heading"><div><p class="eyebrow">✦ THE CALLINGHILLS CONTENT STUDIO</p><h1>Content dashboard</h1><p class="muted">Manage destinations, travel packages, hotels, car rentals, and journal stories from one place.</p></div><button class="outline-btn" id="sign-out">SIGN OUT</button></div>
+    <nav class="content-tabs" id="content-tabs" aria-label="Content sections">
+      <button class="tab-btn active" data-type="regions">Regions</button><button class="tab-btn" data-type="places">Places</button><button class="tab-btn" data-type="packages">Packages</button><button class="tab-btn" data-type="hotels">Hotels</button><button class="tab-btn" data-type="carRentals">Car Rentals</button><button class="tab-btn" data-type="blog">Blog / Journal</button>
+    </nav>
+    <div id="dashboard-message" class="notice" role="status"></div>
+    <section class="editor-layout">
+      <form class="editor-card" id="content-form">
+        <div class="form-card-heading"><div><p class="eyebrow" id="form-kicker">DESTINATION CONTENT</p><h2 id="form-title">Destination regions management</h2></div><button type="button" class="text-btn" id="reset-form">NEW ENTRY ↗</button></div>
+        <input type="hidden" id="record-id">
+        <div id="form-fields" class="form-grid"></div>
+        <div class="image-preview-row" id="image-preview-row" hidden><img id="image-preview" alt="Selected image preview"><span id="image-name"></span></div>
+        <div class="form-footer"><label class="publish-toggle"><input type="checkbox" id="published" checked><span>Published on website</span></label><div class="form-actions"><button class="primary-btn" type="submit" id="save-btn">SAVE REGION</button><button class="outline-btn" type="button" id="clear-btn">CLEAR FORM</button></div><p class="form-message" id="form-message" role="status"></p></div>
+      </form>
+      <aside class="records-card"><div class="records-heading"><div><p class="eyebrow">YOUR CONTENT</p><h2 id="records-title">Regions</h2></div><span id="record-count" class="count-pill">0</span></div><input class="search-input" id="record-search" type="search" placeholder="Search entries…" aria-label="Search entries"><div id="records-list" class="records-list"><div class="empty-state">Loading your content…</div></div><p class="records-foot">Unpublished entries stay out of public listings.</p></aside>
+    </section>
+    <footer class="dashboard-footer">CallingHills Content Studio <span>·</span> Changes save to Firebase</footer>
+  </main>
+  <div id="auth-loading" class="loading-screen"><div class="loading-mark">C<span>H</span></div><p>Checking administrator access…</p></div>
+  <script type="module" src="./js/admin-dashboard.js"></script>
+</body>
+</html>
