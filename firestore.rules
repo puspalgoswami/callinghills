@@ -20,13 +20,14 @@ service cloud.firestore {
         "hotelOverrides",
         "carRentals",
         "carRentalOverrides",
-        "blog"
+        "blog",
+        "homeBanner"
       ];
     }
 
     match /{collectionName}/{document=**} {
-      // Public: published documents only.
-      // Admin: all documents in the allowed collections.
+      // Public can read published content.
+      // The authenticated admin can read all content in allowed collections.
       allow read: if isContentCollection(collectionName)
         && (
           isAdmin()
@@ -36,7 +37,7 @@ service cloud.firestore {
           )
         );
 
-      // Only the authenticated admin can modify content.
+      // Only the authenticated admin can create, update, or delete content.
       allow create, update, delete: if
         isContentCollection(collectionName)
         && isAdmin();

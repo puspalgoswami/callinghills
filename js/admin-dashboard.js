@@ -271,6 +271,215 @@ const COLLECTIONS = {
       { key: "enquiryUrl", label: "Enquiry URL (optional)", full: true },
     ],
   },
+
+  homeBanner: {
+    collection: "homeBanner",
+    singular: "homepage offer banner",
+    heading: "Homepage offer banner management",
+    kicker: "HOMEPAGE OFFER BANNER",
+    fields: [
+      {
+        key: "liveBadge",
+        label: "Live badge text",
+        defaultValue: "CURRENTLY RUNNING • CUSTOM HIMALAYAN EXPEDITIONS",
+      },
+      {
+        key: "seasonBadge",
+        label: "Season badge text",
+        defaultValue: "✦ Autumn, Winter & Spring 2026-27 Booking Open",
+      },
+      {
+        key: "tagline",
+        label: "Cursive tagline",
+        defaultValue: "Craft Your Bespoke Journey",
+      },
+      {
+        key: "title",
+        label: "Main headline",
+        required: true,
+        defaultValue: "Custom & Private Tour Packages Are Live Right Now",
+      },
+      {
+        key: "descriptionBefore",
+        label: "Description — opening",
+        type: "textarea",
+        full: true,
+        defaultValue:
+          "Don't want fixed commercial itineraries? Tell us your dream spots, travel dates, and group size — our local Himalayan specialists will craft a",
+      },
+      {
+        key: "descriptionHighlight",
+        label: "Bold highlighted phrase",
+        defaultValue: "100% personalized itinerary",
+      },
+      {
+        key: "descriptionAfter",
+        label: "Description — ending",
+        type: "textarea",
+        full: true,
+        defaultValue:
+          "with private 4x4 vehicles, hill-facing homestays, and flexible sightseeing in under 2 hours.",
+      },
+
+      { key: "perk1Icon", label: "Feature 1 icon", defaultValue: "🚗" },
+      {
+        key: "perk1Title",
+        label: "Feature 1 title",
+        defaultValue: "Dedicated Private Cab",
+      },
+      {
+        key: "perk1Description",
+        label: "Feature 1 description",
+        type: "textarea",
+        defaultValue:
+          "Innova / Bolero / Scorpio with seasoned mountain driver throughout",
+      },
+      { key: "perk2Icon", label: "Feature 2 icon", defaultValue: "🏡" },
+      {
+        key: "perk2Title",
+        label: "Feature 2 title",
+        defaultValue: "Handpicked Scenic Stays",
+      },
+      {
+        key: "perk2Description",
+        label: "Feature 2 description",
+        type: "textarea",
+        defaultValue:
+          "View-facing offbeat homestays & heritage boutique retreats",
+      },
+      { key: "perk3Icon", label: "Feature 3 icon", defaultValue: "🗺️" },
+      {
+        key: "perk3Title",
+        label: "Feature 3 title",
+        defaultValue: "100% Flexible Route",
+      },
+      {
+        key: "perk3Description",
+        label: "Feature 3 description",
+        type: "textarea",
+        defaultValue:
+          "Your own pace, sunrise viewpoints, secret trails & zero rush",
+      },
+      { key: "perk4Icon", label: "Feature 4 icon", defaultValue: "⚡" },
+      {
+        key: "perk4Title",
+        label: "Feature 4 title",
+        defaultValue: "Instant Route & Costing",
+      },
+      {
+        key: "perk4Description",
+        label: "Feature 4 description",
+        type: "textarea",
+        defaultValue:
+          "Get customized day-by-day plan & transparent quotation on WhatsApp",
+      },
+
+      {
+        key: "circuitsLabel",
+        label: "Popular circuits label",
+        defaultValue: "Popular Custom Circuits:",
+      },
+      {
+        key: "route1Label",
+        label: "Route 1 display text",
+        defaultValue: "🏔️ Darjeeling & Kalimpong Offbeat (5D/4N)",
+      },
+      {
+        key: "route1Prompt",
+        label: "Route 1 enquiry text",
+        defaultValue: "Darjeeling + Offbeat Kalimpong (5D/4N)",
+      },
+      {
+        key: "route2Label",
+        label: "Route 2 display text",
+        defaultValue: "🧣 Old Silk Route & Zuluk (5D/4N)",
+      },
+      {
+        key: "route2Prompt",
+        label: "Route 2 enquiry text",
+        defaultValue: "Historic Old Silk Route & Zuluk (5D/4N)",
+      },
+      {
+        key: "route3Label",
+        label: "Route 3 display text",
+        defaultValue: "🌸 West & South Sikkim Explorer (6D/5N)",
+      },
+      {
+        key: "route3Prompt",
+        label: "Route 3 enquiry text",
+        defaultValue: "Pelling, Ravangla & West Sikkim (6D/5N)",
+      },
+      {
+        key: "route4Label",
+        label: "Route 4 display text",
+        defaultValue: "🐘 Dooars Wildlife Safari Retreat (4D/3N)",
+      },
+      {
+        key: "route4Prompt",
+        label: "Route 4 enquiry text",
+        defaultValue: "Dooars Tea Estates & Jungle Safaris (4D/3N)",
+      },
+      {
+        key: "route5Label",
+        label: "Route 5 display text",
+        defaultValue: "❄️ North Sikkim Grand Expedition (6D/5N)",
+      },
+      {
+        key: "route5Prompt",
+        label: "Route 5 enquiry text",
+        defaultValue: "North Sikkim Gurudongmar & Yumthang (6D/5N)",
+      },
+
+      {
+        key: "primaryButtonLabel",
+        label: "Main button text",
+        defaultValue: "Plan My Custom Tour",
+      },
+      {
+        key: "primaryButtonPrompt",
+        label: "Main button enquiry text",
+        defaultValue: "Custom Tailored Himalayan Package",
+      },
+      {
+        key: "whatsappButtonLabel",
+        label: "WhatsApp button text",
+        defaultValue: "Chat on WhatsApp",
+      },
+      {
+        key: "whatsappUrl",
+        label: "WhatsApp button URL",
+        defaultValue:
+          "https://wa.me/919051966561?text=Hello%20CallingHills%2C%20I%20want%20to%20plan%20a%20Custom%20Tour%20Package.%20Please%20help%20me%20design%20it.",
+      },
+      {
+        key: "browseLinkLabel",
+        label: "Browse packages link text",
+        defaultValue: "Or Browse 73 Fixed Packages →",
+      },
+      {
+        key: "browseLinkUrl",
+        label: "Browse packages URL",
+        defaultValue: "./packages.html",
+      },
+
+      {
+        key: "trustNote1",
+        label: "Trust note 1",
+        defaultValue: "⭐ 4.9/5 Verified Reviews",
+      },
+      {
+        key: "trustNote2",
+        label: "Trust note 2",
+        defaultValue: "0% Middleman Commission",
+      },
+      {
+        key: "trustNote3",
+        label: "Trust note 3",
+        defaultValue: "Direct Local Mountain Team",
+      },
+    ],
+  },
+
   blog: {
     collection: "blog",
     singular: "story",
@@ -395,7 +604,7 @@ function renderFields(data = {}) {
       input.id = `field-${field.key}`;
       input.name = field.key;
       input.required = !!field.required;
-      const value = data[field.key];
+      const value = data[field.key] ?? field.defaultValue;
       if (value !== undefined && value !== null)
         input.value =
           Array.isArray(value) ||
@@ -812,7 +1021,7 @@ function getOriginalHtmlHotels() {
 
   if (!Array.isArray(data)) {
     throw new Error(
-      "Hotel data is missing. Check that hotelsData.js is loaded before admin-dashboard.js."
+      "Hotel data is missing. Check that hotelsData.js is loaded before admin-dashboard.js.",
     );
   }
 
@@ -836,7 +1045,7 @@ function getOriginalHtmlHotels() {
       displayOrder: 0,
       published: true,
       originalIndex: index,
-      originalData: hotel
+      originalData: hotel,
     };
   });
 }
@@ -1092,6 +1301,31 @@ async function loadRecords() {
 
       records = [...originals, ...firebaseCars];
       records.sort(compareManagedOrder);
+    } else if (activeType === "homeBanner") {
+      const snapshot = await getDocs(collection(db, "homeBanner"));
+
+      const savedBanner = snapshot.docs.find(
+        (item) => item.id === "custom-tour-banner",
+      );
+
+      const defaultFields = Object.fromEntries(
+        COLLECTIONS.homeBanner.fields.map((field) => [
+          field.key,
+          field.defaultValue ?? "",
+        ]),
+      );
+
+      records = [
+        {
+          id: "custom-tour-banner",
+          name: "Homepage Custom Offer Banner",
+          ...defaultFields,
+          ...(savedBanner ? savedBanner.data() : {}),
+          source: "firebase",
+        },
+      ];
+
+      renderFields(records[0]);
     } else {
       const snapshot = await getDocs(collection(db, config.collection));
     }
@@ -1457,6 +1691,20 @@ $("content-form").addEventListener("submit", async (event) => {
             records.find((item) => item.id === recordId)?.originalIndex ??
             999999,
 
+          updatedAt: serverTimestamp(),
+          updatedBy: currentUser?.uid || "",
+        },
+        { merge: true },
+      );
+    } else if (activeType === "homeBanner") {
+      const { published: isPublished, ...bannerFields } = record;
+
+      await setDoc(
+        doc(db, "homeBanner", "custom-tour-banner"),
+        {
+          ...bannerFields,
+          published: true,
+          isPublished: isPublished !== false,
           updatedAt: serverTimestamp(),
           updatedBy: currentUser?.uid || "",
         },
