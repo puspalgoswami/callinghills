@@ -844,6 +844,75 @@ async function loadOriginalHtmlPackages() {
   );
 }
 
+async function loadOriginalHtmlBlogs() {
+  const response = await fetch("./blog.html", {
+    cache: "no-store",
+  });
+
+  if (!response.ok) {
+    throw new Error(
+      "Could not load blog.html. Start Live Server from the website root.",
+    );
+  }
+
+  const parsed = new DOMParser().parseFromString(
+    await response.text(),
+    "text/html",
+  );
+
+  const used = new Set();
+
+  return Array.from(parsed.querySelectorAll(".blog-grid .blog-card")).map(
+    (card, index) => {
+      const title =
+        card.querySelector(".blog-title")?.textContent.trim() ||
+        `Blog ${index + 1}`;
+
+      let slug = normaliseSlug(title) || `html-blog-${index + 1}`;
+
+      if (used.has(slug)) {
+        slug = `${slug}-${index + 1}`;
+      }
+
+      used.add(slug);
+
+      const dateText =
+        card.querySelector(".blog-date")?.textContent.trim() || "";
+
+      const date = dateText ? new Date(dateText) : null;
+
+      const publicationDate =
+        date && !Number.isNaN(date.getTime())
+          ? `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(
+              2,
+              "0",
+            )}-${String(date.getDate()).padStart(2, "0")}`
+          : "";
+
+      return {
+        id: `html-blog:${slug}`,
+        source: "html",
+        sourceKey: slug,
+        slug,
+        name: title,
+        title,
+        category:
+          card.querySelector(".blog-category")?.textContent.trim() || "",
+        publicationDate,
+        image:
+          card.querySelector(".blog-img-wrapper img")?.getAttribute("src") ||
+          "",
+        excerpt: card.querySelector(".blog-excerpt")?.textContent.trim() || "",
+        story: "",
+        displayOrder: 0,
+        published: true,
+        originalIndex: index,
+        originalHtml: card.outerHTML,
+      };
+    },
+  );
+}
+
 function getOriginalHtmlRegions() {
   const data = window.destinationsData;
 
@@ -1326,8 +1395,70 @@ async function loadRecords() {
       ];
 
       renderFields(records[0]);
+    } else if (activeType === "blog") {
+      const [blogSnapshot, htmlBlogs] = await Promise.all([
+        getDocs(collection(db, "blog")),
+        loadOriginalHtmlBlogs(),
+      ]);
+
+      const firebaseBlogs = blogSnapshot.docs.map((item) => {
+        const data = item.data();
+
+        return {
+          id: item.id,
+          ...data,
+          name: data.title || data.name || "Untitled story",
+          source: "firebase",
+        };
+      });
+
+      // Match saved Firebase stories to their existing blog-page cards.
+      const firebaseBySlug = new Map(
+        firebaseBlogs.map((item) => [
+          item.slug || normaliseSlug(item.title || item.name),
+          item,
+        ]),
+      );
+
+      const pageSlugs = new Set(htmlBlogs.map((item) => item.slug));
+
+      const pageRecords = htmlBlogs.map((original) => {
+        const saved = firebaseBySlug.get(original.slug);
+
+        if (!saved) return original;
+
+        return {
+          ...original,
+          ...saved,
+
+          // Keep the original blog card's stable identity.
+          id: original.id,
+          source: "html",
+          sourceKey: original.slug,
+          name: saved.title || saved.name || original.title,
+          originalIndex: original.originalIndex,
+          originalHtml: original.originalHtml,
+          hasOverride: true,
+
+          // The admin's publish checkbox controls actual visibility.
+          published: saved.isPublished !== false,
+        };
+      });
+
+      const additionalFirebaseBlogs = firebaseBlogs.filter((item) => {
+        const slug = item.slug || normaliseSlug(item.title || item.name);
+        return !pageSlugs.has(slug);
+      });
+
+      records = [...pageRecords, ...additionalFirebaseBlogs];
     } else {
       const snapshot = await getDocs(collection(db, config.collection));
+
+      records = snapshot.docs.map((item) => ({
+        id: item.id,
+        ...item.data(),
+        source: "firebase",
+      }));
     }
 
     renderRecords();
@@ -1507,6 +1638,9 @@ $("content-form").addEventListener("submit", async (event) => {
 
     const isHtmlCarRental =
       activeType === "carRentals" && recordId.startsWith("html-car:");
+
+    const isHtmlBlog =
+      activeType === "blog" && recordId.startsWith("html-blog:");
 
     let record = buildRecord(formData);
     if (activeType === "regions") record.heroImage = record.heroImage || "";
@@ -1691,6 +1825,26 @@ $("content-form").addEventListener("submit", async (event) => {
             records.find((item) => item.id === recordId)?.originalIndex ??
             999999,
 
+          updatedAt: serverTimestamp(),
+          updatedBy: currentUser?.uid || "",
+        },
+        { merge: true },
+      );
+    } else if (isHtmlBlog) {
+      const slug = recordId.slice("html-blog:".length);
+      const { published: isPublished, ...blogFields } = record;
+
+      await setDoc(
+        doc(db, "blog", `html-${slug}`),
+        {
+          ...blogFields,
+          slug,
+          source: "html",
+          published: true,
+          isPublished: isPublished !== false,
+          originalIndex:
+            records.find((item) => item.id === recordId)?.originalIndex ??
+            999999,
           updatedAt: serverTimestamp(),
           updatedBy: currentUser?.uid || "",
         },
