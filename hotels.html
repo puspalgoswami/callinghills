@@ -1,249 +1,283 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CallingHills — Handpicked Hotels | Darjeeling Stays with Kanchenjunga Views</title>
-    <meta name="description" content="Stay at handpicked Darjeeling hotels with Kanchenjunga views, home-cooked meals, and walking distance to Mall Road. Budget-friendly stays curated by CallingHills.">
+    <meta name="description"
+        content="Stay at handpicked Darjeeling hotels with Kanchenjunga views, home-cooked meals, and walking distance to Mall Road. Budget-friendly stays curated by CallingHills.">
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,300;1,9..40,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,300;1,9..40,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&display=swap"
+        rel="stylesheet">
 
     <link rel="stylesheet" href="./css/main.css?v=3">
     <link rel="icon" type="image/png" href="./logo up.jpeg">
 
     <style>
-    /* ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ HOTELS FILTER & SEARCH BAR ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ */
-    .htl-controls-container {
-        background: #ffffff;
-        border: 1px solid rgba(48, 109, 41, 0.2);
-        border-radius: 18px;
-        padding: 22px 24px;
-        margin: 0 auto 32px auto;
-        box-shadow: 0 4px 20px rgba(13, 31, 23, 0.05);
-    }
-    .htl-controls-top {
-        display: flex;
-        gap: 16px;
-        align-items: center;
-        flex-wrap: wrap;
-    }
-    .htl-search-box {
-        flex: 1 1 320px;
-        position: relative;
-        display: flex;
-        align-items: center;
-    }
-    .htl-search-icon {
-        position: absolute;
-        left: 16px;
-        color: var(--ch-green-deep);
-        pointer-events: none;
-    }
-    .htl-search-input {
-        width: 100%;
-        padding: 13px 44px 13px 46px;
-        border-radius: 12px;
-        background: #fbf9f5;
-        border: 1px solid rgba(48, 109, 41, 0.2);
-        color: var(--ch-forest-deep);
-        font-family: var(--font-body);
-        font-size: 15px;
-        transition: all 0.25s ease;
-    }
-    .htl-search-input:focus {
-        outline: none;
-        border-color: var(--ch-green-deep);
-        background: #ffffff;
-        box-shadow: 0 0 14px rgba(48, 109, 41, 0.18);
-    }
-    .htl-search-input::placeholder {
-        color: var(--ch-text-mid);
-    }
-    .htl-clear-btn {
-        position: absolute;
-        right: 12px;
-        background: none;
-        border: none;
-        color: var(--ch-text-mid);
-        font-size: 20px;
-        cursor: pointer;
-        line-height: 1;
-        padding: 4px;
-        transition: color 0.2s ease;
-    }
-    .htl-clear-btn:hover {
-        color: var(--ch-forest-deep);
-    }
-    .htl-filters-row {
-        display: flex;
-        gap: 14px;
-        flex-wrap: wrap;
-        align-items: center;
-    }
-    .htl-dropdown-group {
-        display: flex;
-        align-items: center;
-        gap: 8px;
-        background: #fbf9f5;
-        padding: 6px 14px;
-        border-radius: 12px;
-        border: 1px solid rgba(48, 109, 41, 0.2);
-        transition: all 0.25s ease;
-    }
-    .htl-dropdown-group:hover,
-    .htl-dropdown-group:focus-within {
-        border-color: var(--ch-green-deep);
-        background: #ffffff;
-        box-shadow: 0 0 10px rgba(48, 109, 41, 0.12);
-    }
-    .htl-dropdown-label {
-        font-size: 13px;
-        color: var(--ch-green-deep);
-        font-weight: 600;
-        text-transform: uppercase;
-        letter-spacing: 0.05em;
-        white-space: nowrap;
-    }
-    .htl-select {
-        background: transparent;
-        border: none;
-        color: var(--ch-forest-deep);
-        font-family: var(--font-body);
-        font-size: 14px;
-        font-weight: 600;
-        cursor: pointer;
-        outline: none;
-        padding: 6px 4px;
-    }
-    .htl-select option {
-        background: #ffffff;
-        color: var(--ch-forest-deep);
-    }
-    .htl-meta-bar {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin-top: 16px;
-        padding-top: 14px;
-        border-top: 1px dashed rgba(48, 109, 41, 0.15);
-        flex-wrap: wrap;
-        gap: 12px;
-    }
-    .htl-results-count {
-        font-size: 14px;
-        color: var(--ch-text-mid);
-        font-weight: 500;
-    }
-    .htl-results-count strong {
-        color: var(--ch-green-deep);
-        font-weight: 700;
-    }
-    .htl-reset-btn {
-        background: rgba(48, 109, 41, 0.08);
-        border: 1px solid rgba(48, 109, 41, 0.25);
-        color: var(--ch-green-deep);
-        font-family: var(--font-body);
-        font-size: 13px;
-        font-weight: 600;
-        padding: 6px 16px;
-        border-radius: 8px;
-        cursor: pointer;
-        transition: all 0.25s ease;
-    }
-    .htl-reset-btn:hover {
-        background: var(--ch-green-deep);
-        color: #ffffff;
-    }
-    .htl-empty-state {
-        grid-column: 1 / -1;
-        text-align: center;
-        padding: 60px 20px;
-        background: #ffffff;
-        border-radius: 16px;
-        border: 1px dashed rgba(48, 109, 41, 0.25);
-        margin: 30px auto;
-        max-width: 600px;
-        box-shadow: 0 4px 20px rgba(13, 31, 23, 0.05);
-    }
-    .htl-empty-icon {
-        font-size: 48px;
-        margin-bottom: 16px;
-    }
-    .htl-empty-state h3 {
-        font-family: var(--font-heading);
-        font-size: 26px;
-        color: var(--ch-forest-deep);
-        margin-bottom: 8px;
-    }
-    .htl-empty-state p {
-        color: var(--ch-text-mid);
-        font-size: 15px;
-        margin-bottom: 22px;
-    }
+        /* ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ HOTELS FILTER & SEARCH BAR ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ */
+        .htl-controls-container {
+            background: #ffffff;
+            border: 1px solid rgba(48, 109, 41, 0.2);
+            border-radius: 18px;
+            padding: 22px 24px;
+            margin: 0 auto 32px auto;
+            box-shadow: 0 4px 20px rgba(13, 31, 23, 0.05);
+        }
 
-    /* ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ HOTELS REGION TABS ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ */
-    .region-tabs {
-        display: flex;
-        justify-content: flex-start;
-        gap: 12px;
-        margin-bottom: 36px;
-        flex-wrap: wrap;
-        padding: 0;
-    }
-    .region-tab {
-        padding: 10px 22px;
-        border-radius: 999px;
-        border: 1px solid rgba(48, 109, 41, 0.2);
-        background: #ffffff;
-        color: var(--ch-green-deep);
-        font-family: var(--font-body);
-        font-size: 14px;
-        font-weight: 600;
-        cursor: pointer;
-        transition: all 0.25s ease;
-    }
-    .region-tab:hover {
-        border-color: var(--ch-gold);
-        color: #8b6b1b;
-        transform: translateY(-1px);
-    }
-    .region-tab.active {
-        background: var(--ch-green-deep);
-        color: #ffffff;
-        border-color: var(--ch-green-deep);
-        box-shadow: 0 4px 14px rgba(13, 31, 23, 0.18);
-    }
+        .htl-controls-top {
+            display: flex;
+            gap: 16px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
 
-    .subregion-section {
-        margin-bottom: 48px;
-    }
-    .subregion-header {
-        font-family: 'Cormorant Garamond', serif;
-        font-size: 32px;
-        color: var(--ch-forest-deep);
-        margin-bottom: 24px;
-        padding-bottom: 12px;
-        border-bottom: 1px solid rgba(48, 109, 41, 0.18);
-        display: flex;
-        align-items: center;
-        gap: 12px;
-    }
-    .subregion-header::before {
-        content: "✦";
-        color: var(--ch-green-deep);
-        font-size: 20px;
-    }
+        .htl-search-box {
+            flex: 1 1 320px;
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        .htl-search-icon {
+            position: absolute;
+            left: 16px;
+            color: var(--ch-green-deep);
+            pointer-events: none;
+        }
+
+        .htl-search-input {
+            width: 100%;
+            padding: 13px 44px 13px 46px;
+            border-radius: 12px;
+            background: #fbf9f5;
+            border: 1px solid rgba(48, 109, 41, 0.2);
+            color: var(--ch-forest-deep);
+            font-family: var(--font-body);
+            font-size: 15px;
+            transition: all 0.25s ease;
+        }
+
+        .htl-search-input:focus {
+            outline: none;
+            border-color: var(--ch-green-deep);
+            background: #ffffff;
+            box-shadow: 0 0 14px rgba(48, 109, 41, 0.18);
+        }
+
+        .htl-search-input::placeholder {
+            color: var(--ch-text-mid);
+        }
+
+        .htl-clear-btn {
+            position: absolute;
+            right: 12px;
+            background: none;
+            border: none;
+            color: var(--ch-text-mid);
+            font-size: 20px;
+            cursor: pointer;
+            line-height: 1;
+            padding: 4px;
+            transition: color 0.2s ease;
+        }
+
+        .htl-clear-btn:hover {
+            color: var(--ch-forest-deep);
+        }
+
+        .htl-filters-row {
+            display: flex;
+            gap: 14px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .htl-dropdown-group {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: #fbf9f5;
+            padding: 6px 14px;
+            border-radius: 12px;
+            border: 1px solid rgba(48, 109, 41, 0.2);
+            transition: all 0.25s ease;
+        }
+
+        .htl-dropdown-group:hover,
+        .htl-dropdown-group:focus-within {
+            border-color: var(--ch-green-deep);
+            background: #ffffff;
+            box-shadow: 0 0 10px rgba(48, 109, 41, 0.12);
+        }
+
+        .htl-dropdown-label {
+            font-size: 13px;
+            color: var(--ch-green-deep);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            white-space: nowrap;
+        }
+
+        .htl-select {
+            background: transparent;
+            border: none;
+            color: var(--ch-forest-deep);
+            font-family: var(--font-body);
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            outline: none;
+            padding: 6px 4px;
+        }
+
+        .htl-select option {
+            background: #ffffff;
+            color: var(--ch-forest-deep);
+        }
+
+        .htl-meta-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 16px;
+            padding-top: 14px;
+            border-top: 1px dashed rgba(48, 109, 41, 0.15);
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .htl-results-count {
+            font-size: 14px;
+            color: var(--ch-text-mid);
+            font-weight: 500;
+        }
+
+        .htl-results-count strong {
+            color: var(--ch-green-deep);
+            font-weight: 700;
+        }
+
+        .htl-reset-btn {
+            background: rgba(48, 109, 41, 0.08);
+            border: 1px solid rgba(48, 109, 41, 0.25);
+            color: var(--ch-green-deep);
+            font-family: var(--font-body);
+            font-size: 13px;
+            font-weight: 600;
+            padding: 6px 16px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.25s ease;
+        }
+
+        .htl-reset-btn:hover {
+            background: var(--ch-green-deep);
+            color: #ffffff;
+        }
+
+        .htl-empty-state {
+            grid-column: 1 / -1;
+            text-align: center;
+            padding: 60px 20px;
+            background: #ffffff;
+            border-radius: 16px;
+            border: 1px dashed rgba(48, 109, 41, 0.25);
+            margin: 30px auto;
+            max-width: 600px;
+            box-shadow: 0 4px 20px rgba(13, 31, 23, 0.05);
+        }
+
+        .htl-empty-icon {
+            font-size: 48px;
+            margin-bottom: 16px;
+        }
+
+        .htl-empty-state h3 {
+            font-family: var(--font-heading);
+            font-size: 26px;
+            color: var(--ch-forest-deep);
+            margin-bottom: 8px;
+        }
+
+        .htl-empty-state p {
+            color: var(--ch-text-mid);
+            font-size: 15px;
+            margin-bottom: 22px;
+        }
+
+        /* ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ HOTELS REGION TABS ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ */
+        .region-tabs {
+            display: flex;
+            justify-content: flex-start;
+            gap: 12px;
+            margin-bottom: 36px;
+            flex-wrap: wrap;
+            padding: 0;
+        }
+
+        .region-tab {
+            padding: 10px 22px;
+            border-radius: 999px;
+            border: 1px solid rgba(48, 109, 41, 0.2);
+            background: #ffffff;
+            color: var(--ch-green-deep);
+            font-family: var(--font-body);
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.25s ease;
+        }
+
+        .region-tab:hover {
+            border-color: var(--ch-gold);
+            color: #8b6b1b;
+            transform: translateY(-1px);
+        }
+
+        .region-tab.active {
+            background: var(--ch-green-deep);
+            color: #ffffff;
+            border-color: var(--ch-green-deep);
+            box-shadow: 0 4px 14px rgba(13, 31, 23, 0.18);
+        }
+
+        .subregion-section {
+            margin-bottom: 48px;
+        }
+
+        .subregion-header {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 32px;
+            color: var(--ch-forest-deep);
+            margin-bottom: 24px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid rgba(48, 109, 41, 0.18);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .subregion-header::before {
+            content: "✦";
+            color: var(--ch-green-deep);
+            font-size: 20px;
+        }
     </style>
 </head>
+
 <body>
     <div class="ambient-gradient-bg"></div>
 
     <!-- ═══════════ LOADER ═══════════ -->
     <div class="loader" id="loader">
-        <img src="./logo up.jpeg" alt="CallingHills" class="loader-logo-img" style="width: 120px; height: 120px; margin-bottom: 24px;">
+        <img src="./logo up.jpeg" alt="CallingHills" class="loader-logo-img"
+            style="width: 120px; height: 120px; margin-bottom: 24px;">
         <div class="loader-brand">Calling<span>Hills</span></div>
         <div class="loader-bar-track">
             <div class="loader-bar" id="loader-bar"></div>
@@ -289,72 +323,77 @@
         <a href="./packages.html" style="color: var(--ch-gold); margin-top: 16px;">Plan My Trip &rarr;</a>
     </div>
 
-<div style="height: 72px;"></div>
+    <div style="height: 72px;"></div>
 
-<!-- ═══════════ HOTELS HERO BANNER ═══════════ -->
-<section class="hotels-hero">
-    <div class="hotels-hero-overlay"></div>
-    <div class="hotels-hero-content">
-        <div class="section-tag">✦ HANDPICKED STAYS</div>
-        <h1 class="hotels-hero-title">Our Partner Hotels</h1>
-        <p class="hotels-hero-subtitle">Comfortable stays with Kanchenjunga views — all near Mall Road.</p>
-    </div>
-</section>
+    <!-- ═══════════ HOTELS HERO BANNER ═══════════ -->
+    <section class="hotels-hero">
+        <div class="hotels-hero-overlay"></div>
+        <div class="hotels-hero-content">
+            <div class="section-tag">✦ HANDPICKED STAYS</div>
+            <h1 class="hotels-hero-title">Our Partner Hotels</h1>
+            <p class="hotels-hero-subtitle">Comfortable stays with Kanchenjunga views — all near Mall Road.</p>
+        </div>
+    </section>
 
-<!-- ═══════════ HOTEL CARDS ═══════════ -->
-<section class="hotels-section" id="hotels-darjeeling">
-    <div class="hotels-container">
-        
-        <!-- Hotel Controls Bar (Search, Place Filter & Sort) -->
-        <div class="htl-controls-container">
-            <div class="htl-controls-top">
-                <div class="htl-search-box">
-                    <svg class="htl-search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <circle cx="11" cy="11" r="8"></circle>
-                        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-                    </svg>
-                    <input type="text" id="htl-search-input" class="htl-search-input" placeholder="Search 55 stays (e.g. Kanchenjunga, Mall Road, Rishop, Homestay)..." autocomplete="off">
-                    <button id="htl-clear-search" class="htl-clear-btn" aria-label="Clear search" style="display: none;">&times;</button>
+    <!-- ═══════════ HOTEL CARDS ═══════════ -->
+    <section class="hotels-section" id="hotels-darjeeling">
+        <div class="hotels-container">
+
+            <!-- Hotel Controls Bar (Search, Place Filter & Sort) -->
+            <div class="htl-controls-container">
+                <div class="htl-controls-top">
+                    <div class="htl-search-box">
+                        <svg class="htl-search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="11" cy="11" r="8"></circle>
+                            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                        </svg>
+                        <input type="text" id="htl-search-input" class="htl-search-input"
+                            placeholder="Search 55 stays (e.g. Kanchenjunga, Mall Road, Rishop, Homestay)..."
+                            autocomplete="off">
+                        <button id="htl-clear-search" class="htl-clear-btn" aria-label="Clear search"
+                            style="display: none;">&times;</button>
+                    </div>
+
+                    <div class="htl-filters-row">
+                        <!-- Place Filter -->
+                        <div class="htl-dropdown-group">
+                            <label for="htl-place-select" class="htl-dropdown-label">Place:</label>
+                            <select id="htl-place-select" class="htl-select">
+                                <option value="all">All Locations (55)</option>
+                            </select>
+                        </div>
+
+                        <!-- Sort Select -->
+                        <div class="htl-dropdown-group">
+                            <label for="htl-sort-select" class="htl-dropdown-label">Sort By:</label>
+                            <select id="htl-sort-select" class="htl-select">
+                                <option value="recommended">Recommended &amp; Featured</option>
+                                <option value="price-asc">Price: Low to High</option>
+                                <option value="price-desc">Price: High to Low</option>
+                                <option value="name-asc">Name: A to Z</option>
+                            </select>
+                        </div>
+                    </div>
                 </div>
-                
-                <div class="htl-filters-row">
-                    <!-- Place Filter -->
-                    <div class="htl-dropdown-group">
-                        <label for="htl-place-select" class="htl-dropdown-label">Place:</label>
-                        <select id="htl-place-select" class="htl-select">
-                            <option value="all">All Locations (55)</option>
-                        </select>
-                    </div>
 
-                    <!-- Sort Select -->
-                    <div class="htl-dropdown-group">
-                        <label for="htl-sort-select" class="htl-dropdown-label">Sort By:</label>
-                        <select id="htl-sort-select" class="htl-select">
-                            <option value="recommended">Recommended &amp; Featured</option>
-                            <option value="price-asc">Price: Low to High</option>
-                            <option value="price-desc">Price: High to Low</option>
-                            <option value="name-asc">Name: A to Z</option>
-                        </select>
-                    </div>
+                <div class="htl-meta-bar">
+                    <span class="htl-results-count" id="htl-results-count">Showing <strong>55</strong> verified
+                        stays</span>
+                    <button class="htl-reset-btn" id="htl-reset-btn" style="display: none;">Reset Filters</button>
                 </div>
             </div>
 
-            <div class="htl-meta-bar">
-                <span class="htl-results-count" id="htl-results-count">Showing <strong>55</strong> verified stays</span>
-                <button class="htl-reset-btn" id="htl-reset-btn" style="display: none;">Reset Filters</button>
+            <div class="region-tabs" id="region-tabs">
+                <!-- Tabs injected by JS -->
             </div>
-        </div>
 
-        <div class="region-tabs" id="region-tabs">
-            <!-- Tabs injected by JS -->
-        </div>
+            <div id="hotels-content">
+                <!-- Structured content injected by JS -->
+            </div>
 
-        <div id="hotels-content">
-            <!-- Structured content injected by JS -->
         </div>
-
-    </div>
-</section>
+    </section>
 
 
     <!-- ═══════════ FOOTER ═══════════ -->
@@ -364,7 +403,8 @@
             <div class="footer-top">
                 <div class="footer-brand">
                     <a href="./index.html" class="nav-logo">
-                        <img src="./logo up.jpeg" alt="CallingHills Logo" class="nav-logo-img" style="height: 42px; width: auto;">
+                        <img src="./logo up.jpeg" alt="CallingHills Logo" class="nav-logo-img"
+                            style="height: 42px; width: auto;">
                         <div class="nav-logo-text">Calling<span>Hills</span></div>
                     </a>
                     <p>Discover Hidden Trails, Hill Villages & Nature's Soul</p>
@@ -382,7 +422,7 @@
                         <li><a href="./about.html#faq">FAQ</a></li>
                     </ul>
                 </div>
-                
+
                 <div class="footer-links">
                     <h4>Company</h4>
                     <ul>
@@ -396,33 +436,106 @@
                     <h4>Contact Us</h4>
                     <ul class="footer-contact-list">
                         <li style="display: flex; align-items: center; gap: 8px; font-size: 13px;">
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0;"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0;">
+                                <path
+                                    d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z">
+                                </path>
+                            </svg>
                             <span>6289590603 / 9123843327</span>
                         </li>
                         <li style="display: flex; align-items: center; gap: 8px; font-size: 13px;">
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0;"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0;">
+                                <path
+                                    d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z">
+                                </path>
+                            </svg>
                             <span>9051966561</span>
                         </li>
                         <li style="display: flex; align-items: center; gap: 8px; font-size: 13px;">
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0;"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
-                            <a href="mailto:hello@callinghills.com" style="text-transform: none;">hello@callinghills.com</a>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0;">
+                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z">
+                                </path>
+                                <polyline points="22,6 12,13 2,6"></polyline>
+                            </svg>
+                            <a href="mailto:hello@callinghills.com"
+                                style="text-transform: none;">hello@callinghills.com</a>
                         </li>
                         <li style="display: flex; align-items: center; gap: 8px; font-size: 13px;">
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0;"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
-                            <a href="https://www.callinghills.com" style="text-transform: none;">www.callinghills.com</a>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0;">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <line x1="2" y1="12" x2="22" y2="12"></line>
+                                <path
+                                    d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z">
+                                </path>
+                            </svg>
+                            <a href="https://www.callinghills.com"
+                                style="text-transform: none;">www.callinghills.com</a>
                         </li>
                     </ul>
                 </div>
                 <div class="footer-social">
                     <h4>Connect With Us</h4>
                     <div class="social-icons" style="display: flex; gap: 12px; flex-wrap: wrap;">
-                        <a href="https://www.facebook.com/share/1PEQPSyFLr/" target="_blank" class="social-icon" aria-label="Facebook"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg></a>
-                        <a href="https://www.instagram.com/callinghills_official?igsh=bDJoMjI4YzQ2Ymlp" target="_blank" class="social-icon" aria-label="Instagram"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg></a>
-                        <a href="https://youtube.com/@callinghills?si=6iCWARLhuYF7u9qm" target="_blank" class="social-icon" aria-label="YouTube"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33 2.78 2.78 0 0 0 1.94 2c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.33 29 29 0 0 0-.46-5.33z"></path><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon></svg></a>
-                        <a href="https://wa.me/message/IJWEKZTQMGAFH1" target="_blank" class="social-icon" aria-label="WhatsApp"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg></a>
-                        <a href="https://www.linkedin.com/company/callinghills/" target="_blank" class="social-icon" aria-label="LinkedIn"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg></a>
-                        <a href="https://x.com/CallingHills?t=duZx4WDjIBnmWspT1prYQw&s=09" target="_blank" class="social-icon" aria-label="Twitter"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4l11.73 16h5L9 4z"></path><path d="M4 20l6.76-6.76"></path><path d="M20 4l-5.76 5.76"></path></svg></a>
-                        <a href="https://pin.it/23Q54ZsbI" target="_blank" class="social-icon" aria-label="Pinterest"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="22" x2="12" y2="10"></line><path d="M12 2a10 10 0 1 0 10 10 10 10 0 0 0-10-10z"></path><path d="M12 14v4"></path><path d="M12 10V6"></path><path d="M9 10h6"></path><path d="M9 14h6"></path></svg></a>
+                        <a href="https://www.facebook.com/share/1PEQPSyFLr/" target="_blank" class="social-icon"
+                            aria-label="Facebook"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+                            </svg></a>
+                        <a href="https://www.instagram.com/callinghills_official?igsh=bDJoMjI4YzQ2Ymlp" target="_blank"
+                            class="social-icon" aria-label="Instagram"><svg width="20" height="20" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                            </svg></a>
+                        <a href="https://youtube.com/@callinghills?si=6iCWARLhuYF7u9qm" target="_blank"
+                            class="social-icon" aria-label="YouTube"><svg width="20" height="20" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <path
+                                    d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33 2.78 2.78 0 0 0 1.94 2c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.33 29 29 0 0 0-.46-5.33z">
+                                </path>
+                                <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon>
+                            </svg></a>
+                        <a href="https://wa.me/message/IJWEKZTQMGAFH1" target="_blank" class="social-icon"
+                            aria-label="WhatsApp"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path
+                                    d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z">
+                                </path>
+                            </svg></a>
+                        <a href="https://www.linkedin.com/company/callinghills/" target="_blank" class="social-icon"
+                            aria-label="LinkedIn"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path
+                                    d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z">
+                                </path>
+                                <rect x="2" y="9" width="4" height="12"></rect>
+                                <circle cx="4" cy="4" r="2"></circle>
+                            </svg></a>
+                        <a href="https://x.com/CallingHills?t=duZx4WDjIBnmWspT1prYQw&s=09" target="_blank"
+                            class="social-icon" aria-label="Twitter"><svg width="20" height="20" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <path d="M4 4l11.73 16h5L9 4z"></path>
+                                <path d="M4 20l6.76-6.76"></path>
+                                <path d="M20 4l-5.76 5.76"></path>
+                            </svg></a>
+                        <a href="https://pin.it/23Q54ZsbI" target="_blank" class="social-icon"
+                            aria-label="Pinterest"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="12" y1="22" x2="12" y2="10"></line>
+                                <path d="M12 2a10 10 0 1 0 10 10 10 10 0 0 0-10-10z"></path>
+                                <path d="M12 14v4"></path>
+                                <path d="M12 10V6"></path>
+                                <path d="M9 10h6"></path>
+                                <path d="M9 14h6"></path>
+                            </svg></a>
                     </div>
                 </div>
             </div>
@@ -442,84 +555,88 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script src="./js/main.js"></script>
+    <script src="./js/hotelsData.js?v=1"></script>
 
     <!-- Hotels Page Script -->
     <script>
-    (function() {
-        const hotelData = [
-            { id: 1, name: "The Kanchenjunga Retreat", price: "₹1,399/-", meals: "Breakfast + Lunch / Dinner", view: "Kanchenjunga View Room Available", distance: "Mall Road Walking 2 Min", premium: false, region: "Darjeeling", subRegion: "Darjeeling", imageCount: 26, ext: 'jpeg' },
-            { id: 2, name: "Darjeeling Heritage Stay", price: "₹1,499/-", meals: "Breakfast + Lunch / Dinner", view: "Kanchenjunga View Room Available", distance: "Mall Road Walking 5/6 Min", premium: false, region: "Darjeeling", subRegion: "Darjeeling", imageCount: 28 },
-            { id: 3, name: "Pine View Homestay", price: "₹1,599/-", meals: "Breakfast + Lunch / Dinner", view: "Kanchenjunga View Room Available", distance: "Mall Road Walking 3/4 Min", premium: false, region: "Darjeeling", subRegion: "Darjeeling", imageCount: 41 },
-            { id: 4, name: "Himalayan Horizon Hotel", price: "₹1,299/-", meals: "Breakfast + Lunch / Dinner", view: "Kanchenjunga View Room Available", distance: "Mall Road Walking 6/7 Min", premium: false, region: "Darjeeling", subRegion: "Darjeeling", imageCount: 22 },
-            { id: 5, name: "Mall Road Boutique Stay", price: "₹1,399/-", meals: "Breakfast + Lunch / Dinner", view: "Kanchenjunga View Room Available", distance: "Mall Road Walking 3/4 Min", premium: false, region: "Darjeeling", subRegion: "Darjeeling", imageCount: 20 },
-            { id: 6, name: "The Darjeeling Crown Premium", price: "₹2,299/-", meals: "Breakfast + Lunch / Dinner", view: "Kanchenjunga View Room Available", distance: "Mall Road Walking 2 Min", premium: true, region: "Darjeeling", subRegion: "Darjeeling", imageCount: 23 },
-            { id: 7, name: "Misty Peaks Guesthouse", price: "₹1,299/-", meals: "Breakfast + Lunch / Dinner", view: "Kanchenjunga View Room Available", distance: "Mall Road Walking 3 Min", premium: false, region: "Darjeeling", subRegion: "Darjeeling", imageCount: 9 },
-            { id: 8, name: "Kanchenjunga Majestic Suites", price: "₹2,999/-", meals: "Breakfast + Lunch / Dinner", view: "Kanchenjunga View Room Available", distance: "Mall Road Walking 3 Min", premium: true, region: "Darjeeling", subRegion: "Darjeeling", imageCount: 15 },
-            { id: 9, name: "Tea Garden View Stay", price: "₹1,299/-", meals: "Breakfast + Lunch / Dinner", view: "Kanchenjunga View Room Available", distance: "Mall Road Walking 3/4 Min", premium: false, region: "Darjeeling", subRegion: "Darjeeling", imageCount: 13 },
-            { id: 10, name: "Lamahatta Kanchanjunga Sunrise View Premium Homestay", price: "₹1,799/-", meals: "Breakfast + Lunch + Evening Snacks + Dinner", view: "Kanchanjunga Sunrise View", distance: "Lamahatta, Darjeeling", premium: true, region: "Darjeeling", subRegion: "Darjeeling", imageCount: 6, ext: 'jpeg' },
-            
-                        { id: 11, name: "Kolakham premium wooden homestay", price: "₹1199/-", meals: "Breakfast + Lunch + Evening Snacks + Dinner", view: "Premium Homestay", distance: "Kalimpong", premium: true, region: "Kalimpong", subRegion: "Kalimpong", imageCount: 11, ext: 'jpg' },
-            { id: 12, name: "Ramdhura Premium Kanchenjunga View wooden Homestay", price: "₹1299/-", meals: "Breakfast + Lunch + Evening Snacks + Dinner", view: "Kanchenjunga View", distance: "Kalimpong", premium: true, region: "Kalimpong", subRegion: "Kalimpong", imageCount: 11, ext: 'jpg' },
-            { id: 13, name: "BURMAIK Premium Kanchenjunga View Homestay", price: "₹1199/-", meals: "Breakfast + Lunch + Evening Snacks + Dinner", view: "Kanchenjunga View", distance: "Kalimpong", premium: true, region: "Kalimpong", subRegion: "Kalimpong", imageCount: 8, ext: 'jpg' },
-            { id: 14, name: "BIJANBARi Premium Cottage Homestay", price: "₹1299/-", meals: "Breakfast + Lunch + Evening Snacks + Dinner", view: "Premium Homestay", distance: "Kalimpong", premium: true, region: "Kalimpong", subRegion: "Kalimpong", imageCount: 6, ext: 'jpg' },
-            { id: 15, name: "ROLEP Premium River Side Homestay", price: "₹1299/-", meals: "Breakfast + Lunch + Evening Snacks + Dinner", view: "Premium Homestay", distance: "Darjeeling", premium: true, region: "Darjeeling", subRegion: "Darjeeling", imageCount: 10, ext: 'jpg' },
-            { id: 16, name: "SANGSAY Premium Kanchenjunga View Homestay", price: "₹1299/-", meals: "Breakfast + Lunch + Evening Snacks + Dinner", view: "Kanchenjunga View", distance: "East Sikkim", premium: true, region: "Kalimpong", subRegion: "Kalimpong", imageCount: 15, ext: 'jpg' },
-            { id: 17, name: "TABAKOSHI Premium View Homestay", price: "₹1299/-", meals: "Breakfast + Lunch + Evening Snacks + Dinner", view: "Mountain View", distance: "Kalimpong", premium: true, region: "Kalimpong", subRegion: "Kalimpong", imageCount: 17, ext: 'jpg' },
-            { id: 18, name: "JOGIGHAT Premium Kanchenjunga View Homestay", price: "₹1299/-", meals: "Breakfast + Lunch + Evening Snacks + Dinner", view: "Kanchenjunga View", distance: "Darjeeling", premium: true, region: "Darjeeling", subRegion: "Darjeeling", imageCount: 10, ext: 'jpg' },
-            { id: 19, name: "Mayrong Gaon Mayrong Gaon Premium Kanchenjunga View Homestay", price: "₹1599/-", meals: "Breakfast + Lunch + Evening Snacks + Dinner", view: "Kanchenjunga View", distance: "Darjeeling", premium: true, region: "Darjeeling", subRegion: "Darjeeling", imageCount: 4, ext: 'jpg' },
-            { id: 20, name: "Mayrong Gaon Mayrong Gaon Premium Mountain View Homestay", price: "₹1599/-", meals: "Breakfast + Lunch + Evening Snacks + Dinner", view: "Mountain View", distance: "Kalimpong", premium: true, region: "Kalimpong", subRegion: "Kalimpong", imageCount: 11, ext: 'jpg' },
-            { id: 21, name: "Mayrong Gaon Mayrong Gaon Premium View Cottage Homestay", price: "₹1599/-", meals: "Breakfast + Lunch + Evening Snacks + Dinner", view: "Mountain View", distance: "Kalimpong", premium: true, region: "Kalimpong", subRegion: "Kalimpong", imageCount: 11, ext: 'jpg' },
-            { id: 22, name: "Mayrong Gaon Mayrong Gaon Premium Wooden Homestay", price: "₹1599/-", meals: "Breakfast + Lunch + Evening Snacks + Dinner", view: "Premium Homestay", distance: "Kalimpong", premium: true, region: "Kalimpong", subRegion: "Kalimpong", imageCount: 8, ext: 'jpg' },
-            { id: 23, name: "Mayrong Gaon Mayrong Gaon Premium View Homestay", price: "₹1599/-", meals: "Breakfast + Lunch + Evening Snacks + Dinner", view: "Mountain View", distance: "Kalimpong", premium: true, region: "Kalimpong", subRegion: "Kalimpong", imageCount: 6, ext: 'jpg' },
-            { id: 24, name: "SANGSAY Sangsey Kanchenjunga View Premium Homestay", price: "₹1499/-", meals: "Breakfast + Lunch + Evening Snacks + Dinner", view: "Kanchenjunga View", distance: "Kalimpong", premium: true, region: "Kalimpong", subRegion: "Kalimpong", imageCount: 10, ext: 'jpg' },
-            { id: 25, name: "Daragaon Daragaon Premium Kanchenjunga View Homestay", price: "₹1499/-", meals: "Breakfast + Lunch + Evening Snacks + Dinner", view: "Kanchenjunga View", distance: "Kalimpong", premium: true, region: "Kalimpong", subRegion: "Kalimpong", imageCount: 11, ext: 'jpg' },
-            { id: 26, name: "Lava Sherpa Gaon premium View homestay", price: "₹1399/-", meals: "Breakfast + Lunch + Evening Snacks + Dinner", view: "Mountain View", distance: "Kalimpong", premium: true, region: "Kalimpong", subRegion: "Kalimpong", imageCount: 12, ext: 'jpg' },
-            { id: 27, name: "Kolakham Kolakham Premium Kanchanjunga View Wooden homestay", price: "₹1599/-", meals: "Breakfast + Lunch + Evening Snacks + Dinner", view: "Kanchenjunga View", distance: "Kalimpong", premium: true, region: "Kalimpong", subRegion: "Kalimpong", imageCount: 11, ext: 'jpg' },
-            { id: 28, name: "Rishop Rishop Premium Kanchanjunga View Homestay", price: "₹1499/-", meals: "Breakfast + Lunch + Evening Snacks + Dinner", view: "Kanchenjunga View", distance: "Kalimpong", premium: true, region: "Kalimpong", subRegion: "Kalimpong", imageCount: 13, ext: 'jpg' },
-            { id: 29, name: "Rishop Upper Rishop Kanchanjunga View Premium Homestay", price: "₹1799/-", meals: "Breakfast + Lunch + Evening Snacks + Dinner", view: "Kanchenjunga View", distance: "Kalimpong", premium: true, region: "Kalimpong", subRegion: "Kalimpong", imageCount: 8, ext: 'jpg' },
-            { id: 30, name: "Rishop Rishop Premium View Wooden Homestay", price: "₹1699/-", meals: "Breakfast + Lunch + Evening Snacks + Dinner", view: "Mountain View", distance: "Kalimpong", premium: true, region: "Kalimpong", subRegion: "Kalimpong", imageCount: 10, ext: 'jpg' },
-            { id: 31, name: "Rishop Rishop Premium View Homestay", price: "₹1399/-", meals: "Breakfast + Lunch + Evening Snacks + Dinner", view: "Mountain View", distance: "Kalimpong", premium: true, region: "Kalimpong", subRegion: "Kalimpong", imageCount: 8, ext: 'jpg' },
-            { id: 32, name: "Lepchajagat Lepchajagat premium Kanchenjunga View Homestay", price: "₹1599/-", meals: "Breakfast + Lunch + Evening Snacks + Dinner", view: "Kanchenjunga View", distance: "Kalimpong", premium: true, region: "Darjeeling", subRegion: "Lepchajagat", imageCount: 10, ext: 'jpg' },
-            { id: 33, name: "Tukvar Tukvar Kanchanjunga View Premium Homestay", price: "₹1799/-", meals: "Breakfast + Lunch + Evening Snacks + Dinner", view: "Kanchenjunga View", distance: "Darjeeling", premium: true, region: "Darjeeling", subRegion: "Darjeeling", imageCount: 6, ext: 'jpg' },
-            { id: 34, name: "Sonada Sonada Premium view Homestay", price: "₹1599/-", meals: "Breakfast + Lunch + Evening Snacks + Dinner", view: "Mountain View", distance: "Darjeeling", premium: true, region: "Darjeeling", subRegion: "Darjeeling", imageCount: 6, ext: 'jpg' },
-            { id: 35, name: "Dawaipani Dawaipani Kanchanjunga View Premium Cozy Homestay", price: "₹1499/-", meals: "Breakfast + Lunch + Evening Snacks + Dinner", view: "Kanchenjunga View", distance: "Darjeeling", premium: true, region: "Darjeeling", subRegion: "Darjeeling", imageCount: 7, ext: 'jpg' },
-            { id: 36, name: "Dawaipani Dawaipani Premium Kanchanjunga View Cozy Homestay", price: "₹1499/-", meals: "Breakfast + Lunch + Evening Snacks + Dinner", view: "Kanchenjunga View", distance: "Darjeeling", premium: true, region: "Darjeeling", subRegion: "Darjeeling", imageCount: 10, ext: 'jpg' },
-            { id: 37, name: "Tinchulay Tinchulay Premium Homestay", price: "₹1599/-", meals: "Breakfast + Lunch + Evening Snacks + Dinner", view: "Premium Homestay", distance: "Darjeeling", premium: true, region: "Darjeeling", subRegion: "Darjeeling", imageCount: 7, ext: 'jpg' },
-            { id: 38, name: "Lepchajagat Lepchajagat Kanchenjunga View Premium Homestay", price: "₹1599/-", meals: "Breakfast + Lunch + Evening Snacks + Dinner", view: "Kanchenjunga View", distance: "Darjeeling", premium: true, region: "Darjeeling", subRegion: "Darjeeling", imageCount: 12, ext: 'jpg' },
-            { id: 39, name: "Sittong Sittong Premium View Cozy Homestay", price: "₹1499/-", meals: "Breakfast + Lunch + Evening Snacks + Dinner", view: "Mountain View", distance: "Darjeeling", premium: true, region: "Darjeeling", subRegion: "Darjeeling", imageCount: 13, ext: 'jpg' },
-            { id: 40, name: "Sandakphu Sandakphu Premium Kanchenjunga View Homestay", price: "₹2499/-", meals: "Breakfast + Lunch + Evening Snacks + Dinner", view: "Kanchenjunga View", distance: "Darjeeling", premium: true, region: "Darjeeling", subRegion: "Darjeeling", imageCount: 15, ext: 'jpg' },
-            { id: 41, name: "Dawaipani Dawaipani Kanchanjunga View Homestay", price: "₹1499/-", meals: "Breakfast + Lunch + Evening Snacks + Dinner", view: "Kanchenjunga View", distance: "Darjeeling", premium: false, region: "Darjeeling", subRegion: "Darjeeling", imageCount: 6, ext: 'jpg' },
-            { id: 42, name: "Dhotrey Dhotrey Premium Kanchenjunga View Homestay", price: "₹1799/-", meals: "Breakfast + Lunch + Evening Snacks + Dinner", view: "Kanchenjunga View", distance: "Darjeeling", premium: true, region: "Darjeeling", subRegion: "Darjeeling", imageCount: 11, ext: 'jpg' },
-            { id: 43, name: "Dhotrey Dhotrey Premium View Homestay", price: "₹1499/-", meals: "Breakfast + Lunch + Evening Snacks + Dinner", view: "Mountain View", distance: "Darjeeling", premium: true, region: "Darjeeling", subRegion: "Darjeeling", imageCount: 12, ext: 'jpg' },
-            { id: 44, name: "Tonglu Tonglu Premium Hut Cottage Homestay", price: "₹1899/-", meals: "Breakfast + Lunch + Evening Snacks + Dinner", view: "Premium Homestay", distance: "Darjeeling", premium: true, region: "Darjeeling", subRegion: "Darjeeling", imageCount: 11, ext: 'jpg' },
-            { id: 45, name: "Tumling Tumling Premium Wooden Cottage Homestay", price: "₹1899/-", meals: "Breakfast + Lunch + Evening Snacks + Dinner", view: "Premium Homestay", distance: "Darjeeling", premium: true, region: "Darjeeling", subRegion: "Darjeeling", imageCount: 6, ext: 'jpg' },
-            { id: 46, name: "Majua Majua Premium view ECO Homestay", price: "₹1699/-", meals: "Breakfast + Lunch + Evening Snacks + Dinner", view: "Mountain View", distance: "Darjeeling", premium: true, region: "Darjeeling", subRegion: "Darjeeling", imageCount: 9, ext: 'jpg' },
-            { id: 47, name: "Dawaipani Dawaipani Kanchanjunga Range View Homestay", price: "₹1499/-", meals: "Breakfast + Lunch + Evening Snacks + Dinner", view: "Kanchenjunga View", distance: "Darjeeling", premium: false, region: "Darjeeling", subRegion: "Darjeeling", imageCount: 11, ext: 'jpg' },
-            { id: 48, name: "Dawaipani Dawaipani Kanchanjunga View Cozy Homestay", price: "₹1499/-", meals: "Breakfast + Lunch + Evening Snacks + Dinner", view: "Kanchenjunga View", distance: "Darjeeling", premium: false, region: "Darjeeling", subRegion: "Darjeeling", imageCount: 8, ext: 'jpg' },
-            { id: 49, name: "Tinchulay Tinchulay Premium Homestay", price: "₹1499/-", meals: "Breakfast + Lunch + Evening Snacks + Dinner", view: "Premium Homestay", distance: "Darjeeling", premium: true, region: "Darjeeling", subRegion: "Darjeeling", imageCount: 9, ext: 'jpg' },
-            { id: 50, name: "Dawaipani Dawaipani Kanchanjunga View Premium Homestay", price: "₹1599/-", meals: "Breakfast + Lunch + Evening Snacks + Dinner", view: "Kanchenjunga View", distance: "Darjeeling", premium: true, region: "Darjeeling", subRegion: "Darjeeling", imageCount: 11, ext: 'jpg' },
-            { id: 51, name: "Tinchulay Tinchulay Kanchanjunga View Premium Dom Homestay", price: "₹1799/-", meals: "Breakfast + Lunch + Evening Snacks + Dinner", view: "Kanchenjunga View", distance: "Darjeeling", premium: true, region: "Darjeeling", subRegion: "Darjeeling", imageCount: 7, ext: 'jpg' },
-            { id: 52, name: "Tinchulay Tinchulay Kanchanjunga View Premium Homestay", price: "₹1899/-", meals: "Breakfast + Lunch + Evening Snacks + Dinner", view: "Kanchenjunga View", distance: "Darjeeling", premium: true, region: "Darjeeling", subRegion: "Darjeeling", imageCount: 11, ext: 'jpg' },
-            { id: 53, name: "Tinchulay Tinchulay Kanchanjunga View Premium tea garden Homestay", price: "₹2199/-", meals: "Breakfast + Lunch + Evening Snacks + Dinner", view: "Kanchenjunga View", distance: "Darjeeling", premium: true, region: "Darjeeling", subRegion: "Darjeeling", imageCount: 7, ext: 'jpg' },
-            { id: 54, name: "Lamahatta Lamahatta Kanchanjunga View Premium Homestay", price: "₹1799/-", meals: "Breakfast + Lunch + Evening Snacks + Dinner", view: "Kanchenjunga View", distance: "Darjeeling", premium: true, region: "Darjeeling", subRegion: "Darjeeling", imageCount: 11, ext: 'jpg' },
-            { id: 55, name: "Lamahatta Lamahatta Kanchanjunga Sunrise View Premium Homestay", price: "₹1799/-", meals: "Breakfast + Lunch + Evening Snacks + Dinner", view: "Kanchenjunga View", distance: "Darjeeling", premium: true, region: "Darjeeling", subRegion: "Darjeeling", imageCount: 12, ext: 'jpg' },
-        ];
+        (function () {
+            const hotelData = window.callingHillsHotelData || [
+                { id: 1, name: "The Kanchenjunga Retreat", price: "₹1,399/-", meals: "Breakfast + Lunch / Dinner", view: "Kanchenjunga View Room Available", distance: "Mall Road Walking 2 Min", premium: false, region: "Darjeeling", subRegion: "Darjeeling", imageCount: 26, ext: 'jpeg' },
+                { id: 2, name: "Darjeeling Heritage Stay", price: "₹1,499/-", meals: "Breakfast + Lunch / Dinner", view: "Kanchenjunga View Room Available", distance: "Mall Road Walking 5/6 Min", premium: false, region: "Darjeeling", subRegion: "Darjeeling", imageCount: 28 },
+                { id: 3, name: "Pine View Homestay", price: "₹1,599/-", meals: "Breakfast + Lunch / Dinner", view: "Kanchenjunga View Room Available", distance: "Mall Road Walking 3/4 Min", premium: false, region: "Darjeeling", subRegion: "Darjeeling", imageCount: 41 },
+                { id: 4, name: "Himalayan Horizon Hotel", price: "₹1,299/-", meals: "Breakfast + Lunch / Dinner", view: "Kanchenjunga View Room Available", distance: "Mall Road Walking 6/7 Min", premium: false, region: "Darjeeling", subRegion: "Darjeeling", imageCount: 22 },
+                { id: 5, name: "Mall Road Boutique Stay", price: "₹1,399/-", meals: "Breakfast + Lunch / Dinner", view: "Kanchenjunga View Room Available", distance: "Mall Road Walking 3/4 Min", premium: false, region: "Darjeeling", subRegion: "Darjeeling", imageCount: 20 },
+                { id: 6, name: "The Darjeeling Crown Premium", price: "₹2,299/-", meals: "Breakfast + Lunch / Dinner", view: "Kanchenjunga View Room Available", distance: "Mall Road Walking 2 Min", premium: true, region: "Darjeeling", subRegion: "Darjeeling", imageCount: 23 },
+                { id: 7, name: "Misty Peaks Guesthouse", price: "₹1,299/-", meals: "Breakfast + Lunch / Dinner", view: "Kanchenjunga View Room Available", distance: "Mall Road Walking 3 Min", premium: false, region: "Darjeeling", subRegion: "Darjeeling", imageCount: 9 },
+                { id: 8, name: "Kanchenjunga Majestic Suites", price: "₹2,999/-", meals: "Breakfast + Lunch / Dinner", view: "Kanchenjunga View Room Available", distance: "Mall Road Walking 3 Min", premium: true, region: "Darjeeling", subRegion: "Darjeeling", imageCount: 15 },
+                { id: 9, name: "Tea Garden View Stay", price: "₹1,299/-", meals: "Breakfast + Lunch / Dinner", view: "Kanchenjunga View Room Available", distance: "Mall Road Walking 3/4 Min", premium: false, region: "Darjeeling", subRegion: "Darjeeling", imageCount: 13 },
+                { id: 10, name: "Lamahatta Kanchanjunga Sunrise View Premium Homestay", price: "₹1,799/-", meals: "Breakfast + Lunch + Evening Snacks + Dinner", view: "Kanchanjunga Sunrise View", distance: "Lamahatta, Darjeeling", premium: true, region: "Darjeeling", subRegion: "Darjeeling", imageCount: 6, ext: 'jpeg' },
 
-        // Build media list from known image counts (files named "image (N).jpg")
-        function getMedia(hotel) {
-            const basePath = `./hotels/hotel-${hotel.id}/`;
-            const media = [];
-            const ext = hotel.ext || 'jpg';
-            for (let i = 1; i <= hotel.imageCount; i++) {
-                media.push({ type: 'image', src: `${basePath}image (${i}).${ext}` });
+                { id: 11, name: "Kolakham premium wooden homestay", price: "₹1199/-", meals: "Breakfast + Lunch + Evening Snacks + Dinner", view: "Premium Homestay", distance: "Kalimpong", premium: true, region: "Kalimpong", subRegion: "Kalimpong", imageCount: 11, ext: 'jpg' },
+                { id: 12, name: "Ramdhura Premium Kanchenjunga View wooden Homestay", price: "₹1299/-", meals: "Breakfast + Lunch + Evening Snacks + Dinner", view: "Kanchenjunga View", distance: "Kalimpong", premium: true, region: "Kalimpong", subRegion: "Kalimpong", imageCount: 11, ext: 'jpg' },
+                { id: 13, name: "BURMAIK Premium Kanchenjunga View Homestay", price: "₹1199/-", meals: "Breakfast + Lunch + Evening Snacks + Dinner", view: "Kanchenjunga View", distance: "Kalimpong", premium: true, region: "Kalimpong", subRegion: "Kalimpong", imageCount: 8, ext: 'jpg' },
+                { id: 14, name: "BIJANBARi Premium Cottage Homestay", price: "₹1299/-", meals: "Breakfast + Lunch + Evening Snacks + Dinner", view: "Premium Homestay", distance: "Kalimpong", premium: true, region: "Kalimpong", subRegion: "Kalimpong", imageCount: 6, ext: 'jpg' },
+                { id: 15, name: "ROLEP Premium River Side Homestay", price: "₹1299/-", meals: "Breakfast + Lunch + Evening Snacks + Dinner", view: "Premium Homestay", distance: "Darjeeling", premium: true, region: "Darjeeling", subRegion: "Darjeeling", imageCount: 10, ext: 'jpg' },
+                { id: 16, name: "SANGSAY Premium Kanchenjunga View Homestay", price: "₹1299/-", meals: "Breakfast + Lunch + Evening Snacks + Dinner", view: "Kanchenjunga View", distance: "East Sikkim", premium: true, region: "Kalimpong", subRegion: "Kalimpong", imageCount: 15, ext: 'jpg' },
+                { id: 17, name: "TABAKOSHI Premium View Homestay", price: "₹1299/-", meals: "Breakfast + Lunch + Evening Snacks + Dinner", view: "Mountain View", distance: "Kalimpong", premium: true, region: "Kalimpong", subRegion: "Kalimpong", imageCount: 17, ext: 'jpg' },
+                { id: 18, name: "JOGIGHAT Premium Kanchenjunga View Homestay", price: "₹1299/-", meals: "Breakfast + Lunch + Evening Snacks + Dinner", view: "Kanchenjunga View", distance: "Darjeeling", premium: true, region: "Darjeeling", subRegion: "Darjeeling", imageCount: 10, ext: 'jpg' },
+                { id: 19, name: "Mayrong Gaon Mayrong Gaon Premium Kanchenjunga View Homestay", price: "₹1599/-", meals: "Breakfast + Lunch + Evening Snacks + Dinner", view: "Kanchenjunga View", distance: "Darjeeling", premium: true, region: "Darjeeling", subRegion: "Darjeeling", imageCount: 4, ext: 'jpg' },
+                { id: 20, name: "Mayrong Gaon Mayrong Gaon Premium Mountain View Homestay", price: "₹1599/-", meals: "Breakfast + Lunch + Evening Snacks + Dinner", view: "Mountain View", distance: "Kalimpong", premium: true, region: "Kalimpong", subRegion: "Kalimpong", imageCount: 11, ext: 'jpg' },
+                { id: 21, name: "Mayrong Gaon Mayrong Gaon Premium View Cottage Homestay", price: "₹1599/-", meals: "Breakfast + Lunch + Evening Snacks + Dinner", view: "Mountain View", distance: "Kalimpong", premium: true, region: "Kalimpong", subRegion: "Kalimpong", imageCount: 11, ext: 'jpg' },
+                { id: 22, name: "Mayrong Gaon Mayrong Gaon Premium Wooden Homestay", price: "₹1599/-", meals: "Breakfast + Lunch + Evening Snacks + Dinner", view: "Premium Homestay", distance: "Kalimpong", premium: true, region: "Kalimpong", subRegion: "Kalimpong", imageCount: 8, ext: 'jpg' },
+                { id: 23, name: "Mayrong Gaon Mayrong Gaon Premium View Homestay", price: "₹1599/-", meals: "Breakfast + Lunch + Evening Snacks + Dinner", view: "Mountain View", distance: "Kalimpong", premium: true, region: "Kalimpong", subRegion: "Kalimpong", imageCount: 6, ext: 'jpg' },
+                { id: 24, name: "SANGSAY Sangsey Kanchenjunga View Premium Homestay", price: "₹1499/-", meals: "Breakfast + Lunch + Evening Snacks + Dinner", view: "Kanchenjunga View", distance: "Kalimpong", premium: true, region: "Kalimpong", subRegion: "Kalimpong", imageCount: 10, ext: 'jpg' },
+                { id: 25, name: "Daragaon Daragaon Premium Kanchenjunga View Homestay", price: "₹1499/-", meals: "Breakfast + Lunch + Evening Snacks + Dinner", view: "Kanchenjunga View", distance: "Kalimpong", premium: true, region: "Kalimpong", subRegion: "Kalimpong", imageCount: 11, ext: 'jpg' },
+                { id: 26, name: "Lava Sherpa Gaon premium View homestay", price: "₹1399/-", meals: "Breakfast + Lunch + Evening Snacks + Dinner", view: "Mountain View", distance: "Kalimpong", premium: true, region: "Kalimpong", subRegion: "Kalimpong", imageCount: 12, ext: 'jpg' },
+                { id: 27, name: "Kolakham Kolakham Premium Kanchanjunga View Wooden homestay", price: "₹1599/-", meals: "Breakfast + Lunch + Evening Snacks + Dinner", view: "Kanchenjunga View", distance: "Kalimpong", premium: true, region: "Kalimpong", subRegion: "Kalimpong", imageCount: 11, ext: 'jpg' },
+                { id: 28, name: "Rishop Rishop Premium Kanchanjunga View Homestay", price: "₹1499/-", meals: "Breakfast + Lunch + Evening Snacks + Dinner", view: "Kanchenjunga View", distance: "Kalimpong", premium: true, region: "Kalimpong", subRegion: "Kalimpong", imageCount: 13, ext: 'jpg' },
+                { id: 29, name: "Rishop Upper Rishop Kanchanjunga View Premium Homestay", price: "₹1799/-", meals: "Breakfast + Lunch + Evening Snacks + Dinner", view: "Kanchenjunga View", distance: "Kalimpong", premium: true, region: "Kalimpong", subRegion: "Kalimpong", imageCount: 8, ext: 'jpg' },
+                { id: 30, name: "Rishop Rishop Premium View Wooden Homestay", price: "₹1699/-", meals: "Breakfast + Lunch + Evening Snacks + Dinner", view: "Mountain View", distance: "Kalimpong", premium: true, region: "Kalimpong", subRegion: "Kalimpong", imageCount: 10, ext: 'jpg' },
+                { id: 31, name: "Rishop Rishop Premium View Homestay", price: "₹1399/-", meals: "Breakfast + Lunch + Evening Snacks + Dinner", view: "Mountain View", distance: "Kalimpong", premium: true, region: "Kalimpong", subRegion: "Kalimpong", imageCount: 8, ext: 'jpg' },
+                { id: 32, name: "Lepchajagat Lepchajagat premium Kanchenjunga View Homestay", price: "₹1599/-", meals: "Breakfast + Lunch + Evening Snacks + Dinner", view: "Kanchenjunga View", distance: "Kalimpong", premium: true, region: "Darjeeling", subRegion: "Lepchajagat", imageCount: 10, ext: 'jpg' },
+                { id: 33, name: "Tukvar Tukvar Kanchanjunga View Premium Homestay", price: "₹1799/-", meals: "Breakfast + Lunch + Evening Snacks + Dinner", view: "Kanchenjunga View", distance: "Darjeeling", premium: true, region: "Darjeeling", subRegion: "Darjeeling", imageCount: 6, ext: 'jpg' },
+                { id: 34, name: "Sonada Sonada Premium view Homestay", price: "₹1599/-", meals: "Breakfast + Lunch + Evening Snacks + Dinner", view: "Mountain View", distance: "Darjeeling", premium: true, region: "Darjeeling", subRegion: "Darjeeling", imageCount: 6, ext: 'jpg' },
+                { id: 35, name: "Dawaipani Dawaipani Kanchanjunga View Premium Cozy Homestay", price: "₹1499/-", meals: "Breakfast + Lunch + Evening Snacks + Dinner", view: "Kanchenjunga View", distance: "Darjeeling", premium: true, region: "Darjeeling", subRegion: "Darjeeling", imageCount: 7, ext: 'jpg' },
+                { id: 36, name: "Dawaipani Dawaipani Premium Kanchanjunga View Cozy Homestay", price: "₹1499/-", meals: "Breakfast + Lunch + Evening Snacks + Dinner", view: "Kanchenjunga View", distance: "Darjeeling", premium: true, region: "Darjeeling", subRegion: "Darjeeling", imageCount: 10, ext: 'jpg' },
+                { id: 37, name: "Tinchulay Tinchulay Premium Homestay", price: "₹1599/-", meals: "Breakfast + Lunch + Evening Snacks + Dinner", view: "Premium Homestay", distance: "Darjeeling", premium: true, region: "Darjeeling", subRegion: "Darjeeling", imageCount: 7, ext: 'jpg' },
+                { id: 38, name: "Lepchajagat Lepchajagat Kanchenjunga View Premium Homestay", price: "₹1599/-", meals: "Breakfast + Lunch + Evening Snacks + Dinner", view: "Kanchenjunga View", distance: "Darjeeling", premium: true, region: "Darjeeling", subRegion: "Darjeeling", imageCount: 12, ext: 'jpg' },
+                { id: 39, name: "Sittong Sittong Premium View Cozy Homestay", price: "₹1499/-", meals: "Breakfast + Lunch + Evening Snacks + Dinner", view: "Mountain View", distance: "Darjeeling", premium: true, region: "Darjeeling", subRegion: "Darjeeling", imageCount: 13, ext: 'jpg' },
+                { id: 40, name: "Sandakphu Sandakphu Premium Kanchenjunga View Homestay", price: "₹2499/-", meals: "Breakfast + Lunch + Evening Snacks + Dinner", view: "Kanchenjunga View", distance: "Darjeeling", premium: true, region: "Darjeeling", subRegion: "Darjeeling", imageCount: 15, ext: 'jpg' },
+                { id: 41, name: "Dawaipani Dawaipani Kanchanjunga View Homestay", price: "₹1499/-", meals: "Breakfast + Lunch + Evening Snacks + Dinner", view: "Kanchenjunga View", distance: "Darjeeling", premium: false, region: "Darjeeling", subRegion: "Darjeeling", imageCount: 6, ext: 'jpg' },
+                { id: 42, name: "Dhotrey Dhotrey Premium Kanchenjunga View Homestay", price: "₹1799/-", meals: "Breakfast + Lunch + Evening Snacks + Dinner", view: "Kanchenjunga View", distance: "Darjeeling", premium: true, region: "Darjeeling", subRegion: "Darjeeling", imageCount: 11, ext: 'jpg' },
+                { id: 43, name: "Dhotrey Dhotrey Premium View Homestay", price: "₹1499/-", meals: "Breakfast + Lunch + Evening Snacks + Dinner", view: "Mountain View", distance: "Darjeeling", premium: true, region: "Darjeeling", subRegion: "Darjeeling", imageCount: 12, ext: 'jpg' },
+                { id: 44, name: "Tonglu Tonglu Premium Hut Cottage Homestay", price: "₹1899/-", meals: "Breakfast + Lunch + Evening Snacks + Dinner", view: "Premium Homestay", distance: "Darjeeling", premium: true, region: "Darjeeling", subRegion: "Darjeeling", imageCount: 11, ext: 'jpg' },
+                { id: 45, name: "Tumling Tumling Premium Wooden Cottage Homestay", price: "₹1899/-", meals: "Breakfast + Lunch + Evening Snacks + Dinner", view: "Premium Homestay", distance: "Darjeeling", premium: true, region: "Darjeeling", subRegion: "Darjeeling", imageCount: 6, ext: 'jpg' },
+                { id: 46, name: "Majua Majua Premium view ECO Homestay", price: "₹1699/-", meals: "Breakfast + Lunch + Evening Snacks + Dinner", view: "Mountain View", distance: "Darjeeling", premium: true, region: "Darjeeling", subRegion: "Darjeeling", imageCount: 9, ext: 'jpg' },
+                { id: 47, name: "Dawaipani Dawaipani Kanchanjunga Range View Homestay", price: "₹1499/-", meals: "Breakfast + Lunch + Evening Snacks + Dinner", view: "Kanchenjunga View", distance: "Darjeeling", premium: false, region: "Darjeeling", subRegion: "Darjeeling", imageCount: 11, ext: 'jpg' },
+                { id: 48, name: "Dawaipani Dawaipani Kanchanjunga View Cozy Homestay", price: "₹1499/-", meals: "Breakfast + Lunch + Evening Snacks + Dinner", view: "Kanchenjunga View", distance: "Darjeeling", premium: false, region: "Darjeeling", subRegion: "Darjeeling", imageCount: 8, ext: 'jpg' },
+                { id: 49, name: "Tinchulay Tinchulay Premium Homestay", price: "₹1499/-", meals: "Breakfast + Lunch + Evening Snacks + Dinner", view: "Premium Homestay", distance: "Darjeeling", premium: true, region: "Darjeeling", subRegion: "Darjeeling", imageCount: 9, ext: 'jpg' },
+                { id: 50, name: "Dawaipani Dawaipani Kanchanjunga View Premium Homestay", price: "₹1599/-", meals: "Breakfast + Lunch + Evening Snacks + Dinner", view: "Kanchenjunga View", distance: "Darjeeling", premium: true, region: "Darjeeling", subRegion: "Darjeeling", imageCount: 11, ext: 'jpg' },
+                { id: 51, name: "Tinchulay Tinchulay Kanchanjunga View Premium Dom Homestay", price: "₹1799/-", meals: "Breakfast + Lunch + Evening Snacks + Dinner", view: "Kanchenjunga View", distance: "Darjeeling", premium: true, region: "Darjeeling", subRegion: "Darjeeling", imageCount: 7, ext: 'jpg' },
+                { id: 52, name: "Tinchulay Tinchulay Kanchanjunga View Premium Homestay", price: "₹1899/-", meals: "Breakfast + Lunch + Evening Snacks + Dinner", view: "Kanchenjunga View", distance: "Darjeeling", premium: true, region: "Darjeeling", subRegion: "Darjeeling", imageCount: 11, ext: 'jpg' },
+                { id: 53, name: "Tinchulay Tinchulay Kanchanjunga View Premium tea garden Homestay", price: "₹2199/-", meals: "Breakfast + Lunch + Evening Snacks + Dinner", view: "Kanchenjunga View", distance: "Darjeeling", premium: true, region: "Darjeeling", subRegion: "Darjeeling", imageCount: 7, ext: 'jpg' },
+                { id: 54, name: "Lamahatta Lamahatta Kanchanjunga View Premium Homestay", price: "₹1799/-", meals: "Breakfast + Lunch + Evening Snacks + Dinner", view: "Kanchenjunga View", distance: "Darjeeling", premium: true, region: "Darjeeling", subRegion: "Darjeeling", imageCount: 11, ext: 'jpg' },
+                { id: 55, name: "Lamahatta Lamahatta Kanchanjunga Sunrise View Premium Homestay", price: "₹1799/-", meals: "Breakfast + Lunch + Evening Snacks + Dinner", view: "Kanchenjunga View", distance: "Darjeeling", premium: true, region: "Darjeeling", subRegion: "Darjeeling", imageCount: 12, ext: 'jpg' },
+            ];
+
+            // Build media list from known image counts (files named "image (N).jpg")
+            function getMedia(hotel) {
+                if (hotel.overrideImage) {
+                    return [{ type: "image", src: hotel.overrideImage }];
+                }
+                const basePath = `./hotels/hotel-${hotel.id}/`;
+                const media = [];
+                const ext = hotel.ext || 'jpg';
+                for (let i = 1; i <= hotel.imageCount; i++) {
+                    media.push({ type: 'image', src: `${basePath}image (${i}).${ext}` });
+                }
+                return media;
             }
-            return media;
-        }
 
-        function createCarousel(media, hotelId) {
-            if (media.length === 0) {
-                // Placeholder
-                return `<div class="htl-carousel" data-hotel="${hotelId}">
+            function createCarousel(media, hotelId) {
+                if (media.length === 0) {
+                    // Placeholder
+                    return `<div class="htl-carousel" data-hotel="${hotelId}">
                     <div class="htl-slides">
                         <div class="htl-slide htl-slide-active">
                             <div class="htl-placeholder">
@@ -529,41 +646,41 @@
                         </div>
                     </div>
                 </div>`;
-            }
+                }
 
-            const slides = media.map((m, i) => {
-                if (m.type === 'video') {
-                    return `<div class="htl-slide ${i === 0 ? 'htl-slide-active' : ''}" data-index="${i}">
+                const slides = media.map((m, i) => {
+                    if (m.type === 'video') {
+                        return `<div class="htl-slide ${i === 0 ? 'htl-slide-active' : ''}" data-index="${i}">
                         <video src="${m.src}" muted playsinline preload="metadata" poster=""></video>
                         <button class="htl-play-btn" aria-label="Play video">
                             <svg width="36" height="36" viewBox="0 0 24 24" fill="white"><polygon points="5 3 19 12 5 21 5 3"/></svg>
                         </button>
                     </div>`;
-                }
-                return `<div class="htl-slide ${i === 0 ? 'htl-slide-active' : ''}" data-index="${i}">
+                    }
+                    return `<div class="htl-slide ${i === 0 ? 'htl-slide-active' : ''}" data-index="${i}">
                     <img src="${m.src}" alt="Hotel ${hotelId} photo ${i + 1}" loading="lazy">
                 </div>`;
-            }).join('');
+                }).join('');
 
-            const dots = media.length > 1 ? `<div class="htl-dots">${media.map((_, i) =>
-                `<button class="htl-dot ${i === 0 ? 'active' : ''}" data-idx="${i}" aria-label="Slide ${i+1}"></button>`
-            ).join('')}</div>` : '';
+                const dots = media.length > 1 ? `<div class="htl-dots">${media.map((_, i) =>
+                    `<button class="htl-dot ${i === 0 ? 'active' : ''}" data-idx="${i}" aria-label="Slide ${i + 1}"></button>`
+                ).join('')}</div>` : '';
 
-            const arrows = media.length > 1 ? `
+                const arrows = media.length > 1 ? `
                 <button class="htl-arrow htl-arrow-l" aria-label="Previous">‹</button>
                 <button class="htl-arrow htl-arrow-r" aria-label="Next">›</button>` : '';
 
-            return `<div class="htl-carousel" data-hotel="${hotelId}" data-count="${media.length}" data-current="0">
+                return `<div class="htl-carousel" data-hotel="${hotelId}" data-count="${media.length}" data-current="0">
                 <div class="htl-slides">${slides}</div>
                 ${arrows}
                 ${dots}
             </div>`;
-        }
+            }
 
-        function buildCard(hotel, media) {
-            const premiumTag = hotel.premium ? '<div class="htl-premium">★ Premium</div>' : '';
+            function buildCard(hotel, media) {
+                const premiumTag = hotel.premium ? '<div class="htl-premium">★ Premium</div>' : '';
 
-            return `<div class="htl-card ${hotel.premium ? 'htl-card-premium' : ''}" id="hotel-${hotel.id}">
+                return `<div class="htl-card ${hotel.premium ? 'htl-card-premium' : ''}" id="hotel-${hotel.id}">
                 ${premiumTag}
                 <div class="htl-card-media">
                     ${createCarousel(media, hotel.id)}
@@ -582,139 +699,140 @@
                     <a href="./contact.html" class="htl-btn">Enquire Now →</a>
                 </div>
             </div>`;
-        }
-
-        
-        // Place & Price Helpers
-        function getPlace(h) {
-            const combined = `${h.name} ${h.distance} ${h.subRegion || ''}`.toLowerCase();
-            if (combined.includes('mall road')) return 'Mall Road (Darjeeling)';
-            if (combined.includes('lamahatta')) return 'Lamahatta';
-            if (combined.includes('tinchulay') || combined.includes('tinchuley')) return 'Tinchuley';
-            if (combined.includes('dawaipani')) return 'Dawaipani';
-            if (combined.includes('rishop')) return 'Rishop';
-            if (combined.includes('kolakham')) return 'Kolakham';
-            if (combined.includes('ramdhura')) return 'Ramdhura';
-            if (combined.includes('lava')) return 'Lava';
-            if (combined.includes('lepchajagat')) return 'Lepchajagat';
-            if (combined.includes('sittong')) return 'Sittong';
-            if (combined.includes('sandakphu')) return 'Sandakphu';
-            if (combined.includes('dhotrey')) return 'Dhotrey';
-            if (combined.includes('tonglu')) return 'Tonglu';
-            if (combined.includes('tumling')) return 'Tumling';
-            if (combined.includes('mayrong')) return 'Mayrong Gaon';
-            if (combined.includes('sangsay') || combined.includes('sangsey')) return 'Sangsay';
-            if (combined.includes('burmaik')) return 'Burmaik';
-            if (combined.includes('bijanbari')) return 'Bijanbari';
-            if (combined.includes('rolep')) return 'Rolep';
-            if (combined.includes('tabakoshi')) return 'Tabakoshi';
-            if (combined.includes('jogighat')) return 'Jogighat';
-            if (combined.includes('sonada')) return 'Sonada';
-            if (combined.includes('tukvar')) return 'Tukvar';
-            if (combined.includes('majua')) return 'Majua';
-            if (combined.includes('daragaon')) return 'Daragaon';
-            if (h.region === 'Kalimpong') return 'Kalimpong';
-            return 'Darjeeling Town';
-        }
-
-        function getPriceNum(h) {
-            return parseInt(h.price.replace(/[^0-9]/g, '')) || 0;
-        }
-
-        // Initialize Filter, Sort & Search System
-        function init() {
-            const container = document.getElementById('hotels-content');
-            const tabsContainer = document.getElementById('region-tabs');
-            const searchInput = document.getElementById('htl-search-input');
-            const clearSearchBtn = document.getElementById('htl-clear-search');
-            const placeSelect = document.getElementById('htl-place-select');
-            const sortSelect = document.getElementById('htl-sort-select');
-            const countBadge = document.getElementById('htl-results-count');
-            const resetBtn = document.getElementById('htl-reset-btn');
-
-            if (!container) return;
-
-            // Enrich hotelData with normalized place and numeric price
-            hotelData.forEach(h => {
-                h.place = getPlace(h);
-                h.priceNum = getPriceNum(h);
-            });
-
-            // Populate Place Dropdown with counts
-            const placeCounts = {};
-            hotelData.forEach(h => {
-                placeCounts[h.place] = (placeCounts[h.place] || 0) + 1;
-            });
-            const sortedPlaces = Object.keys(placeCounts).sort((a, b) => a.localeCompare(b));
-            
-            let placeOptionsHtml = `<option value="all">All Locations (${hotelData.length})</option>`;
-            sortedPlaces.forEach(p => {
-                placeOptionsHtml += `<option value="${p}">${p} (${placeCounts[p]})</option>`;
-            });
-            if (placeSelect) placeSelect.innerHTML = placeOptionsHtml;
-
-            // Region Tabs with counts
-            const regionCounts = { 'All Stays': hotelData.length };
-            hotelData.forEach(h => {
-                const r = h.region || 'Darjeeling';
-                regionCounts[r] = (regionCounts[r] || 0) + 1;
-            });
-
-            const regionTabsList = ['All Stays', 'Darjeeling', 'Kalimpong'];
-            if (tabsContainer) {
-                tabsContainer.innerHTML = regionTabsList.map((r, i) => 
-                    `<button class="region-tab ${i === 0 ? 'active' : ''}" data-region="${r === 'All Stays' ? 'all' : r}">
-                        ${r} (${regionCounts[r] || 0})
-                    </button>`
-                ).join('');
             }
 
-            // State management
-            const filterState = {
-                region: 'all',
-                place: 'all',
-                sort: 'recommended',
-                query: ''
-            };
 
-            function updateUI() {
-                // Filter
-                let list = hotelData.filter(h => {
-                    if (filterState.region !== 'all' && h.region !== filterState.region) return false;
-                    if (filterState.place !== 'all' && h.place !== filterState.place) return false;
-                    if (filterState.query) {
-                        const q = filterState.query.toLowerCase();
-                        const searchStr = `${h.name} ${h.place} ${h.distance} ${h.view} ${h.meals} ${h.region}`.toLowerCase();
-                        if (!searchStr.includes(q)) return false;
-                    }
-                    return true;
+            // Place & Price Helpers
+            function getPlace(h) {
+                const combined = `${h.name} ${h.distance} ${h.subRegion || ''}`.toLowerCase();
+                if (combined.includes('mall road')) return 'Mall Road (Darjeeling)';
+                if (combined.includes('lamahatta')) return 'Lamahatta';
+                if (combined.includes('tinchulay') || combined.includes('tinchuley')) return 'Tinchuley';
+                if (combined.includes('dawaipani')) return 'Dawaipani';
+                if (combined.includes('rishop')) return 'Rishop';
+                if (combined.includes('kolakham')) return 'Kolakham';
+                if (combined.includes('ramdhura')) return 'Ramdhura';
+                if (combined.includes('lava')) return 'Lava';
+                if (combined.includes('lepchajagat')) return 'Lepchajagat';
+                if (combined.includes('sittong')) return 'Sittong';
+                if (combined.includes('sandakphu')) return 'Sandakphu';
+                if (combined.includes('dhotrey')) return 'Dhotrey';
+                if (combined.includes('tonglu')) return 'Tonglu';
+                if (combined.includes('tumling')) return 'Tumling';
+                if (combined.includes('mayrong')) return 'Mayrong Gaon';
+                if (combined.includes('sangsay') || combined.includes('sangsey')) return 'Sangsay';
+                if (combined.includes('burmaik')) return 'Burmaik';
+                if (combined.includes('bijanbari')) return 'Bijanbari';
+                if (combined.includes('rolep')) return 'Rolep';
+                if (combined.includes('tabakoshi')) return 'Tabakoshi';
+                if (combined.includes('jogighat')) return 'Jogighat';
+                if (combined.includes('sonada')) return 'Sonada';
+                if (combined.includes('tukvar')) return 'Tukvar';
+                if (combined.includes('majua')) return 'Majua';
+                if (combined.includes('daragaon')) return 'Daragaon';
+                if (h.region === 'Kalimpong') return 'Kalimpong';
+                return 'Darjeeling Town';
+            }
+
+            function getPriceNum(h) {
+                return parseInt(h.price.replace(/[^0-9]/g, '')) || 0;
+            }
+
+            // Initialize Filter, Sort & Search System
+            function init() {
+                const container = document.getElementById('hotels-content');
+                const tabsContainer = document.getElementById('region-tabs');
+                const searchInput = document.getElementById('htl-search-input');
+                const clearSearchBtn = document.getElementById('htl-clear-search');
+                const placeSelect = document.getElementById('htl-place-select');
+                const sortSelect = document.getElementById('htl-sort-select');
+                const countBadge = document.getElementById('htl-results-count');
+                const resetBtn = document.getElementById('htl-reset-btn');
+
+                if (!container) return;
+
+                // Enrich hotelData with normalized place and numeric price
+                hotelData.forEach(h => {
+                    h.place = getPlace(h);
+                    h.priceNum = getPriceNum(h);
                 });
 
-                // Sort
-                if (filterState.sort === 'price-asc') {
-                    list.sort((a, b) => a.priceNum - b.priceNum);
-                } else if (filterState.sort === 'price-desc') {
-                    list.sort((a, b) => b.priceNum - a.priceNum);
-                } else if (filterState.sort === 'name-asc') {
-                    list.sort((a, b) => a.name.localeCompare(b.name));
-                } else {
-                    // Recommended: premium first, then original id
-                    list.sort((a, b) => (b.premium === a.premium ? a.id - b.id : (b.premium ? 1 : -1)));
+                // Populate Place Dropdown with counts
+                const placeCounts = {};
+                hotelData.forEach(h => {
+                    placeCounts[h.place] = (placeCounts[h.place] || 0) + 1;
+                });
+                const sortedPlaces = Object.keys(placeCounts).sort((a, b) => a.localeCompare(b));
+
+                let placeOptionsHtml = `<option value="all">All Locations (${hotelData.length})</option>`;
+                sortedPlaces.forEach(p => {
+                    placeOptionsHtml += `<option value="${p}">${p} (${placeCounts[p]})</option>`;
+                });
+                if (placeSelect) placeSelect.innerHTML = placeOptionsHtml;
+
+                // Region Tabs with counts
+                const regionCounts = { 'All Stays': hotelData.length };
+                hotelData.forEach(h => {
+                    const r = h.region || 'Darjeeling';
+                    regionCounts[r] = (regionCounts[r] || 0) + 1;
+                });
+
+                const regionTabsList = ['All Stays', 'Darjeeling', 'Kalimpong'];
+                if (tabsContainer) {
+                    tabsContainer.innerHTML = regionTabsList.map((r, i) =>
+                        `<button class="region-tab ${i === 0 ? 'active' : ''}" data-region="${r === 'All Stays' ? 'all' : r}">
+                        ${r} (${regionCounts[r] || 0})
+                    </button>`
+                    ).join('');
                 }
 
-                // Update count badge
-                if (countBadge) {
-                    countBadge.innerHTML = `Showing <strong>${list.length}</strong> of ${hotelData.length} verified stays`;
-                }
+                // State management
+                const filterState = {
+                    region: 'all',
+                    place: 'all',
+                    sort: 'recommended',
+                    query: ''
+                };
 
-                // Show/hide reset button
-                const isFiltered = filterState.query !== '' || filterState.place !== 'all' || filterState.sort !== 'recommended' || filterState.region !== 'all';
-                if (resetBtn) resetBtn.style.display = isFiltered ? 'inline-block' : 'none';
-                if (clearSearchBtn) clearSearchBtn.style.display = filterState.query ? 'block' : 'none';
+                function updateUI() {
+                    // Filter
+                    let list = hotelData.filter(h => {
+                        if (h.publicHidden) return false;
+                        if (filterState.region !== 'all' && h.region !== filterState.region) return false;
+                        if (filterState.place !== 'all' && h.place !== filterState.place) return false;
+                        if (filterState.query) {
+                            const q = filterState.query.toLowerCase();
+                            const searchStr = `${h.name} ${h.place} ${h.distance} ${h.view} ${h.meals} ${h.region}`.toLowerCase();
+                            if (!searchStr.includes(q)) return false;
+                        }
+                        return true;
+                    });
 
-                // Render list
-                if (list.length === 0) {
-                    container.innerHTML = `
+                    // Sort
+                    if (filterState.sort === 'price-asc') {
+                        list.sort((a, b) => a.priceNum - b.priceNum);
+                    } else if (filterState.sort === 'price-desc') {
+                        list.sort((a, b) => b.priceNum - a.priceNum);
+                    } else if (filterState.sort === 'name-asc') {
+                        list.sort((a, b) => a.name.localeCompare(b.name));
+                    } else {
+                        // Recommended: premium first, then original id
+                        list.sort((a, b) => (b.premium === a.premium ? a.id - b.id : (b.premium ? 1 : -1)));
+                    }
+
+                    // Update count badge
+                    if (countBadge) {
+                        countBadge.innerHTML = `Showing <strong>${list.length}</strong> of ${hotelData.length} verified stays`;
+                    }
+
+                    // Show/hide reset button
+                    const isFiltered = filterState.query !== '' || filterState.place !== 'all' || filterState.sort !== 'recommended' || filterState.region !== 'all';
+                    if (resetBtn) resetBtn.style.display = isFiltered ? 'inline-block' : 'none';
+                    if (clearSearchBtn) clearSearchBtn.style.display = filterState.query ? 'block' : 'none';
+
+                    // Render list
+                    if (list.length === 0) {
+                        container.innerHTML = `
                         <div class="htl-empty-state">
                             <div class="htl-empty-icon">🏔️</div>
                             <h3>No Stays Match Your Search</h3>
@@ -722,15 +840,15 @@
                             <button class="htl-reset-btn" id="htl-empty-reset-btn">View All Stays</button>
                         </div>
                     `;
-                    const emptyReset = document.getElementById('htl-empty-reset-btn');
-                    if (emptyReset) emptyReset.addEventListener('click', resetAll);
-                    return;
-                }
+                        const emptyReset = document.getElementById('htl-empty-reset-btn');
+                        if (emptyReset) emptyReset.addEventListener('click', resetAll);
+                        return;
+                    }
 
-                // If user is sorting, searching, or selected a specific place: render flat grid
-                if (filterState.sort !== 'recommended' || filterState.query || filterState.place !== 'all') {
-                    const titleText = filterState.place !== 'all' ? filterState.place : (filterState.query ? `Search: "${filterState.query}"` : 'All Available Stays');
-                    container.innerHTML = `
+                    // If user is sorting, searching, or selected a specific place: render flat grid
+                    if (filterState.sort !== 'recommended' || filterState.query || filterState.place !== 'all') {
+                        const titleText = filterState.place !== 'all' ? filterState.place : (filterState.query ? `Search: "${filterState.query}"` : 'All Available Stays');
+                        container.innerHTML = `
                         <div class="subregion-section">
                             <h2 class="subregion-header">${titleText} (${list.length})</h2>
                             <div class="hotels-grid">
@@ -738,18 +856,18 @@
                             </div>
                         </div>
                     `;
-                } else {
-                    // Group by Place for natural, scenic browsing
-                    const grouped = {};
-                    list.forEach(h => {
-                        const p = h.place;
-                        if (!grouped[p]) grouped[p] = [];
-                        grouped[p].push(h);
-                    });
+                    } else {
+                        // Group by Place for natural, scenic browsing
+                        const grouped = {};
+                        list.forEach(h => {
+                            const p = h.place;
+                            if (!grouped[p]) grouped[p] = [];
+                            grouped[p].push(h);
+                        });
 
-                    let html = '';
-                    for (const [placeName, hotels] of Object.entries(grouped)) {
-                        html += `
+                        let html = '';
+                        for (const [placeName, hotels] of Object.entries(grouped)) {
+                            html += `
                             <div class="subregion-section">
                                 <h2 class="subregion-header">${placeName} (${hotels.length})</h2>
                                 <div class="hotels-grid">
@@ -757,131 +875,154 @@
                                 </div>
                             </div>
                         `;
+                        }
+                        container.innerHTML = html;
                     }
-                    container.innerHTML = html;
+
+                    attachCarouselEvents();
                 }
 
-                attachCarouselEvents();
-            }
+                function resetAll() {
+                    filterState.query = '';
+                    filterState.place = 'all';
+                    filterState.sort = 'recommended';
+                    filterState.region = 'all';
 
-            function resetAll() {
-                filterState.query = '';
-                filterState.place = 'all';
-                filterState.sort = 'recommended';
-                filterState.region = 'all';
+                    if (searchInput) searchInput.value = '';
+                    if (placeSelect) placeSelect.value = 'all';
+                    if (sortSelect) sortSelect.value = 'recommended';
+                    if (tabsContainer) {
+                        tabsContainer.querySelectorAll('.region-tab').forEach((t, i) => {
+                            t.classList.toggle('active', i === 0);
+                        });
+                    }
+                    updateUI();
+                }
 
-                if (searchInput) searchInput.value = '';
-                if (placeSelect) placeSelect.value = 'all';
-                if (sortSelect) sortSelect.value = 'recommended';
-                if (tabsContainer) {
-                    tabsContainer.querySelectorAll('.region-tab').forEach((t, i) => {
-                        t.classList.toggle('active', i === 0);
+                // Event Listeners
+                if (searchInput) {
+                    searchInput.addEventListener('input', (e) => {
+                        filterState.query = e.target.value.trim();
+                        updateUI();
                     });
                 }
+
+                if (clearSearchBtn) {
+                    clearSearchBtn.addEventListener('click', () => {
+                        filterState.query = '';
+                        searchInput.value = '';
+                        updateUI();
+                    });
+                }
+
+                if (placeSelect) {
+                    placeSelect.addEventListener('change', (e) => {
+                        filterState.place = e.target.value;
+                        updateUI();
+                    });
+                }
+
+                if (sortSelect) {
+                    sortSelect.addEventListener('change', (e) => {
+                        filterState.sort = e.target.value;
+                        updateUI();
+                    });
+                }
+
+                if (resetBtn) {
+                    resetBtn.addEventListener('click', resetAll);
+                }
+
+                if (tabsContainer) {
+                    tabsContainer.addEventListener('click', (e) => {
+                        const btn = e.target.closest('.region-tab');
+                        if (!btn) return;
+                        tabsContainer.querySelectorAll('.region-tab').forEach(t => t.classList.remove('active'));
+                        btn.classList.add('active');
+                        filterState.region = btn.dataset.region;
+                        updateUI();
+                    });
+                }
+
+                // Initial render
                 updateUI();
             }
 
-            // Event Listeners
-            if (searchInput) {
-                searchInput.addEventListener('input', (e) => {
-                    filterState.query = e.target.value.trim();
-                    updateUI();
+            function attachCarouselEvents() {
+                // Attach carousel controls
+                document.querySelectorAll('.htl-carousel').forEach(carousel => {
+                    const count = parseInt(carousel.dataset.count || '0');
+                    if (count <= 1) return;
+
+                    const slides = carousel.querySelectorAll('.htl-slide');
+                    const dots = carousel.querySelectorAll('.htl-dot');
+                    let current = 0;
+
+                    function goTo(idx) {
+                        slides[current].classList.remove('htl-slide-active');
+                        if (dots[current]) dots[current].classList.remove('active');
+                        current = (idx + count) % count;
+                        slides[current].classList.add('htl-slide-active');
+                        if (dots[current]) dots[current].classList.add('active');
+
+                        // Pause any playing video
+                        slides.forEach(s => { const v = s.querySelector('video'); if (v) { v.pause(); const p = s.querySelector('.htl-play-btn'); if (p) p.classList.remove('playing'); } });
+                    }
+
+                    const leftArrow = carousel.querySelector('.htl-arrow-l');
+                    const rightArrow = carousel.querySelector('.htl-arrow-r');
+                    if (leftArrow) leftArrow.addEventListener('click', () => goTo(current - 1));
+                    if (rightArrow) rightArrow.addEventListener('click', () => goTo(current + 1));
+
+                    dots.forEach(dot => dot.addEventListener('click', () => goTo(parseInt(dot.dataset.idx))));
+
+                    // Touch swipe
+                    let startX = 0;
+                    carousel.addEventListener('touchstart', e => { startX = e.touches[0].clientX; }, { passive: true });
+                    carousel.addEventListener('touchend', e => {
+                        const diff = startX - e.changedTouches[0].clientX;
+                        if (Math.abs(diff) > 40) goTo(diff > 0 ? current + 1 : current - 1);
+                    }, { passive: true });
+                });
+
+                // Play buttons for video
+                document.querySelectorAll('.htl-play-btn').forEach(btn => {
+                    btn.addEventListener('click', () => {
+                        const video = btn.parentElement.querySelector('video');
+                        if (video.paused) { video.play(); btn.classList.add('playing'); }
+                        else { video.pause(); btn.classList.remove('playing'); }
+                    });
                 });
             }
 
-            if (clearSearchBtn) {
-                clearSearchBtn.addEventListener('click', () => {
-                    filterState.query = '';
-                    searchInput.value = '';
-                    updateUI();
-                });
-            }
 
-            if (placeSelect) {
-                placeSelect.addEventListener('change', (e) => {
-                    filterState.place = e.target.value;
-                    updateUI();
-                });
-            }
+            async function startHotelPage() {
+                try {
+                    await import("./js/hotelFirebaseOverrides.js?v=1");
 
-            if (sortSelect) {
-                sortSelect.addEventListener('change', (e) => {
-                    filterState.sort = e.target.value;
-                    updateUI();
-                });
-            }
-
-            if (resetBtn) {
-                resetBtn.addEventListener('click', resetAll);
-            }
-
-            if (tabsContainer) {
-                tabsContainer.addEventListener('click', (e) => {
-                    const btn = e.target.closest('.region-tab');
-                    if (!btn) return;
-                    tabsContainer.querySelectorAll('.region-tab').forEach(t => t.classList.remove('active'));
-                    btn.classList.add('active');
-                    filterState.region = btn.dataset.region;
-                    updateUI();
-                });
-            }
-
-            // Initial render
-            updateUI();
-        }
-
-        function attachCarouselEvents() {
-            // Attach carousel controls
-            document.querySelectorAll('.htl-carousel').forEach(carousel => {
-                const count = parseInt(carousel.dataset.count || '0');
-                if (count <= 1) return;
-
-                const slides = carousel.querySelectorAll('.htl-slide');
-                const dots = carousel.querySelectorAll('.htl-dot');
-                let current = 0;
-
-                function goTo(idx) {
-                    slides[current].classList.remove('htl-slide-active');
-                    if(dots[current]) dots[current].classList.remove('active');
-                    current = (idx + count) % count;
-                    slides[current].classList.add('htl-slide-active');
-                    if(dots[current]) dots[current].classList.add('active');
-
-                    // Pause any playing video
-                    slides.forEach(s => { const v = s.querySelector('video'); if (v) { v.pause(); const p = s.querySelector('.htl-play-btn'); if(p) p.classList.remove('playing'); }});
+                    if (window.callingHillsHotelReady) {
+                        await window.callingHillsHotelReady;
+                    }
+                } catch (error) {
+                    console.error("Hotel Firebase integration failed:", error);
                 }
 
-                const leftArrow = carousel.querySelector('.htl-arrow-l');
-                const rightArrow = carousel.querySelector('.htl-arrow-r');
-                if (leftArrow) leftArrow.addEventListener('click', () => goTo(current - 1));
-                if (rightArrow) rightArrow.addEventListener('click', () => goTo(current + 1));
-                
-                dots.forEach(dot => dot.addEventListener('click', () => goTo(parseInt(dot.dataset.idx))));
+                init();
+            }
 
-                // Touch swipe
-                let startX = 0;
-                carousel.addEventListener('touchstart', e => { startX = e.touches[0].clientX; }, { passive: true });
-                carousel.addEventListener('touchend', e => {
-                    const diff = startX - e.changedTouches[0].clientX;
-                    if (Math.abs(diff) > 40) goTo(diff > 0 ? current + 1 : current - 1);
-                }, { passive: true });
-            });
-
-            // Play buttons for video
-            document.querySelectorAll('.htl-play-btn').forEach(btn => {
-                btn.addEventListener('click', () => {
-                    const video = btn.parentElement.querySelector('video');
-                    if (video.paused) { video.play(); btn.classList.add('playing'); }
-                    else { video.pause(); btn.classList.remove('playing'); }
-                });
-            });
-        }
-
-
-        if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
-        else init();
-    })();
+            if (document.readyState === "loading") {
+                document.addEventListener("DOMContentLoaded", startHotelPage);
+            } else {
+                startHotelPage();
+            }
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', startHotelPage);
+            } else {
+                startHotelPage();
+            }
+        })();
     </script>
+    <!-- <script type="module" src="./js/hotelFirebaseOverrides.js?v=1"></script> -->
 </body>
-</html>
 
+</html>

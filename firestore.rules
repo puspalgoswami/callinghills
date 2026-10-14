@@ -1,4 +1,3 @@
-
 rules_version = '2';
 
 service cloud.firestore {
@@ -9,27 +8,38 @@ service cloud.firestore {
         && request.auth.uid == "ayrwmWLYxxPa7BReRFZYA3lKHQY2";
     }
 
-    function isContentCollection(collection) {
-      return collection in [
+    function isContentCollection(collectionName) {
+      return collectionName in [
         "regions",
         "places",
+        "regionOverrides",
+        "placeOverrides",
         "packages",
         "packageOverrides",
         "hotels",
+        "hotelOverrides",
         "carRentals",
+        "carRentalOverrides",
         "blog"
       ];
     }
 
-    match /{collection}/{document=**} {
-      allow read: if isContentCollection(collection)
+    match /{collectionName}/{document=**} {
+      // Public: published documents only.
+      // Admin: all documents in the allowed collections.
+      allow read: if isContentCollection(collectionName)
         && (
-          resource.data.published == true
-          || isAdmin()
+          isAdmin()
+          || (
+            'published' in resource.data
+            && resource.data.published == true
+          )
         );
 
+      // Only the authenticated admin can modify content.
       allow create, update, delete: if
-        isContentCollection(collection) && isAdmin();
+        isContentCollection(collectionName)
+        && isAdmin();
     }
   }
 }

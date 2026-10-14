@@ -712,6 +712,9 @@
     // ─── Browser Back/Forward ───
     window.addEventListener('popstate', init);
 
+    // Refresh the page when Firebase destination data finishes loading.
+    window.addEventListener('callinghills:destinations-updated', init);
+
     // ─── Run ───
     if (document.readyState === 'loading') {
         document.addEventListener('DOMContentLoaded', init);
